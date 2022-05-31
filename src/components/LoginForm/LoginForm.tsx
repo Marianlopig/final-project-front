@@ -40,7 +40,7 @@ const LoginForm = () => {
   return (
     <LoginFormStyles>
       <div className="container">
-        <h2>Please, insert your username and password</h2>
+        <h2>Please, insert your username and password!</h2>
         <form autoComplete="off" noValidate onSubmit={submitLogin}>
           <label htmlFor="username">
             <input
