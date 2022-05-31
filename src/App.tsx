@@ -1,5 +1,5 @@
 const App = () => {
-  return <div className="App"></div>;
+  return <div></div>;
 };
 
 export default App;
