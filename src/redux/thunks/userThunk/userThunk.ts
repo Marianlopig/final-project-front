@@ -5,12 +5,12 @@ import {
   LoginData,
   LoginResponse,
 } from "../../types/userInterfaces";
+import { loginActionCreator } from "../../features/userSlice/userSlice";
 import { Dispatch } from "@reduxjs/toolkit";
-import { loginActionCreator } from "../../userSlice/userSlice";
 
 export const loginThunk =
   (userData: LoginData) => async (dispatch: Dispatch) => {
-    const url: string = `${process.env.REACT_APP_API_URL}user/login`;
+    const url: string = `${process.env.REACT_APP_API_URL}/users/login`;
     try {
       const { data, status }: DataAxiosLogin = await axios.post(url, userData);
 
