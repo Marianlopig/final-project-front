@@ -5,6 +5,13 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import store from "./redux/store/store";
 import reportWebVitals from "./reportWebVitals";
+import styled from "styled-components";
+
+const IndexStyles = styled.div`
+  * {
+    font-family: "roboto";
+  }
+`;
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -13,7 +20,9 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={store}>
-        <App />
+        <IndexStyles>
+          <App />
+        </IndexStyles>
       </Provider>
     </BrowserRouter>
   </React.StrictMode>

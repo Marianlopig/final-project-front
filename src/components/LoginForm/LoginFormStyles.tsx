@@ -6,14 +6,15 @@ export const LoginFormStyles = styled.div`
   align-items: center;
   justify-content: center;
   padding-top: 50px;
+
   .container {
-    background-color: #92b5b1;
+    background-color: #0cc8d0;
     padding: 20px;
     border-radius: 12px;
     border: 0;
     box-sizing: border-box;
     h2 {
-      color: #2c2d2d;
+      color: white;
       text-align: center;
       font-size: 30px;
     }
@@ -22,6 +23,18 @@ export const LoginFormStyles = styled.div`
       flex-direction: column;
       align-items: flex-start;
       justify-content: center;
+      row-gap: 20px;
+      .link {
+        font-weight: bolder;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 0 0 20px 0;
+        a {
+          text-decoration: none;
+          color: #7b8a8a;
+        }
+      }
       label {
         display: flex;
         flex-direction: column;
@@ -29,15 +42,18 @@ export const LoginFormStyles = styled.div`
         height: 60px;
         padding-bottom: 10px;
         font-size: 20px;
-        color: #474949;
+        color: #7b8a8a;
+
         input {
           ::placeholder {
-            color: #d8d5db;
+            color: #9d9c9c;
+            font-weight: bolder;
+            padding-left: 20px;
           }
           width: 100%;
           align-items: center;
           justify-content: center;
-          background-color: #777f7c;
+          background-color: #b6dadc;
           border-radius: 12px;
           border: 0;
           box-sizing: border-box;
@@ -51,11 +67,11 @@ export const LoginFormStyles = styled.div`
         width: 100%;
         justify-content: center;
         button {
-          background-color: #ec4940;
+          background-color: #c9e265;
           color: white;
           padding: 14px 20px;
-          margin: 8px 0;
           border: none;
+          font-weight: bold;
           cursor: pointer;
           width: 50%;
           opacity: 0.9;
