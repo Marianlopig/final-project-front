@@ -1,9 +1,13 @@
-import LoginForm from "./components/LoginForm/LoginForm";
+import { Navigate, Route, Routes } from "react-router-dom";
+import LoginPage from "./pages/LoginPage/LoginPage";
 
 const App = () => {
   return (
     <div>
-      <LoginForm />
+      <Routes>
+        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/login" element={<LoginPage />} />
+      </Routes>
     </div>
   );
 };
