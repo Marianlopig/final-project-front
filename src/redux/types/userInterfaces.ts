@@ -12,7 +12,7 @@ export interface LoginResponse {
 }
 
 export interface LoginData {
-  name: string;
+  username: string;
   password: string;
 }
 
