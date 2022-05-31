@@ -56,8 +56,8 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "!src/index.js",
-      "!src/reportWebVitals.js",
+      "!src/index.ts",
+      "!src/reportWebVitals.ts",
       "!src/components/LoginForm/__snapshots__/*"
     ]
   }
