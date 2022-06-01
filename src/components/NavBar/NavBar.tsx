@@ -1,4 +1,3 @@
-import { VscAccount } from "react-icons/vsc";
 import { RiMenuFill } from "react-icons/ri";
 import { NavBarStyles } from "./NavBarStyles";
 import { Link } from "react-router-dom";
