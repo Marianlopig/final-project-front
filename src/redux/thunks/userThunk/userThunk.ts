@@ -32,7 +32,7 @@ export const registerThunk =
       userData,
       {
         headers: {
-          "Content-Type": "multipart/form-data",
+          "Content-Type": "application/json",
         },
       }
     );
