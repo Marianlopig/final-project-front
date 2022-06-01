@@ -40,7 +40,7 @@ const RegisterForm = () => {
     <RegisterFormStyles>
       <div className="container">
         <h2>Create a new account</h2>
-        <form autoComplete="off" noValidate onSubmit={handleSubmit}>
+        <form noValidate onSubmit={handleSubmit}>
           <label htmlFor="name">Name:</label>
           <input
             id="name"
@@ -48,6 +48,7 @@ const RegisterForm = () => {
             value={user.name}
             onChange={(event) => handleChange(event)}
             placeholder="Name"
+            autoComplete="off"
           />
           <label htmlFor="username">Username:</label>
           <input
@@ -56,6 +57,7 @@ const RegisterForm = () => {
             value={user.username}
             onChange={(event) => handleChange(event)}
             placeholder="Username"
+            autoComplete="off"
           />
           <label htmlFor="password">Password:</label>
           <input
@@ -72,6 +74,7 @@ const RegisterForm = () => {
             value={user.email}
             onChange={(event) => handleChange(event)}
             placeholder="Email"
+            autoComplete="off"
           />
           <label htmlFor="city">City:</label>
           <input
@@ -80,6 +83,7 @@ const RegisterForm = () => {
             value={user.city}
             onChange={(event) => handleChange(event)}
             placeholder="City"
+            autoComplete="off"
           />
           <div className="submitContainer">
             <button type="submit" value="Submit" disabled={buttonDisabled}>

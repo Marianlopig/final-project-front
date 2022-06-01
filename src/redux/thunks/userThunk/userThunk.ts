@@ -8,9 +8,14 @@ import {
 } from "../../types/userInterfaces";
 import { loginActionCreator } from "../../features/userSlice/userSlice";
 import { Dispatch } from "@reduxjs/toolkit";
+import {
+  loadingActionCreator,
+  notLoadingActionCreator,
+} from "../../features/uiSlice/uiSlice";
 
 export const loginThunk =
   (userData: LoginData) => async (dispatch: Dispatch) => {
+    dispatch(loadingActionCreator());
     const url: string = `${process.env.REACT_APP_API_URL}/users/login`;
     try {
       const { data, status }: DataAxiosLogin = await axios.post(url, userData);
@@ -22,18 +27,27 @@ export const loginThunk =
       }
     } catch (error: any) {
       return error.message;
+    } finally {
+      dispatch(notLoadingActionCreator());
     }
   };
 
 export const registerThunk =
   (userData: IUser) => async (dispatch: Dispatch) => {
-    await axios.post(
-      `${process.env.REACT_APP_API_URL}/users/register`,
-      userData,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    try {
+      dispatch(loadingActionCreator());
+      await axios.post(
+        `${process.env.REACT_APP_API_URL}/users/register`,
+        userData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+    } catch (error: any) {
+      return error.message;
+    } finally {
+      dispatch(notLoadingActionCreator());
+    }
   };

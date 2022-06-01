@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { RootState } from "../../store/store";
 
-interface iUiSlice {
+export interface iUiSlice {
   showSpinner: boolean;
 }
 
