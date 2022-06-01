@@ -1,7 +1,6 @@
-import { Metronome } from "@uiball/loaders";
 import { SpinnerStyles } from "./SpinnerStyles";
 
-interface ISpinner {
+export interface ISpinner {
   show: boolean;
 }
 
@@ -11,7 +10,12 @@ const Spinner = ({ show }: ISpinner) => {
     <SpinnerStyles>
       <div className={showHideClassName}>
         <div className="modal-main">
-          <Metronome size={100} speed={1.6} color="#FFDE59" />
+          <div data-testid="spinner" className="metronome">
+            <div className="metronome__dot"></div>
+            <div className="metronome__dot"></div>
+            <div className="metronome__dot"></div>
+            <div className="metronome__dot"></div>
+          </div>
         </div>
       </div>
     </SpinnerStyles>

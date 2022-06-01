@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 export const SpinnerStyles = styled.div`
   .metronome {
-    --uib-size: 40px;
+    --uib-size: 100px;
     --uib-speed: 1.6s;
-    --uib-color: black;
+    --uib-color: #ffde59;
 
     position: relative;
     display: flex;

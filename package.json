@@ -53,6 +53,8 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.18.2",
+    "babel-jest": "^28.1.0",
     "husky": "^7.0.4",
     "msw": "^0.39.2"
   },
