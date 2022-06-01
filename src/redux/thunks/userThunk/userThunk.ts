@@ -25,14 +25,15 @@ export const loginThunk =
     }
   };
 
-export const registerThunk = async (userData: IUser) => {
-  await axios.post(
-    `${process.env.REACT_APP_API_URL}/users/register`,
-    userData,
-    {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    }
-  );
-};
+export const registerThunk =
+  (userData: IUser) => async (dispatch: Dispatch) => {
+    await axios.post(
+      `${process.env.REACT_APP_API_URL}/users/register`,
+      userData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+  };
