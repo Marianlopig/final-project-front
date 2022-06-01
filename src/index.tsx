@@ -11,6 +11,11 @@ const IndexStyles = styled.div`
   * {
     font-family: "roboto";
   }
+  html,
+  body {
+    margin: 0px;
+    padding: 0px;
+  }
 `;
 
 const root = ReactDOM.createRoot(
