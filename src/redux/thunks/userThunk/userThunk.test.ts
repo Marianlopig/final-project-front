@@ -1,6 +1,6 @@
 import "../../../mocks/server";
 import { loginActionCreator } from "../../features/userSlice/userSlice";
-import { loginThunk } from "./userThunk";
+import { loginThunk, registerThunk } from "./userThunk";
 
 jest.mock("jwt-decode", () => () => ({ username: "marian", name: "marian" }));
 
