@@ -2,6 +2,7 @@ import axios from "axios";
 import jwt_decode from "jwt-decode";
 import {
   DataAxiosLogin,
+  IUser,
   LoginData,
   LoginResponse,
 } from "../../types/userInterfaces";
@@ -23,3 +24,15 @@ export const loginThunk =
       return error.message;
     }
   };
+
+export const registerThunk = async (userData: IUser) => {
+  await axios.post(
+    `${process.env.REACT_APP_API_URL}/users/register`,
+    userData,
+    {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    }
+  );
+};
