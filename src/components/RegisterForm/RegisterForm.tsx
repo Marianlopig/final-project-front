@@ -19,7 +19,7 @@ const RegisterForm = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (user.username !== "" && user.password !== "") {
+    if (user.username !== "" && user.password !== "" && user.email !== "") {
       setButtonDisabled(false);
     } else {
       setButtonDisabled(true);
@@ -80,8 +80,8 @@ const RegisterForm = () => {
             email:
             <input
               id="email"
-              type="email"
-              value={user.password}
+              type="text"
+              value={user.email}
               onChange={(event) => handleChange(event)}
               placeholder="Email"
               autoComplete="off"
@@ -91,8 +91,8 @@ const RegisterForm = () => {
             City:
             <input
               id="city"
-              type="city"
-              value={user.password}
+              type="text"
+              value={user.city}
               onChange={(event) => handleChange(event)}
               placeholder="City"
               autoComplete="off"
