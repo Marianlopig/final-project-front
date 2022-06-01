@@ -42,28 +42,27 @@ const LoginForm = () => {
       <div className="container">
         <h2>Please, insert your username and password!</h2>
         <form autoComplete="off" noValidate onSubmit={submitLogin}>
-          <label htmlFor="username">
-            <input
-              id="username"
-              value={formData.username}
-              onChange={changeData}
-              placeholder="Username"
-            />
-          </label>
-          <label className="label-password" htmlFor="password">
-            <input
-              id="password"
-              type="password"
-              value={formData.password}
-              onChange={changeData}
-              placeholder="Password"
-            />
-          </label>
+          <label htmlFor="username">Username</label>
+          <input
+            id="username"
+            value={formData.username}
+            onChange={changeData}
+            placeholder="Username"
+          />
+
+          <label htmlFor="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            value={formData.password}
+            onChange={changeData}
+            placeholder="Password"
+          />
           <div className="submitContainer">
             <button disabled={buttonDisabled}>LogIn</button>
           </div>
           <div className="link">
-            <Link to="/create">Create an account</Link>
+            <Link to="/new-user">Create an account</Link>
           </div>
         </form>
       </div>

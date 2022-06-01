@@ -36,30 +36,28 @@ export const LoginFormStyles = styled.div`
         }
       }
       label {
+        display: none;
+      }
+
+      input {
         display: flex;
-        flex-direction: column;
         width: 100%;
         height: 60px;
-        padding-bottom: 10px;
         font-size: 20px;
         color: #7b8a8a;
-
-        input {
-          ::placeholder {
-            color: #9d9c9c;
-            font-weight: bolder;
-            padding-left: 20px;
-          }
-          width: 100%;
-          align-items: center;
-          justify-content: center;
-          background-color: #b6dadc;
-          border-radius: 12px;
-          border: 0;
-          box-sizing: border-box;
-          color: white;
-          font-size: 18px;
-          height: 100%;
+        background-color: #b6dadc;
+        border-radius: 12px;
+        border: 0;
+        box-sizing: border-box;
+        color: white;
+        font-size: 18px;
+        padding-left: 20px;
+        :focus {
+          outline: none;
+        }
+        ::placeholder {
+          color: #9d9c9c;
+          font-weight: bolder;
         }
       }
       .submitContainer {

@@ -11,8 +11,8 @@ export const RegisterFormStyles = styled.div`
     background-color: #0cc8d0;
     padding: 20px;
     border-radius: 12px;
-    border: 0;
-    box-sizing: border-box;
+    width: 75%;
+    max-width: 600px;
     h2 {
       color: white;
       text-align: center;
@@ -36,30 +36,28 @@ export const RegisterFormStyles = styled.div`
         }
       }
       label {
+        display: none;
+      }
+      input {
         display: flex;
-        flex-direction: column;
         width: 100%;
         height: 60px;
-        padding-bottom: 10px;
         font-size: 20px;
         color: #7b8a8a;
+        background-color: #b6dadc;
+        border-radius: 12px;
+        border: 0;
+        box-sizing: border-box;
+        color: #9d9c9c;
+        font-size: 18px;
+        padding-left: 20px;
+        :focus {
+          outline: none;
+        }
 
-        input {
-          ::placeholder {
-            color: #9d9c9c;
-            font-weight: bolder;
-            padding-left: 20px;
-          }
-          width: 100%;
-          align-items: center;
-          justify-content: center;
-          background-color: #b6dadc;
-          border-radius: 12px;
-          border: 0;
-          box-sizing: border-box;
-          color: white;
-          font-size: 18px;
-          height: 100%;
+        ::placeholder {
+          color: #9d9c9c;
+          font-weight: bolder;
         }
       }
       .submitContainer {
@@ -80,6 +78,9 @@ export const RegisterFormStyles = styled.div`
           font-size: 20px;
           border-radius: 15px;
           align-items: center;
+          :disabled {
+            opacity: 0.4;
+          }
         }
       }
     }

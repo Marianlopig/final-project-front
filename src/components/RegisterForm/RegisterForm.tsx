@@ -40,69 +40,55 @@ const RegisterForm = () => {
     <RegisterFormStyles>
       <div className="container">
         <h2>Create a new account</h2>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Name:
-            <input
-              id="name"
-              type="text"
-              value={user.name}
-              onChange={(event) => handleChange(event)}
-              placeholder="Name"
-              autoComplete="off"
-            />
-          </label>
-          <label>
-            Username:
-            <input
-              id="username"
-              type="text"
-              value={user.username}
-              onChange={(event) => handleChange(event)}
-              placeholder="Username"
-              autoComplete="off"
-            />
-          </label>
-          <label>
-            Password:
-            <div className="slider">
-              <input
-                id="password"
-                type="password"
-                value={user.password}
-                onChange={(event) => handleChange(event)}
-                placeholder="Password"
-                autoComplete="off"
-              />
-            </div>
-          </label>
-          <label>
-            email:
-            <input
-              id="email"
-              type="text"
-              value={user.email}
-              onChange={(event) => handleChange(event)}
-              placeholder="Email"
-              autoComplete="off"
-            />
-          </label>
-          <label>
-            City:
-            <input
-              id="city"
-              type="text"
-              value={user.city}
-              onChange={(event) => handleChange(event)}
-              placeholder="City"
-              autoComplete="off"
-            />
-          </label>
-
+        <form autoComplete="off" noValidate onSubmit={handleSubmit}>
+          <label htmlFor="name">Name:</label>
+          <input
+            id="name"
+            type="text"
+            value={user.name}
+            onChange={(event) => handleChange(event)}
+            placeholder="Name"
+          />
+          <label htmlFor="username">Username:</label>
+          <input
+            id="username"
+            type="text"
+            value={user.username}
+            onChange={(event) => handleChange(event)}
+            placeholder="Username"
+          />
+          <label htmlFor="password">Password:</label>
+          <input
+            id="password"
+            type="password"
+            value={user.password}
+            onChange={(event) => handleChange(event)}
+            placeholder="Password"
+          />
+          <label htmlFor="email">Email:</label>
+          <input
+            id="email"
+            type="text"
+            value={user.email}
+            onChange={(event) => handleChange(event)}
+            placeholder="Email"
+          />
+          <label htmlFor="city">City:</label>
+          <input
+            id="city"
+            type="text"
+            value={user.city}
+            onChange={(event) => handleChange(event)}
+            placeholder="City"
+          />
           <div className="submitContainer">
-            <input type="submit" value="Submit" disabled={buttonDisabled} />
+            <button type="submit" value="Submit" disabled={buttonDisabled}>
+              Create Account
+            </button>
           </div>
-          <Link to="/login">Already have an account?</Link>
+          <div className="link">
+            <Link to="/login">Already have an account?</Link>
+          </div>
         </form>
       </div>
     </RegisterFormStyles>
