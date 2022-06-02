@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const NavBarStyles = styled.div`
-  background-color: #d9d9d9;
+  background-color: #0f4b4d80;
   box-shadow: 0 2px 2px 2px rgba(9, 9, 9, 0.23);
   .navigation {
     display: flex;
