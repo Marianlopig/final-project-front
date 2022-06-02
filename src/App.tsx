@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
+import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
 import Spinner from "./components/Spinner/Spinner";
@@ -19,6 +20,8 @@ const App = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/new-user" element={<RegisterForm />} />
       </Routes>
+
+      <Footer />
     </div>
   );
 };
