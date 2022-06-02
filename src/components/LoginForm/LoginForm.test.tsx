@@ -5,7 +5,6 @@ import store from "../../redux/store/store";
 import userEvent from "@testing-library/user-event";
 import { BrowserRouter } from "react-router-dom";
 import { loginThunk } from "../../redux/thunks/userThunk/userThunk";
-import { useAppDispatch } from "../../redux/hooks/hooks";
 
 const mockDispatch = jest.fn();
 jest.mock("react-redux", () => ({

@@ -28,6 +28,7 @@ export const {
   loading: loadingActionCreator,
   notLoading: notLoadingActionCreator,
 } = uiSlice.actions;
-export const selectCount = (state: RootState) => state.users;
+
+export const uiShowSpinnerSelector = (state: RootState) => state.ui.showSpinner;
 
 export default uiSlice.reducer;
