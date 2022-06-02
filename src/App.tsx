@@ -4,11 +4,11 @@ import NavBar from "./components/NavBar/NavBar";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
 import Spinner from "./components/Spinner/Spinner";
 import LoginPage from "./pages/LoginPage/LoginPage";
-import { iUiSlice } from "./redux/features/uiSlice/uiSlice";
+import { uiShowSpinnerSelector } from "./redux/features/uiSlice/uiSlice";
 import { useAppSelector } from "./redux/hooks/hooks";
 
 const App = () => {
-  const { showSpinner }: iUiSlice = useAppSelector(({ ui }) => ui);
+  const showSpinner = useAppSelector(uiShowSpinnerSelector);
 
   return (
     <div>

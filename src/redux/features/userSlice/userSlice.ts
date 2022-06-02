@@ -23,6 +23,5 @@ const userSlice = createSlice({
 
 export const { login: loginActionCreator, logout: logoutActionCreator } =
   userSlice.actions;
-export const selectCount = (state: RootState) => state.users;
 
 export default userSlice.reducer;
