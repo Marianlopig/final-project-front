@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
+import Park from "./components/Park/Park";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
 import Spinner from "./components/Spinner/Spinner";
 import LoginPage from "./pages/LoginPage/LoginPage";
@@ -13,6 +14,7 @@ const App = () => {
   return (
     <div>
       <NavBar />
+      <Park />
 
       <Spinner show={showSpinner} />
       <Routes>
