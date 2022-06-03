@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { RootState } from "../../store/store";
 
-export interface iUiSlice {
+export interface IUiSlice {
   showSpinner: boolean;
 }
 
-const initialState: iUiSlice = {
+const initialState: IUiSlice = {
   showSpinner: false,
 };
 
@@ -13,11 +13,11 @@ const uiSlice = createSlice({
   name: "ui",
   initialState,
   reducers: {
-    loading: (currentState: iUiSlice) => ({
+    loading: (currentState: IUiSlice) => ({
       ...currentState,
       showSpinner: true,
     }),
-    notLoading: (currentState: iUiSlice) => ({
+    notLoading: (currentState: IUiSlice) => ({
       ...currentState,
       showSpinner: false,
     }),

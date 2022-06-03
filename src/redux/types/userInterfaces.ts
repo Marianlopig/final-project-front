@@ -16,12 +16,12 @@ export interface LoginData {
   password: string;
 }
 
-export interface iToken {
+export interface IToken {
   token: string;
 }
 
 export interface DataAxiosLogin {
-  data: iToken;
+  data: IToken;
   status: number;
 }
 
