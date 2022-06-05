@@ -3,6 +3,7 @@ import { useAppDispatch } from "../../redux/hooks/hooks";
 import { loadParksThunk } from "../../redux/thunks/parkThunk/parkThunk";
 import { IPark, IParkList } from "../../redux/types/parkInterfaces";
 import Park from "../Park/Park";
+import { ParkListStyles } from "./ParkListStyles";
 
 const ParkList = ({ results: parks }: IParkList) => {
   const dispatch = useAppDispatch();
@@ -12,15 +13,17 @@ const ParkList = ({ results: parks }: IParkList) => {
   }, [dispatch]);
 
   return (
-    <ul>
-      {parks.map((park: IPark) => {
-        return (
-          <li key={park.id}>
-            <Park />
-          </li>
-        );
-      })}
-    </ul>
+    <ParkListStyles>
+      <div className="parkslist-container">
+        {parks.map((park: IPark) => {
+          return (
+            <div className="park-container" key={park.id}>
+              <Park />
+            </div>
+          );
+        })}
+      </div>
+    </ParkListStyles>
   );
 };
 

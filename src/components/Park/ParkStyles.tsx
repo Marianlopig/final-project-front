@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ParkStyles = styled.div`
-  background-color: #f0f0f0;
+  background-color: white;
   font-family: "Quicksand", sans-serif;
   padding: 32px;
 
@@ -16,7 +16,7 @@ export const ParkStyles = styled.div`
       padding: 16px;
       width: 312px;
       min-width: 288px;
-      box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.04);
+      box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.5);
       border-radius: 8px;
       transition: 0.4s;
       :hover {
@@ -46,7 +46,6 @@ export const ParkStyles = styled.div`
         align-items: center;
         h3 {
           color: #00c2cb;
-          padding: 40px 0 0px 0;
           display: flex;
           justify-content: center;
         }
@@ -57,7 +56,7 @@ export const ParkStyles = styled.div`
           -webkit-line-clamp: 4;
           -webkit-box-orient: vertical;
           font-size: 20px;
-          padding: 20px 0 20px 0;
+          padding: 0px 0 20px 0;
         }
         span {
           font-size: 15px;
