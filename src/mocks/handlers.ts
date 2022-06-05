@@ -28,19 +28,24 @@ export const usersHandlers = [
         pageSize: 10,
         next: undefined,
         previous: undefined,
-        total: 1,
+        total: 0,
         results: [
           {
-            id: "1",
-            name: "Parque Bonito",
-            description: "Un parque grande con muchas plantas",
-            photos: ["photo.png"],
+            id: "2",
+            name: "parque bonito",
+            description: "un parque muy bonito",
+            photos: ["photo1.png, photo2.png"],
             location: {
-              type: "Point",
-              coordinates: [46574, 5478],
+              type: {
+                type: "elpunto",
+                enum: ["Point"],
+              },
+              coordinates: {
+                type: [4567, 5764],
+              },
             },
-            details: ["agua", "fuentes"],
-            owner: "",
+            details: ["aga", "bar"],
+            owner: "1",
           },
         ],
       })

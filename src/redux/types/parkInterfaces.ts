@@ -7,8 +7,15 @@ export interface IParkState {
   results: IPark[];
 }
 export interface ILocation {
-  type: string;
-  coordinates: number[];
+  type: {
+    type: string;
+    enum: string[];
+  };
+  coordinates: { type: number[] };
+}
+
+export interface IParkList {
+  results: IPark[];
 }
 
 export interface IPark {
