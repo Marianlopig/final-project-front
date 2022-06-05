@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "../../redux/store/store";
@@ -41,6 +41,10 @@ describe("Given a ParkList component", () => {
           </Provider>
         </BrowserRouter>
       );
+
+      const picture = screen.getByRole("img");
+
+      expect(picture).toBeInTheDocument();
     });
   });
 });

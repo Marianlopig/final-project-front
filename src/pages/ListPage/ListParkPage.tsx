@@ -5,7 +5,12 @@ import { useAppSelector } from "../../redux/hooks/hooks";
 const ListParkPage = () => {
   const parks = useAppSelector(parksListSelector);
 
-  return <ParkList results={parks} />;
+  return (
+    <>
+      <h1>Best playGrounds in your city</h1>
+      <ParkList results={parks} />
+    </>
+  );
 };
 
 export default ListParkPage;
