@@ -1,7 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
-import ParkList from "./components/ParkList/ParkList";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
 import Spinner from "./components/Spinner/Spinner";
 import ListParkPage from "./pages/ListPage/ListParkPage";
