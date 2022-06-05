@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const ParkStyles = styled.div`
-  @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap");
-  @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400;500;600;700&display=swap");
   background-color: #f0f0f0;
   font-family: "Quicksand", sans-serif;
   padding: 32px;
@@ -48,6 +46,9 @@ export const ParkStyles = styled.div`
         align-items: center;
         h3 {
           color: #00c2cb;
+          padding: 40px 0 0px 0;
+          display: flex;
+          justify-content: center;
         }
         p {
           overflow: hidden;
@@ -56,6 +57,11 @@ export const ParkStyles = styled.div`
           -webkit-line-clamp: 4;
           -webkit-box-orient: vertical;
           font-size: 20px;
+          padding: 20px 0 20px 0;
+        }
+        span {
+          font-size: 15px;
+          margin-right: auto;
         }
       }
 
@@ -80,13 +86,15 @@ export const ParkStyles = styled.div`
         flex-wrap: wrap;
         gap: 5px;
         align-items: center;
-        margin: 0px !important;
+        margin: 0;
         padding: 0;
+
         &--icons {
           width: 25px;
           height: 25px;
           border-radius: 20%;
           background-color: #ffde59;
+
           svg {
             fill: #656565;
             width: 20px;

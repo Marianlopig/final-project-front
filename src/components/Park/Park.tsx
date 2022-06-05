@@ -25,6 +25,7 @@ const Park = () => {
           />
           <div className="card-body">
             <h3 className="card-title">Hello World</h3>
+            <span>Barcelona, paseo de Gracia</span>
             <p className="card-content">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem

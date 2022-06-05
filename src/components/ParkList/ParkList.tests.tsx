@@ -1,12 +1,13 @@
-import "../../../mocks/server";
-import { loadParksActionCreator } from "../../features/parksSlice/parkSlice";
-import { loadParksThunk } from "./parkThunk";
+import { render } from "@testing-library/react";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+import store from "../../redux/store/store";
+import ParkList from "./ParkList";
 
-describe("Given a loadParks function", () => {
-  describe("When it is called", () => {
-    test("It should dispatch loadParksActionCreator with the list of all parks", async () => {
-      const dispatch = jest.fn();
-      const parkColectionData = {
+describe("Given a ParkList component", () => {
+  describe("When it is instanted", () => {
+    test("Then it should render a ul html element", () => {
+      const parks = {
         page: 0,
         pageSize: 10,
         next: undefined,
@@ -32,11 +33,14 @@ describe("Given a loadParks function", () => {
           },
         ],
       };
-      const loadColectionAction = loadParksActionCreator(parkColectionData);
-      const thunk = loadParksThunk();
-      await thunk(dispatch);
 
-      expect(dispatch).toHaveBeenCalledWith(loadColectionAction);
+      render(
+        <BrowserRouter>
+          <Provider store={store}>
+            <ParkList results={parks.results} />
+          </Provider>
+        </BrowserRouter>
+      );
     });
   });
 });
