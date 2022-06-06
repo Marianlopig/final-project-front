@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { LoginFormStyles } from "./LoginFormStyles";
 import { useAppDispatch } from "../../redux/hooks/hooks";
 import { LoginData } from "../../redux/types/userInterfaces";
-import { loginThunk } from "../../redux/thunks/userThunk/userThunk";
+import { loginThunk } from "../../redux/thunks/authThunk/authThunk";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -34,7 +34,7 @@ const LoginForm = () => {
     event.preventDefault();
     resetForm();
     dispatch(loginThunk(formData));
-    navigate("/list");
+    navigate("/parks");
   };
 
   return (

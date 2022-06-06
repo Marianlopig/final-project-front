@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "../../redux/store/store";
-import { registerThunk } from "../../redux/thunks/userThunk/userThunk";
+import { registerThunk } from "../../redux/thunks/authThunk/authThunk";
 import RegisterForm from "./RegisterForm";
 
 const mockDispatch = jest.fn();
@@ -16,7 +16,7 @@ jest.mock("../../redux/hooks/hooks", () => ({
   useAppDispatch: () => mockDispatch,
 }));
 
-jest.mock("../../redux/thunks/userThunk/userThunk", () => ({
+jest.mock("../../redux/thunks/authThunk/authThunk", () => ({
   registerThunk: jest.fn(),
 }));
 
