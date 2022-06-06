@@ -9,6 +9,7 @@ export const usersHandlers = [
       })
     );
   }),
+
   rest.post(
     `${process.env.REACT_APP_API_URL}/users/register`,
     (req, res, ctx) => {
@@ -20,6 +21,7 @@ export const usersHandlers = [
       );
     }
   ),
+
   rest.get(`${process.env.REACT_APP_API_URL}/parks/list`, (req, res, ctx) => {
     return res(
       ctx.status(200),
@@ -36,13 +38,8 @@ export const usersHandlers = [
             description: "un parque muy bonito",
             photos: ["photo1.png, photo2.png"],
             location: {
-              type: {
-                type: "elpunto",
-                enum: ["Point"],
-              },
-              coordinates: {
-                type: [4567, 5764],
-              },
+              type: "Point",
+              coordinates: [4567, 5764],
             },
             details: ["aga", "bar"],
             owner: "1",
@@ -50,5 +47,9 @@ export const usersHandlers = [
         ],
       })
     );
+  }),
+
+  rest.delete(`${process.env.REACT_APP_API_URL}/parks/8`, (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json({ msg: "Park deleted" }));
   }),
 ];
