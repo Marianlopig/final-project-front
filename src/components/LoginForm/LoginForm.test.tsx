@@ -4,7 +4,7 @@ import LoginForm from "./LoginForm";
 import store from "../../redux/store/store";
 import userEvent from "@testing-library/user-event";
 import { BrowserRouter } from "react-router-dom";
-import { loginThunk } from "../../redux/thunks/userThunk/userThunk";
+import { loginThunk } from "../../redux/thunks/authThunk/authThunk";
 
 const mockDispatch = jest.fn();
 jest.mock("react-redux", () => ({
@@ -16,7 +16,7 @@ jest.mock("../../redux/hooks/hooks", () => ({
   useAppDispatch: () => mockDispatch,
 }));
 
-jest.mock("../../redux/thunks/userThunk/userThunk", () => ({
+jest.mock("../../redux/thunks/authThunk/authThunk", () => ({
   loginThunk: jest.fn(),
 }));
 

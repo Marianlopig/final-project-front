@@ -2,7 +2,7 @@ import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "../../redux/hooks/hooks";
-import { registerThunk } from "../../redux/thunks/userThunk/userThunk";
+import { registerThunk } from "../../redux/thunks/authThunk/authThunk";
 import { RegisterFormStyles } from "./RegisterFormStyles";
 
 const RegisterForm = () => {

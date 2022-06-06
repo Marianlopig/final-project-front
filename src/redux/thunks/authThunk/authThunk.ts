@@ -6,7 +6,7 @@ import {
   LoginData,
   LoginResponse,
 } from "../../types/userInterfaces";
-import { loginActionCreator } from "../../features/userSlice/userSlice";
+import { loginActionCreator } from "../../features/authSlice/authSlice";
 import { Dispatch } from "@reduxjs/toolkit";
 import {
   loadingActionCreator,

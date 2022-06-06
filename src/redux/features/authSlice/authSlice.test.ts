@@ -1,7 +1,7 @@
 import userReducer, {
   loginActionCreator,
   logoutActionCreator,
-} from "./userSlice";
+} from "./authSlice";
 
 describe("Given a userSlice with an loginActionCreator", () => {
   describe("When we do a login with a value username and a password", () => {
