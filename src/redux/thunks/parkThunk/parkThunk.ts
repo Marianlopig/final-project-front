@@ -1,5 +1,6 @@
 import { Dispatch } from "@reduxjs/toolkit";
 import axios from "axios";
+import { deleteParkActionCreator } from "../../features/accountSlice/accountSlice";
 import { loadParksActionCreator } from "../../features/parksSlice/parkSlice";
 
 const url: string = `${process.env.REACT_APP_API_URL}/parks/list`;
@@ -22,4 +23,5 @@ export const loadParksThunk = () => async (dispatch: Dispatch) => {
 
 export const deleteParkThunk = (id: string) => async (dispatch: Dispatch) => {
   await axios.delete(`${url}/parks/${id}`, getAuth());
+  dispatch(deleteParkActionCreator(id));
 };

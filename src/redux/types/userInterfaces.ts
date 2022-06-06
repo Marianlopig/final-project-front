@@ -1,3 +1,5 @@
+import { IPark } from "./parkInterfaces";
+
 export interface IUser {
   name: string;
   username: string;
@@ -27,4 +29,13 @@ export interface DataAxiosLogin {
 
 export interface Ierror {
   message: string;
+}
+
+export interface Account {
+  name: string;
+  username: string;
+  email: string;
+  city: string;
+  favParks: IPark[];
+  ownParks: IPark[];
 }
