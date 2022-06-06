@@ -9,6 +9,7 @@ export const usersHandlers = [
       })
     );
   }),
+
   rest.post(
     `${process.env.REACT_APP_API_URL}/users/register`,
     (req, res, ctx) => {
@@ -20,6 +21,7 @@ export const usersHandlers = [
       );
     }
   ),
+
   rest.get(`${process.env.REACT_APP_API_URL}/parks/list`, (req, res, ctx) => {
     return res(
       ctx.status(200),
@@ -50,5 +52,9 @@ export const usersHandlers = [
         ],
       })
     );
+  }),
+
+  rest.delete(`${process.env.REACT_APP_API_URL}/parks/8`, (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json({ msg: "Park deleted" }));
   }),
 ];
