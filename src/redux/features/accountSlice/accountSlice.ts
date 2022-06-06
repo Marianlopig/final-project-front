@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IPark } from "../../types/parkInterfaces";
 import { Account } from "../../types/userInterfaces";
 
 const initialState: Account = {
@@ -17,10 +16,10 @@ const accountSlice = createSlice({
   reducers: {
     // loadData:
     // loadFavParks:
-    loadOwnParks: (currentState: Account, action: PayloadAction<IPark[]>) => ({
-      ...currentState,
-      ownParks: action.payload,
-    }),
+    // loadOwnParks: (currentState: Account, action: PayloadAction<IPark[]>) => ({
+    //   ...currentState,
+    //   ownParks: action.payload,
+    // }),
 
     deletePark: (currentState: Account, action: PayloadAction<string>) => ({
       ...currentState,
@@ -31,9 +30,6 @@ const accountSlice = createSlice({
   },
 });
 
-export const {
-  loadOwnParks: loadOwnParksActionCreator,
-  deletePark: deleteParkActionCreator,
-} = accountSlice.actions;
+export const { deletePark: deleteParkActionCreator } = accountSlice.actions;
 
 export default accountSlice.reducer;

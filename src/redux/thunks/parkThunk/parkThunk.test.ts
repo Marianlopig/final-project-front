@@ -20,13 +20,8 @@ describe("Given a loadParks function", () => {
             description: "un parque muy bonito",
             photos: ["photo1.png, photo2.png"],
             location: {
-              type: {
-                type: "elpunto",
-                enum: ["Point"],
-              },
-              coordinates: {
-                type: [4567, 5764],
-              },
+              type: "Point",
+              coordinates: [4567, 5764],
             },
             details: ["aga", "bar"],
             owner: "1",
