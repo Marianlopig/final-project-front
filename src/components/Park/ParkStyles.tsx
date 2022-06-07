@@ -53,7 +53,7 @@ export const ParkStyles = styled.div`
           overflow: hidden;
           width: 100%;
           display: -webkit-box;
-          -webkit-line-clamp: 4;
+          -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
           font-size: 20px;
           padding: 0px 0 20px 0;

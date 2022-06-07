@@ -1,11 +1,12 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { LoginFormStyles } from "./LoginFormStyles";
 import { useAppDispatch } from "../../redux/hooks/hooks";
 import { LoginData } from "../../redux/types/userInterfaces";
 import { loginThunk } from "../../redux/thunks/authThunk/authThunk";
 
 const LoginForm = () => {
+  const navigate = useNavigate();
   const blankData: LoginData = {
     username: "",
     password: "",
@@ -30,9 +31,14 @@ const LoginForm = () => {
   };
 
   const submitLogin = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    resetForm();
-    dispatch(loginThunk(formData));
+    try {
+      event.preventDefault();
+      resetForm();
+      dispatch(loginThunk(formData));
+      navigate("/parks");
+    } catch {
+      navigate("login");
+    }
   };
 
   return (
