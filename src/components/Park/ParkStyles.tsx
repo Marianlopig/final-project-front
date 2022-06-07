@@ -89,6 +89,9 @@ export const ParkStyles = styled.div`
         padding: 0;
 
         &--icons {
+          display: flex;
+          justify-content: center;
+          align-items: center;
           width: 25px;
           height: 25px;
           border-radius: 20%;
