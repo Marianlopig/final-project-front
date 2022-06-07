@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IPark } from "../../types/parkInterfaces";
 import { Account } from "../../types/userInterfaces";
 
 const initialState: Account = {
@@ -21,6 +22,11 @@ const accountSlice = createSlice({
     //   ownParks: action.payload,
     // }),
 
+    addPark: (currentState: Account, action: PayloadAction<IPark>) => ({
+      ...currentState,
+      ownParks: [...currentState.ownParks, action.payload],
+    }),
+
     deletePark: (currentState: Account, action: PayloadAction<string>) => ({
       ...currentState,
       ownParks: currentState.ownParks.filter(
@@ -30,6 +36,9 @@ const accountSlice = createSlice({
   },
 });
 
-export const { deletePark: deleteParkActionCreator } = accountSlice.actions;
+export const {
+  deletePark: deleteParkActionCreator,
+  addPark: addParkActionCreator,
+} = accountSlice.actions;
 
 export default accountSlice.reducer;
