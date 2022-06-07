@@ -31,10 +31,14 @@ const LoginForm = () => {
   };
 
   const submitLogin = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    resetForm();
-    dispatch(loginThunk(formData));
-    navigate("/parks");
+    try {
+      event.preventDefault();
+      resetForm();
+      dispatch(loginThunk(formData));
+      navigate("/parks");
+    } catch {
+      navigate("login");
+    }
   };
 
   return (

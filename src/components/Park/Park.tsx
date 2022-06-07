@@ -26,12 +26,6 @@ const Park = () => {
           <div className="card-body">
             <h3 className="card-title">Hello World</h3>
             <span>Barcelona, paseo de Gracia</span>
-            <p className="card-content">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
-              ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua.
-            </p>
             <h4>Details: </h4>
             <div className="details-container">
               <div className="details-container--icons">
@@ -68,6 +62,12 @@ const Park = () => {
                 <RiBikeLine />
               </div>
             </div>
+            <p className="card-content">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
+              ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua.
+            </p>
           </div>
 
           <div className="button-container">

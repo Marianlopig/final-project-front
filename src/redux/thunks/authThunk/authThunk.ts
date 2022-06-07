@@ -12,6 +12,7 @@ import {
   loadingActionCreator,
   notLoadingActionCreator,
 } from "../../features/uiSlice/uiSlice";
+import { toast } from "react-toastify";
 
 export const loginThunk =
   (userData: LoginData) => async (dispatch: Dispatch) => {
@@ -21,11 +22,13 @@ export const loginThunk =
       const { data, status }: DataAxiosLogin = await axios.post(url, userData);
 
       if (status === 200) {
+        toast.success("LogIn successful!");
         const { name, username }: LoginResponse = jwt_decode(data.token);
         localStorage.setItem("token", data.token);
         dispatch(loginActionCreator({ name, username }));
       }
     } catch (error: any) {
+      toast.error("Wrong username or password, try again");
       return error.message;
     } finally {
       dispatch(notLoadingActionCreator());
@@ -45,7 +48,9 @@ export const registerThunk =
           },
         }
       );
+      toast.success("User created!");
     } catch (error: any) {
+      toast.error("Wrong username or password, try again");
       return error.message;
     } finally {
       dispatch(notLoadingActionCreator());
