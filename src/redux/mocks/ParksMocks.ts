@@ -9,7 +9,7 @@ export const mockPark: IPark = {
     type: "Point",
     coordinates: [4567, 5764],
   },
-  details: ["Water", "Bar"],
+  details: [ParkDetail.bar, ParkDetail.basket],
   owner: "629f8a589af86f2543cafa50",
   address: {
     city: "Barcelona",
