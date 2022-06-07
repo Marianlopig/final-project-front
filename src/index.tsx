@@ -28,7 +28,7 @@ root.render(
     <BrowserRouter>
       <Provider store={store}>
         <IndexStyles>
-          <ToastContainer autoClose={5000} />
+          <ToastContainer autoClose={3000} />
           <App />
         </IndexStyles>
       </Provider>

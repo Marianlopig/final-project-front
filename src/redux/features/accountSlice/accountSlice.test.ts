@@ -1,4 +1,4 @@
-import { mockPark } from "../../mocks/ParksMocks";
+import { mockPark } from "../../../mocks/ParksMocks";
 import accountReducer, {
   addParkActionCreator,
   deleteParkActionCreator,

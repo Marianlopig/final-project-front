@@ -1,4 +1,4 @@
-import { mockParksPage } from "../../mocks/ParksMocks";
+import { mockParksPage } from "../../../mocks/ParksMocks";
 import parkReducer, { loadParksActionCreator } from "./parkSlice";
 
 describe("Given a parkSlice with an loadParkActionCreator", () => {

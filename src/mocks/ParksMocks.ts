@@ -1,4 +1,4 @@
-import { IPark, IParkState, ParkDetail } from "../types/parkInterfaces";
+import { IPark, IParkState, ParkDetail } from "../redux/types/parkInterfaces";
 
 export const mockPark: IPark = {
   id: "629f8aec8c2b3037ff6aeb4d",
