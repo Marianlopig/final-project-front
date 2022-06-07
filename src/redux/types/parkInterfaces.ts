@@ -28,7 +28,6 @@ export interface IPark {
 
 export interface IAddress {
   city: string;
-  cp: string;
   address: string;
 }
 
