@@ -12,43 +12,44 @@ import { GiTable } from "react-icons/gi";
 import { RiPingPongFill } from "react-icons/ri";
 import { GiBasketballBasket } from "react-icons/gi";
 import { RiBikeLine } from "react-icons/ri";
-import { IPark, ParkDetail } from "../../redux/types/parkInterfaces";
+import { IPark } from "../../redux/types/parkInterfaces";
+import { ParkDetail } from "../../redux/types/parkInterfaces";
 
 const Park = ({ name, description, photos, details, address }: IPark) => {
-  const getIcon = (detail: ParkDetail) => {
+  const getIcon = (detail: string) => {
     let component;
     switch (detail) {
-      case ParkDetail.Swing:
+      case ParkDetail.swing:
         component = <GiKidSlide />;
         break;
-      case ParkDetail.Water:
+      case ParkDetail.water:
         component = <GiWateringCan />;
         break;
-      case ParkDetail.Shadow:
+      case ParkDetail.shadow:
         component = <BsTreeFill />;
         break;
-      case ParkDetail.Fence:
+      case ParkDetail.fence:
         component = <GiWoodenFence />;
         break;
-      case ParkDetail.Bar:
+      case ParkDetail.bar:
         component = <BiBeer />;
         break;
-      case ParkDetail.SwimmingPool:
+      case ParkDetail.swimmingPool:
         component = <MdPool />;
         break;
-      case ParkDetail.Bench:
+      case ParkDetail.bench:
         component = <GiParkBench />;
         break;
-      case ParkDetail.Picnic:
+      case ParkDetail.picnic:
         component = <GiTable />;
         break;
-      case ParkDetail.PingPong:
+      case ParkDetail.pingPong:
         component = <RiPingPongFill />;
         break;
-      case ParkDetail.Basket:
+      case ParkDetail.basket:
         component = <GiBasketballBasket />;
         break;
-      case ParkDetail.Bike:
+      case ParkDetail.bike:
         component = <RiBikeLine />;
         break;
     }

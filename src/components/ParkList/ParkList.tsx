@@ -18,7 +18,7 @@ const ParkList = ({ results: parks }: IParkList) => {
         {parks.map((park: IPark) => {
           return (
             <div className="park-container" key={park.id}>
-              <Park />
+              <Park {...park} />
             </div>
           );
         })}

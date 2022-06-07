@@ -21,9 +21,9 @@ export interface IPark {
   description: string;
   photos: string[];
   location: ILocation;
-  details: ParkDetail[];
+  details: string[];
   owner: string;
-  address: IAddress;
+  address?: IAddress;
 }
 
 export interface IAddress {
@@ -32,16 +32,16 @@ export interface IAddress {
   address: string;
 }
 
-export enum ParkDetail {
-  Swing,
-  Water,
-  Shadow,
-  Fence,
-  Bar,
-  SwimmingPool,
-  Bench,
-  Picnic,
-  PingPong,
-  Basket,
-  Bike,
-}
+export const ParkDetail = {
+  swing: "Swing",
+  water: "Water",
+  shadow: "Shadow",
+  fence: "Fence",
+  bar: "Bar",
+  swimmingPool: "SwimmingPool",
+  bench: "Bench",
+  picnic: "Picnic",
+  pingPong: "PingPong",
+  basket: "Basket",
+  bike: "Bike",
+};
