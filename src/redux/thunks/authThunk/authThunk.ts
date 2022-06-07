@@ -29,7 +29,7 @@ export const loginThunk =
       }
     } catch (error: any) {
       toast.error("Wrong username or password, try again");
-      return error.message;
+      return { error: error.message };
     } finally {
       dispatch(notLoadingActionCreator());
     }
