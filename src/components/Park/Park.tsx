@@ -12,62 +12,73 @@ import { GiTable } from "react-icons/gi";
 import { RiPingPongFill } from "react-icons/ri";
 import { GiBasketballBasket } from "react-icons/gi";
 import { RiBikeLine } from "react-icons/ri";
+import { IPark } from "../../redux/types/parkInterfaces";
+import { ParkDetail } from "../../redux/types/parkInterfaces";
 
-const Park = () => {
+const Park = ({ name, description, photos, details, address }: IPark) => {
+  const getIcon = (detail: string) => {
+    let component;
+    switch (detail) {
+      case ParkDetail.swing:
+        component = <GiKidSlide />;
+        break;
+      case ParkDetail.water:
+        component = <GiWateringCan />;
+        break;
+      case ParkDetail.shadow:
+        component = <BsTreeFill />;
+        break;
+      case ParkDetail.fence:
+        component = <GiWoodenFence />;
+        break;
+      case ParkDetail.bar:
+        component = <BiBeer />;
+        break;
+      case ParkDetail.swimmingPool:
+        component = <MdPool />;
+        break;
+      case ParkDetail.bench:
+        component = <GiParkBench />;
+        break;
+      case ParkDetail.picnic:
+        component = <GiTable />;
+        break;
+      case ParkDetail.pingPong:
+        component = <RiPingPongFill />;
+        break;
+      case ParkDetail.basket:
+        component = <GiBasketballBasket />;
+        break;
+      case ParkDetail.bike:
+        component = <RiBikeLine />;
+        break;
+    }
+
+    return component;
+  };
+
   return (
     <ParkStyles>
       <section>
         <div className="card">
-          <img
-            className="card-image"
-            src="https://www.tododisca.com/wp-content/uploads/2020/02/parque-infantil-adaptado-barcelona.jpg"
-            alt="beautiful forest"
-          />
+          <img className="card-image" src={photos[0]} alt="beautiful forest" />
           <div className="card-body">
-            <h3 className="card-title">Hello World</h3>
-            <span>Barcelona, paseo de Gracia</span>
+            <h3 className="card-title">{name}</h3>
+            <span>
+              {address?.city}, {address?.address}
+            </span>
             <h4>Details: </h4>
+
             <div className="details-container">
-              <div className="details-container--icons">
-                <GiKidSlide />
-              </div>
-              <div className="details-container--icons">
-                <GiWateringCan />
-              </div>
-              <div className="details-container--icons">
-                <BsTreeFill />
-              </div>
-              <div className="details-container--icons">
-                <GiWoodenFence />
-              </div>
-              <div className="details-container--icons">
-                <BiBeer />
-              </div>
-              <div className="details-container--icons">
-                <MdPool />
-              </div>
-              <div className="details-container--icons">
-                <GiParkBench />
-              </div>
-              <div className="details-container--icons">
-                <GiTable />
-              </div>
-              <div className="details-container--icons">
-                <RiPingPongFill />
-              </div>
-              <div className="details-container--icons">
-                <GiBasketballBasket />
-              </div>
-              <div className="details-container--icons">
-                <RiBikeLine />
-              </div>
+              {details.map((detail) => {
+                return (
+                  <div className="details-container--icons">
+                    {getIcon(detail)}
+                  </div>
+                );
+              })}
             </div>
-            <p className="card-content">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
-              ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua.
-            </p>
+            <p className="card-content">{description}</p>
           </div>
 
           <div className="button-container">

@@ -23,4 +23,25 @@ export interface IPark {
   location: ILocation;
   details: string[];
   owner: string;
+  address?: IAddress;
 }
+
+export interface IAddress {
+  city: string;
+  cp: string;
+  address: string;
+}
+
+export const ParkDetail = {
+  swing: "Swing",
+  water: "Water",
+  shadow: "Shadow",
+  fence: "Fence",
+  bar: "Bar",
+  swimmingPool: "SwimmingPool",
+  bench: "Bench",
+  picnic: "Picnic",
+  pingPong: "PingPong",
+  basket: "Basket",
+  bike: "Bike",
+};

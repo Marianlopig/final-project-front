@@ -63,7 +63,9 @@ const LoginForm = () => {
             placeholder="Password"
           />
           <div className="submitContainer">
-            <button disabled={buttonDisabled}>LogIn</button>
+            <button disabled={buttonDisabled} type="submit">
+              LogIn
+            </button>
           </div>
           <div className="link">
             <Link to="/new-user">Create an account</Link>
