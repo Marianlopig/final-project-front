@@ -1,4 +1,8 @@
-import accountReducer, { deleteParkActionCreator } from "./accountSlice";
+import { mockPark } from "../../mocks/ParksMocks";
+import accountReducer, {
+  addParkActionCreator,
+  deleteParkActionCreator,
+} from "./accountSlice";
 
 describe("Given a account slice", () => {
   describe("When we execute the reducer deletePark", () => {
@@ -38,6 +42,23 @@ describe("Given a account slice", () => {
       };
 
       const action = deleteParkActionCreator("3");
+      const newState = accountReducer(initialState, action);
+
+      expect(newState.ownParks.length).toEqual(1);
+    });
+  });
+  describe("When we execute the reducer addPark", () => {
+    test("Then it should return the new state with the new park", () => {
+      const initialState = {
+        name: "Marian",
+        username: "marian",
+        email: "test@test.com",
+        city: "Barcelona",
+        favParks: [],
+        ownParks: [],
+      };
+
+      const action = addParkActionCreator(mockPark);
       const newState = accountReducer(initialState, action);
 
       expect(newState.ownParks.length).toEqual(1);
