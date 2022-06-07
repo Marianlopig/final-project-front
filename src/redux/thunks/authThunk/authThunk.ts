@@ -12,20 +12,27 @@ import {
   loadingActionCreator,
   notLoadingActionCreator,
 } from "../../features/uiSlice/uiSlice";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export const loginThunk =
   (userData: LoginData) => async (dispatch: Dispatch) => {
+    const navigate = useNavigate();
     dispatch(loadingActionCreator());
     const url: string = `${process.env.REACT_APP_API_URL}/users/login`;
     try {
       const { data, status }: DataAxiosLogin = await axios.post(url, userData);
 
       if (status === 200) {
+        toast.success("LogIn successful!");
+
         const { name, username }: LoginResponse = jwt_decode(data.token);
         localStorage.setItem("token", data.token);
         dispatch(loginActionCreator({ name, username }));
+        navigate("/parks");
       }
     } catch (error: any) {
+      toast.error("Wrong username or password, try again");
       return error.message;
     } finally {
       dispatch(notLoadingActionCreator());
@@ -45,7 +52,9 @@ export const registerThunk =
           },
         }
       );
+      toast.success("User created!");
     } catch (error: any) {
+      toast.error("Ups, there was a problem. please, try again");
       return error.message;
     } finally {
       dispatch(notLoadingActionCreator());

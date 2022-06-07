@@ -6,6 +6,8 @@ import App from "./App";
 import store from "./redux/store/store";
 import reportWebVitals from "./reportWebVitals";
 import styled from "styled-components";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const IndexStyles = styled.div`
   * {
@@ -26,6 +28,7 @@ root.render(
     <BrowserRouter>
       <Provider store={store}>
         <IndexStyles>
+          <ToastContainer autoClose={5000} />
           <App />
         </IndexStyles>
       </Provider>
