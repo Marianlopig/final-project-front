@@ -30,14 +30,12 @@ const LoginForm = () => {
     setFormData({ ...formData, [event.target.id]: event.target.value });
   };
 
-  const submitLogin = (event: FormEvent<HTMLFormElement>) => {
-    try {
-      event.preventDefault();
-      resetForm();
-      dispatch(loginThunk(formData));
+  const submitLogin = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    resetForm();
+    const res = await dispatch(loginThunk(formData));
+    if (!(res && res.error)) {
       navigate("/parks");
-    } catch {
-      navigate("login");
     }
   };
 
