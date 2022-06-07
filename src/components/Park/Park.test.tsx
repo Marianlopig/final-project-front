@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import { mockPark } from "../../redux/mocks/ParksMocks";
 import store from "../../redux/store/store";
 import Park from "./Park";
 
@@ -10,7 +11,7 @@ describe("Given a Park component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <Park />
+            <Park {...mockPark} />
           </Provider>
         </BrowserRouter>
       );

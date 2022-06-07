@@ -21,6 +21,27 @@ export interface IPark {
   description: string;
   photos: string[];
   location: ILocation;
-  details: string[];
+  details: ParkDetail[];
   owner: string;
+  address: IAddress;
+}
+
+export interface IAddress {
+  city: string;
+  cp: string;
+  address: string;
+}
+
+export enum ParkDetail {
+  Swing,
+  Water,
+  Shadow,
+  Fence,
+  Bar,
+  SwimmingPool,
+  Bench,
+  Picnic,
+  PingPong,
+  Basket,
+  Bike,
 }
