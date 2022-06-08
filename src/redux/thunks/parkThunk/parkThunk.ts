@@ -65,10 +65,14 @@ export const createParkThunk =
       parkRequest.append("name", park.name);
       parkRequest.append("description", park.description);
       parkRequest.append("location.type", park.location.type);
-      /*parkRequest.append(
-        "location.coordinates",
-        JSON.stringify(park.location.coordinates)
-      );*/
+      parkRequest.append(
+        "location.coordinates[0]",
+        park.location.coordinates[0].toString()
+      );
+      parkRequest.append(
+        "location.coordinates[1]",
+        park.location.coordinates[1].toString()
+      );
       parkRequest.append("details", JSON.stringify(park.details));
       parkRequest.append("address.city", park.address?.city ?? "");
       parkRequest.append("address.address", park.address?.address ?? "");
