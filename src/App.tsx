@@ -3,6 +3,7 @@ import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
 import Spinner from "./components/Spinner/Spinner";
+import CreateParkPage from "./pages/CreateParkPage/CreateParkPage";
 import ListParkPage from "./pages/ListPage/ListParkPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import { uiShowSpinnerSelector } from "./redux/features/uiSlice/uiSlice";
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/new-user" element={<RegisterForm />} />
         <Route path="/parks" element={<ListParkPage />} />
+        <Route path="/newpark" element={<CreateParkPage />} />
       </Routes>
 
       <Footer />

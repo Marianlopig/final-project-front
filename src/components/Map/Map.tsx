@@ -4,33 +4,27 @@ import {
   Marker,
   Popup,
   TileLayer,
-  useMap,
   useMapEvents,
 } from "react-leaflet";
-import { useEffect, useState } from "react";
 
-const Map = () => {
+export interface IMap {
+  onLocationSelected(loc: [number, number]): void;
+  location: [number, number];
+}
+
+const Map = ({ onLocationSelected, location }: IMap) => {
   function LocationMarker() {
-    const [position, setPosition] = useState<[number, number]>([0, 0]);
-
-    const map = useMap();
-
-    useMapEvents({
+    const map = useMapEvents({
       click(e) {
-        setPosition([e.latlng.lat, e.latlng.lng]);
+        onLocationSelected([e.latlng.lat, e.latlng.lng]);
         map.flyTo(e.latlng, map.getZoom());
       },
     });
 
-    useEffect(() => {
-      map.locate().on("locationfound", function (e) {
-        setPosition([e.latlng.lat, e.latlng.lng]);
-        map.flyTo(e.latlng, 13);
-      });
-    }, [map]);
+    map.flyTo({ lat: location[0], lng: location[1] }, map.getZoom());
 
-    return position === null ? null : (
-      <Marker position={position}>
+    return location === null ? null : (
+      <Marker position={location}>
         <Popup>You are here</Popup>
       </Marker>
     );
@@ -39,9 +33,9 @@ const Map = () => {
   return (
     <MapStyles>
       <MapContainer
-        center={{ lat: 0, lng: 0 }}
-        zoom={1}
-        scrollWheelZoom={false}
+        center={{ lat: location[0], lng: location[1] }}
+        zoom={15}
+        scrollWheelZoom={true}
         className="map"
       >
         <TileLayer
