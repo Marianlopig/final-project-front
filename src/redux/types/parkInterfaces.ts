@@ -16,13 +16,13 @@ export interface IParkList {
 }
 
 export interface IPark {
-  id: string;
-  name: string;
-  description: string;
-  photos: string[];
-  location: ILocation;
-  details: string[];
-  owner: string;
+  id?: string;
+  name?: string;
+  description?: string;
+  photos?: string[];
+  location?: ILocation;
+  details?: string[];
+  owner?: string;
   address?: IAddress;
 }
 
