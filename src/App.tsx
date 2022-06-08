@@ -14,7 +14,6 @@ const App = () => {
   return (
     <div>
       <NavBar />
-
       <Spinner show={showSpinner} />
       <Routes>
         <Route path="/" element={<Navigate to="/parks" />} />
