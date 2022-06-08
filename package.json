@@ -14,10 +14,12 @@
     "axios": "^0.27.2",
     "bootstrap": "^5.1.3",
     "jwt-decode": "^3.1.2",
+    "leaflet": "^1.8.0",
     "react": "^18.1.0",
     "react-bootstrap": "^2.4.0",
     "react-dom": "^18.1.0",
     "react-icons": "^4.4.0",
+    "react-leaflet": "^4.0.0",
     "react-redux": "^8.0.2",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
@@ -55,6 +57,7 @@
   },
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.18.2",
+    "@types/leaflet": "^1.7.10",
     "babel-jest": "^28.1.0",
     "husky": "^7.0.4",
     "msw": "^0.39.2"
