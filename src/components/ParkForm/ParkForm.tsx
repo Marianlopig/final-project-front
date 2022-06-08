@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useAppDispatch } from "../../redux/hooks/hooks";
 import { createParkThunk } from "../../redux/thunks/parkThunk/parkThunk";
-import { IPark, ParkDetail } from "../../redux/types/parkInterfaces";
+import { IAddress, IPark, ParkDetail } from "../../redux/types/parkInterfaces";
 import Map from "../Map/Map";
 
 const ParkForm = () => {
@@ -9,7 +9,19 @@ const ParkForm = () => {
     41.388014160598885, 2.185983541021393,
   ]);
 
-  const [park, setPark] = useState<IPark>({});
+  const [park, setPark] = useState({
+    id: "",
+    name: "",
+    description: "",
+    photos: [],
+    location: { type: "Point", coordinates: [] },
+    details: [],
+    owner: "",
+  });
+
+  const [address, setAddress] = useState<IAddress>({ city: "", address: "" });
+
+  const [images, setImages] = useState<FileList>();
 
   const [step, setStep] = useState(0);
 
@@ -25,13 +37,21 @@ const ParkForm = () => {
     setPark({ ...park, [event.target.id]: event.target.value });
   };
 
+  const changeAddressData = (event: ChangeEvent<HTMLInputElement>) => {
+    setAddress({ ...address, [event.target.id]: event.target.value });
+  };
+
   const submitPark = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     await dispatch(
-      createParkThunk({
-        ...park,
-        location: { type: "Point", coordinates: parkLocation },
-      })
+      createParkThunk(
+        {
+          ...park,
+          address,
+          location: { type: "Point", coordinates: parkLocation },
+        },
+        images
+      )
     );
   };
 
@@ -51,7 +71,15 @@ const ParkForm = () => {
       {step === 1 && (
         <>
           <h3>Upload pictures of the park</h3>
-          <input type="file"></input>
+          <input
+            multiple
+            id="photos"
+            type="file"
+            accept="image/png, image/jpg"
+            onChange={(event) => {
+              setImages(event.target.files ?? undefined);
+            }}
+          />
         </>
       )}
 
@@ -78,18 +106,48 @@ const ParkForm = () => {
 
       {step === 3 && (
         <>
-          <h3>What does this park have?</h3>
+          <h3>Let others find it!</h3>
           <label htmlFor="name">Name</label>
-          <input type="text" id="name"></input>
+          <input
+            type="text"
+            id="name"
+            onChange={changeData}
+            value={park.name}
+          ></input>
           <label htmlFor="description">Description</label>
-          <input type="text" id="description"></input>
+          <input
+            type="text"
+            id="description"
+            onChange={changeData}
+            value={park.description}
+          ></input>
           <label htmlFor="city">City</label>
-          <input type="text" id="city"></input>
+          <input
+            type="text"
+            id="city"
+            onChange={changeAddressData}
+            value={address.city}
+          ></input>
+          <label htmlFor="city">Address</label>
+          <input
+            type="text"
+            id="address"
+            onChange={changeAddressData}
+            value={address.address}
+          ></input>
         </>
       )}
 
-      {step >= 1 && <button onClick={() => setStep(step - 1)}>Previous</button>}
-      {step < 3 && <button onClick={() => setStep(step + 1)}>Next</button>}
+      {step >= 1 && (
+        <button type="button" onClick={() => setStep(step - 1)}>
+          Previous
+        </button>
+      )}
+      {step < 3 && (
+        <button type="button" onClick={() => setStep(step + 1)}>
+          Next
+        </button>
+      )}
       {step >= 3 && <button type="submit">Submit</button>}
     </form>
   );

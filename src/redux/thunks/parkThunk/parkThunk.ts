@@ -42,17 +42,45 @@ export const deleteParkThunk = (id: string) => async (dispatch: Dispatch) => {
   }
 };
 
-export const createParkThunk = (park: IPark) => async (dispatch: Dispatch) => {
-  try {
-    dispatch(loadingActionCreator());
-    const { status, data } = await axios.post(`${url}/`, park, getAuth());
-    if (status === 201) {
-      toast.success("Park created! Thanks!");
-      dispatch(addParkActionCreator(data));
-    } else {
-      toast.error(`Error creating the park`);
+export const createParkThunk =
+  (park: IPark, images?: FileList) => async (dispatch: Dispatch) => {
+    try {
+      dispatch(loadingActionCreator());
+
+      const token = localStorage.getItem("token");
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
+        },
+      };
+
+      const parkRequest = new FormData();
+      if (images) {
+        for (let i = 0; i < images.length; i++) {
+          parkRequest.append("image", images[i]);
+        }
+      }
+
+      parkRequest.append("name", park.name);
+      parkRequest.append("description", park.description);
+      parkRequest.append("location.type", park.location.type);
+      /*parkRequest.append(
+        "location.coordinates",
+        JSON.stringify(park.location.coordinates)
+      );*/
+      parkRequest.append("details", JSON.stringify(park.details));
+      parkRequest.append("address.city", park.address?.city ?? "");
+      parkRequest.append("address.address", park.address?.address ?? "");
+
+      const { status, data } = await axios.post(`${url}/`, parkRequest, config);
+      if (status === 201) {
+        toast.success("Park created! Thanks!");
+        dispatch(addParkActionCreator(data));
+      } else {
+        toast.error(`Error creating the park`);
+      }
+    } finally {
+      dispatch(notLoadingActionCreator());
     }
-  } finally {
-    dispatch(notLoadingActionCreator());
-  }
-};
+  };
