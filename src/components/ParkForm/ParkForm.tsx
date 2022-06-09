@@ -3,6 +3,7 @@ import { useAppDispatch } from "../../redux/hooks/hooks";
 import { createParkThunk } from "../../redux/thunks/parkThunk/parkThunk";
 import { IAddress, ParkDetail } from "../../redux/types/parkInterfaces";
 import Map from "../Map/Map";
+import { ParkFormStyles } from "./ParkFormStyles";
 
 const ParkForm = () => {
   const [parkLocation, setParkLocation] = useState<[number, number]>([
@@ -67,151 +68,167 @@ const ParkForm = () => {
   };
 
   return (
-    <form onSubmit={submitPark}>
-      <h2>Create a new park</h2>
-      {step === 0 && (
-        <>
-          <h3>Select park location</h3>
-          <Map
-            onLocationSelected={(loc) => setParkLocation(loc)}
-            location={parkLocation}
-          ></Map>
-        </>
-      )}
+    <ParkFormStyles>
+      <div className="main-container">
+        <form onSubmit={submitPark}>
+          <h2>Create a new park</h2>
+          {step === 0 && (
+            <div className="container-steps">
+              <h3>Select park location</h3>
+              <Map
+                onLocationSelected={(loc) => setParkLocation(loc)}
+                location={parkLocation}
+              ></Map>
+            </div>
+          )}
 
-      {step === 1 && (
-        <>
-          <h3>Upload pictures of the park</h3>
-          <input
-            multiple
-            id="photos"
-            type="file"
-            accept="image/png, image/jpg"
-            onChange={(event) => {
-              setImages(event.target.files ?? undefined);
-            }}
-          />
-        </>
-      )}
+          {step === 1 && (
+            <div className="container-steps">
+              <h3>Upload pictures of the park</h3>
+              <input
+                multiple
+                id="photos"
+                type="file"
+                accept="image/png, image/jpg"
+                onChange={(event) => {
+                  setImages(event.target.files ?? undefined);
+                }}
+              />
+            </div>
+          )}
 
-      {step === 2 && (
-        <>
-          <h3>What does this park have?</h3>
-          <input
-            type="checkbox"
-            checked={checkedDetails.includes(ParkDetail.swing)}
-            onChange={() => handleOnChange(ParkDetail.swing)}
-          ></input>
-          {ParkDetail.swing}
-          <input
-            type="checkbox"
-            checked={checkedDetails.includes(ParkDetail.water)}
-            onChange={() => handleOnChange(ParkDetail.water)}
-          ></input>
-          {ParkDetail.water}
-          <input
-            type="checkbox"
-            checked={checkedDetails.includes(ParkDetail.shadow)}
-            onChange={() => handleOnChange(ParkDetail.shadow)}
-          ></input>
-          {ParkDetail.shadow}
-          <input
-            type="checkbox"
-            checked={checkedDetails.includes(ParkDetail.fence)}
-            onChange={() => handleOnChange(ParkDetail.fence)}
-          ></input>
-          {ParkDetail.fence}
-          <input
-            type="checkbox"
-            checked={checkedDetails.includes(ParkDetail.bar)}
-            onChange={() => handleOnChange(ParkDetail.bar)}
-          ></input>
-          {ParkDetail.bar}
-          <input
-            type="checkbox"
-            checked={checkedDetails.includes(ParkDetail.swimmingPool)}
-            onChange={() => handleOnChange(ParkDetail.swimmingPool)}
-          ></input>
-          {ParkDetail.swimmingPool}
-          <input
-            type="checkbox"
-            checked={checkedDetails.includes(ParkDetail.bench)}
-            onChange={() => handleOnChange(ParkDetail.bench)}
-          ></input>
-          {ParkDetail.bench}
-          <input
-            type="checkbox"
-            checked={checkedDetails.includes(ParkDetail.picnic)}
-            onChange={() => handleOnChange(ParkDetail.picnic)}
-          ></input>
-          {ParkDetail.picnic}
-          <input
-            type="checkbox"
-            checked={checkedDetails.includes(ParkDetail.pingPong)}
-            onChange={() => handleOnChange(ParkDetail.pingPong)}
-          ></input>
-          {ParkDetail.pingPong}
-          <input
-            type="checkbox"
-            checked={checkedDetails.includes(ParkDetail.basket)}
-            onChange={() => handleOnChange(ParkDetail.basket)}
-          ></input>
-          {ParkDetail.basket}
-          <input
-            type="checkbox"
-            checked={checkedDetails.includes(ParkDetail.bike)}
-            onChange={() => handleOnChange(ParkDetail.bike)}
-          ></input>
-          {ParkDetail.bike}
-        </>
-      )}
+          {step === 2 && (
+            <div className="container-steps">
+              <h3>What does this park have?</h3>
+              <input
+                type="checkbox"
+                checked={checkedDetails.includes(ParkDetail.swing)}
+                onChange={() => handleOnChange(ParkDetail.swing)}
+              ></input>
+              {ParkDetail.swing}
+              <input
+                type="checkbox"
+                checked={checkedDetails.includes(ParkDetail.water)}
+                onChange={() => handleOnChange(ParkDetail.water)}
+              ></input>
+              {ParkDetail.water}
+              <input
+                type="checkbox"
+                checked={checkedDetails.includes(ParkDetail.shadow)}
+                onChange={() => handleOnChange(ParkDetail.shadow)}
+              ></input>
+              {ParkDetail.shadow}
+              <input
+                type="checkbox"
+                checked={checkedDetails.includes(ParkDetail.fence)}
+                onChange={() => handleOnChange(ParkDetail.fence)}
+              ></input>
+              {ParkDetail.fence}
+              <input
+                type="checkbox"
+                checked={checkedDetails.includes(ParkDetail.bar)}
+                onChange={() => handleOnChange(ParkDetail.bar)}
+              ></input>
+              {ParkDetail.bar}
+              <input
+                type="checkbox"
+                checked={checkedDetails.includes(ParkDetail.swimmingPool)}
+                onChange={() => handleOnChange(ParkDetail.swimmingPool)}
+              ></input>
+              {ParkDetail.swimmingPool}
+              <input
+                type="checkbox"
+                checked={checkedDetails.includes(ParkDetail.bench)}
+                onChange={() => handleOnChange(ParkDetail.bench)}
+              ></input>
+              {ParkDetail.bench}
+              <input
+                type="checkbox"
+                checked={checkedDetails.includes(ParkDetail.picnic)}
+                onChange={() => handleOnChange(ParkDetail.picnic)}
+              ></input>
+              {ParkDetail.picnic}
+              <input
+                type="checkbox"
+                checked={checkedDetails.includes(ParkDetail.pingPong)}
+                onChange={() => handleOnChange(ParkDetail.pingPong)}
+              ></input>
+              {ParkDetail.pingPong}
+              <input
+                type="checkbox"
+                checked={checkedDetails.includes(ParkDetail.basket)}
+                onChange={() => handleOnChange(ParkDetail.basket)}
+              ></input>
+              {ParkDetail.basket}
+              <input
+                type="checkbox"
+                checked={checkedDetails.includes(ParkDetail.bike)}
+                onChange={() => handleOnChange(ParkDetail.bike)}
+              ></input>
+              {ParkDetail.bike}
+            </div>
+          )}
 
-      {step === 3 && (
-        <>
-          <h3>Let others find it!</h3>
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            onChange={changeData}
-            value={park.name}
-          ></input>
-          <label htmlFor="description">Description</label>
-          <input
-            type="text"
-            id="description"
-            onChange={changeData}
-            value={park.description}
-          ></input>
-          <label htmlFor="city">City</label>
-          <input
-            type="text"
-            id="city"
-            onChange={changeAddressData}
-            value={address.city}
-          ></input>
-          <label htmlFor="city">Address</label>
-          <input
-            type="text"
-            id="address"
-            onChange={changeAddressData}
-            value={address.address}
-          ></input>
-        </>
-      )}
+          {step === 3 && (
+            <div className="container-steps">
+              <h3>Let others find it!</h3>
+              <label htmlFor="name">Name</label>
+              <input
+                type="text"
+                id="name"
+                onChange={changeData}
+                value={park.name}
+              ></input>
+              <label htmlFor="description">Description</label>
+              <input
+                type="text"
+                id="description"
+                onChange={changeData}
+                value={park.description}
+              ></input>
+              <label htmlFor="city">City</label>
+              <input
+                type="text"
+                id="city"
+                onChange={changeAddressData}
+                value={address.city}
+              ></input>
+              <label htmlFor="city">Address</label>
+              <input
+                type="text"
+                id="address"
+                onChange={changeAddressData}
+                value={address.address}
+              ></input>
+            </div>
+          )}
 
-      {step >= 1 && (
-        <button type="button" onClick={() => setStep(step - 1)}>
-          Previous
-        </button>
-      )}
-      {step < 3 && (
-        <button type="button" onClick={() => setStep(step + 1)}>
-          Next
-        </button>
-      )}
-      {step >= 3 && <button type="submit">Submit</button>}
-    </form>
+          {step >= 1 && (
+            <button
+              className="button-previous"
+              type="button"
+              onClick={() => setStep(step - 1)}
+            >
+              Previous
+            </button>
+          )}
+          {step < 3 && (
+            <button
+              className="button-next"
+              type="button"
+              onClick={() => setStep(step + 1)}
+            >
+              Next
+            </button>
+          )}
+          {step >= 3 && (
+            <button className="button-create" type="submit">
+              Create
+            </button>
+          )}
+        </form>
+      </div>
+    </ParkFormStyles>
   );
 };
 
