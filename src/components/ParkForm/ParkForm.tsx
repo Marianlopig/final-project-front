@@ -60,9 +60,6 @@ const ParkForm = () => {
 
   const submitPark = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(
-      "***********************************************************************************"
-    );
     await dispatch(
       createParkThunk(
         {
