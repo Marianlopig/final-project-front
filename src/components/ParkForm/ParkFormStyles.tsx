@@ -6,6 +6,11 @@ export const ParkFormStyles = styled.div`
   form {
     width: 70%;
   }
+  @media screen and (max-width: 768px) {
+    form {
+      width: 100%;
+    }
+  }
   .main-container {
     display: flex;
     justify-content: center;
