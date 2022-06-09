@@ -7,7 +7,7 @@ const Footer = () => {
       <footer>
         <section className="ft-main">
           <div className="ft-main-item">
-            <img src="images/columpia.png" alt="logo columpia" />
+            <img src="images/columpiaDa.png" alt="logo columpia" />
 
             <p>
               Columpia is a website built to make everyones live easier, making
