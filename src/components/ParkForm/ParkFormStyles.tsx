@@ -55,13 +55,23 @@ export const ParkFormStyles = styled.div`
       background-color: #c9e265;
       color: white;
       margin-left: auto;
-      margin-right: 10px;
+      margin-right: 20px;
     }
     .button-previous {
       background-color: #c9e265;
       color: white;
       margin-left: auto;
-      margin-left: 10px;
+      margin-left: 20px;
+    }
+    .button-create {
+      background-color: #0cc8d0;
+      color: white;
+      margin-left: auto;
+      margin-left: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
     }
 
     .container-steps--photos {
@@ -98,7 +108,7 @@ export const ParkFormStyles = styled.div`
       align-items: center;
       width: 100%;
       flex-direction: column;
-    }
+
       .container-icons {
         display: flex;
         align-items: center;
@@ -127,6 +137,40 @@ export const ParkFormStyles = styled.div`
             display: flex;
             align-items: flex-end;
           }
+        }
+      }
+    }
+
+    .container-name {
+      padding: 20px;
+      border-radius: 12px;
+      border: 0;
+      box-sizing: border-box;
+
+      label {
+        display: none;
+      }
+
+      input {
+        display: flex;
+        width: 100%;
+        height: 60px;
+        font-size: 20px;
+        color: #7b8a8a;
+        background-color: #cfeef0;
+        border-radius: 12px;
+        border: 0;
+        box-sizing: border-box;
+        color: white;
+        font-size: 18px;
+        padding-left: 20px;
+        margin-bottom: 20px;
+        :focus {
+          outline: none;
+        }
+        ::placeholder {
+          color: #9d9c9c;
+          font-weight: bolder;
         }
       }
     }

@@ -242,7 +242,7 @@ const ParkForm = () => {
           )}
 
           {step === 3 && (
-            <div className="container-steps">
+            <div className="container-name">
               <h3>Let others find it!</h3>
               <label htmlFor="name">Name</label>
               <input
@@ -250,6 +250,7 @@ const ParkForm = () => {
                 id="name"
                 onChange={changeData}
                 value={park.name}
+                placeholder="Park Name"
               ></input>
               <label htmlFor="description">Description</label>
               <input
@@ -257,6 +258,7 @@ const ParkForm = () => {
                 id="description"
                 onChange={changeData}
                 value={park.description}
+                placeholder="Description"
               ></input>
               <label htmlFor="city">City</label>
               <input
@@ -264,6 +266,7 @@ const ParkForm = () => {
                 id="city"
                 onChange={changeAddressData}
                 value={address.city}
+                placeholder="Ciudad"
               ></input>
               <label htmlFor="city">Address</label>
               <input
@@ -271,6 +274,7 @@ const ParkForm = () => {
                 id="address"
                 onChange={changeAddressData}
                 value={address.address}
+                placeholder="Address"
               ></input>
             </div>
           )}
