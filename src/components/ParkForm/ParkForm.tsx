@@ -98,7 +98,7 @@ const ParkForm = () => {
 
           {step === 1 && (
             <div className="container-steps--photos">
-              <h3>Upload the park's pictures</h3>
+              <h3>Upload pictures</h3>
               <label className="input-container" htmlFor="file">
                 <AiOutlineCamera />
                 <input
