@@ -60,6 +60,9 @@ const ParkForm = () => {
 
   const submitPark = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    console.log(
+      "***********************************************************************************"
+    );
     await dispatch(
       createParkThunk(
         {
@@ -73,7 +76,8 @@ const ParkForm = () => {
     );
   };
 
-  const handleOnChange = (detail: string) => {
+  const parkDetailChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const detail = event.target.id;
     if (checkedDetails.includes(detail)) {
       setCheckedDetails(checkedDetails.filter((det: any) => det !== detail));
     } else {
@@ -124,9 +128,10 @@ const ParkForm = () => {
                     {ParkDetail.swing}
                   </div>
                   <input
+                    id={ParkDetail.swing}
                     type="checkbox"
                     checked={checkedDetails.includes(ParkDetail.swing)}
-                    onChange={() => handleOnChange(ParkDetail.swing)}
+                    onChange={parkDetailChange}
                   ></input>
                 </label>
                 <label>
@@ -135,9 +140,10 @@ const ParkForm = () => {
                     {ParkDetail.water}
                   </div>
                   <input
+                    id={ParkDetail.water}
                     type="checkbox"
                     checked={checkedDetails.includes(ParkDetail.water)}
-                    onChange={() => handleOnChange(ParkDetail.water)}
+                    onChange={parkDetailChange}
                   ></input>
                 </label>
                 <label>
@@ -146,9 +152,10 @@ const ParkForm = () => {
                     {ParkDetail.shadow}
                   </div>
                   <input
+                    id={ParkDetail.shadow}
                     type="checkbox"
                     checked={checkedDetails.includes(ParkDetail.shadow)}
-                    onChange={() => handleOnChange(ParkDetail.shadow)}
+                    onChange={parkDetailChange}
                   ></input>
                 </label>
                 <label>
@@ -157,9 +164,10 @@ const ParkForm = () => {
                     {ParkDetail.fence}
                   </div>
                   <input
+                    id={ParkDetail.fence}
                     type="checkbox"
                     checked={checkedDetails.includes(ParkDetail.fence)}
-                    onChange={() => handleOnChange(ParkDetail.fence)}
+                    onChange={parkDetailChange}
                   ></input>
                 </label>
                 <label>
@@ -168,9 +176,10 @@ const ParkForm = () => {
                     {ParkDetail.bar}
                   </div>
                   <input
+                    id={ParkDetail.bar}
                     type="checkbox"
                     checked={checkedDetails.includes(ParkDetail.bar)}
-                    onChange={() => handleOnChange(ParkDetail.bar)}
+                    onChange={parkDetailChange}
                   ></input>
                 </label>
                 <label>
@@ -179,9 +188,10 @@ const ParkForm = () => {
                     {ParkDetail.swimmingPool}
                   </div>
                   <input
+                    id={ParkDetail.swimmingPool}
                     type="checkbox"
                     checked={checkedDetails.includes(ParkDetail.swimmingPool)}
-                    onChange={() => handleOnChange(ParkDetail.swimmingPool)}
+                    onChange={parkDetailChange}
                   ></input>
                 </label>
                 <label>
@@ -190,9 +200,10 @@ const ParkForm = () => {
                     {ParkDetail.bench}
                   </div>
                   <input
+                    id={ParkDetail.bench}
                     type="checkbox"
                     checked={checkedDetails.includes(ParkDetail.bench)}
-                    onChange={() => handleOnChange(ParkDetail.bench)}
+                    onChange={parkDetailChange}
                   ></input>
                 </label>
                 <label>
@@ -201,9 +212,10 @@ const ParkForm = () => {
                     {ParkDetail.picnic}
                   </div>
                   <input
+                    id={ParkDetail.picnic}
                     type="checkbox"
                     checked={checkedDetails.includes(ParkDetail.picnic)}
-                    onChange={() => handleOnChange(ParkDetail.picnic)}
+                    onChange={parkDetailChange}
                   ></input>
                 </label>
                 <label>
@@ -212,9 +224,10 @@ const ParkForm = () => {
                     {ParkDetail.pingPong}
                   </div>
                   <input
+                    id={ParkDetail.pingPong}
                     type="checkbox"
                     checked={checkedDetails.includes(ParkDetail.pingPong)}
-                    onChange={() => handleOnChange(ParkDetail.pingPong)}
+                    onChange={parkDetailChange}
                   ></input>
                 </label>
                 <label>
@@ -223,9 +236,10 @@ const ParkForm = () => {
                     {ParkDetail.basket}
                   </div>
                   <input
+                    id={ParkDetail.basket}
                     type="checkbox"
                     checked={checkedDetails.includes(ParkDetail.basket)}
-                    onChange={() => handleOnChange(ParkDetail.basket)}
+                    onChange={parkDetailChange}
                   ></input>
                 </label>
                 <label>
@@ -234,9 +248,10 @@ const ParkForm = () => {
                     {ParkDetail.bike}
                   </div>
                   <input
+                    id={ParkDetail.bike}
                     type="checkbox"
                     checked={checkedDetails.includes(ParkDetail.bike)}
-                    onChange={() => handleOnChange(ParkDetail.bike)}
+                    onChange={parkDetailChange}
                   ></input>
                 </label>
               </div>
