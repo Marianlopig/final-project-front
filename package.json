@@ -67,6 +67,9 @@
       "!src/index.ts",
       "!src/reportWebVitals.ts",
       "!src/components/LoginForm/__snapshots__/*"
+    ],
+    "transformIgnorePatterns": [
+      "/!node_modules\\/react-leaflet/"
     ]
   }
 }

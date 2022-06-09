@@ -43,9 +43,11 @@ const ParkForm = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      setParkLocation([position.coords.latitude, position.coords.longitude]);
-    });
+    if (navigator?.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        setParkLocation([position.coords.latitude, position.coords.longitude]);
+      });
+    }
   }, []);
 
   const changeData = (event: ChangeEvent<HTMLInputElement>) => {

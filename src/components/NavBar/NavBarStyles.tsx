@@ -67,9 +67,12 @@ export const NavBarStyles = styled.div`
 
     .logo {
       margin-left: auto;
-      margin-top: -45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-right: 20px;
       img {
-        height: 200px;
+        height: 100px;
       }
     }
 
@@ -81,8 +84,7 @@ export const NavBarStyles = styled.div`
         display: none;
       }
       .logo img {
-        height: 125px;
-        margin-top: 37px;
+        height: 70px;
       }
     }
   }
