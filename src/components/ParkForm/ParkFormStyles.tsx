@@ -2,20 +2,20 @@ import styled from "styled-components";
 
 export const ParkFormStyles = styled.div`
   font-family: "roboto";
-
-  form {
-    width: 70%;
-  }
-  @media screen and (max-width: 768px) {
-    form {
-      width: 100%;
-    }
-  }
   .main-container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
+    form {
+      width: 70%;
+    }
+    @media screen and (max-width: 768px) {
+      form {
+        width: 100%;
+      }
+    }
     h2 {
       color: #0cc8d0;
       display: flex;
@@ -28,6 +28,13 @@ export const ParkFormStyles = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
+    }
+    .buttons {
+      display: flex;
+      flex-direction: row;
+      align-items: baseline;
+      padding-top: 10px;
+      gap: 10px;
     }
     button {
       border: none;
@@ -49,6 +56,41 @@ export const ParkFormStyles = styled.div`
       color: white;
       margin-left: auto;
       margin-right: 10px;
+    }
+    .button-previous {
+      background-color: #c9e265;
+      color: white;
+      margin-left: auto;
+      margin-left: 10px;
+    }
+
+    .container-steps--photos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      flex-direction: column;
+      height: 700px;
+      margin-top: -100px;
+
+      [type="file"] {
+        display: none;
+      }
+      .input-container {
+        background-color: #b4b0b0;
+        height: 300px;
+        width: 300px;
+        border-radius: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        svg {
+          display: flex;
+          height: 200px;
+          width: 200px;
+          opacity: 40%;
+        }
+      }
     }
   }
 `;

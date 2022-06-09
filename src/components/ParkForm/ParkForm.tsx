@@ -4,6 +4,7 @@ import { createParkThunk } from "../../redux/thunks/parkThunk/parkThunk";
 import { IAddress, ParkDetail } from "../../redux/types/parkInterfaces";
 import Map from "../Map/Map";
 import { ParkFormStyles } from "./ParkFormStyles";
+import { AiOutlineCamera } from "react-icons/ai";
 
 const ParkForm = () => {
   const [parkLocation, setParkLocation] = useState<[number, number]>([
@@ -83,17 +84,20 @@ const ParkForm = () => {
           )}
 
           {step === 1 && (
-            <div className="container-steps">
-              <h3>Upload pictures of the park</h3>
-              <input
-                multiple
-                id="photos"
-                type="file"
-                accept="image/png, image/jpg"
-                onChange={(event) => {
-                  setImages(event.target.files ?? undefined);
-                }}
-              />
+            <div className="container-steps--photos">
+              <h3>Upload the park's pictures</h3>
+              <label className="input-container" htmlFor="file">
+                <AiOutlineCamera />
+                <input
+                  multiple
+                  id="file"
+                  type="file"
+                  accept="image/png, image/jpg"
+                  onChange={(event) => {
+                    setImages(event.target.files ?? undefined);
+                  }}
+                />
+              </label>
             </div>
           )}
 
@@ -202,25 +206,26 @@ const ParkForm = () => {
               ></input>
             </div>
           )}
-
-          {step >= 1 && (
-            <button
-              className="button-previous"
-              type="button"
-              onClick={() => setStep(step - 1)}
-            >
-              Previous
-            </button>
-          )}
-          {step < 3 && (
-            <button
-              className="button-next"
-              type="button"
-              onClick={() => setStep(step + 1)}
-            >
-              Next
-            </button>
-          )}
+          <div className="buttons">
+            {step >= 1 && (
+              <button
+                className="button-previous"
+                type="button"
+                onClick={() => setStep(step - 1)}
+              >
+                Previous
+              </button>
+            )}
+            {step < 3 && (
+              <button
+                className="button-next"
+                type="button"
+                onClick={() => setStep(step + 1)}
+              >
+                Next
+              </button>
+            )}
+          </div>
           {step >= 3 && (
             <button className="button-create" type="submit">
               Create
