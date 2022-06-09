@@ -92,5 +92,43 @@ export const ParkFormStyles = styled.div`
         }
       }
     }
+    .container-steps--icons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      flex-direction: column;
+    }
+      .container-icons {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        flex-direction: column;
+        gap: 10px;
+        font-size: 24px;
+        padding-bottom: 20px;
+        label {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          gap: 45px;
+          width: 90%;
+          .items {
+            display: flex;
+            gap: 40px;
+            svg {
+              font-size: 30px;
+            }
+          }
+          input {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: flex-end;
+          }
+        }
+      }
+    }
   }
 `;

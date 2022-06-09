@@ -5,6 +5,17 @@ import { IAddress, ParkDetail } from "../../redux/types/parkInterfaces";
 import Map from "../Map/Map";
 import { ParkFormStyles } from "./ParkFormStyles";
 import { AiOutlineCamera } from "react-icons/ai";
+import { GiKidSlide } from "react-icons/gi";
+import { GiWateringCan } from "react-icons/gi";
+import { BsTreeFill } from "react-icons/bs";
+import { GiWoodenFence } from "react-icons/gi";
+import { BiBeer } from "react-icons/bi";
+import { MdPool } from "react-icons/md";
+import { GiParkBench } from "react-icons/gi";
+import { GiTable } from "react-icons/gi";
+import { RiPingPongFill } from "react-icons/ri";
+import { GiBasketballBasket } from "react-icons/gi";
+import { RiBikeLine } from "react-icons/ri";
 
 const ParkForm = () => {
   const [parkLocation, setParkLocation] = useState<[number, number]>([
@@ -102,74 +113,131 @@ const ParkForm = () => {
           )}
 
           {step === 2 && (
-            <div className="container-steps">
+            <div className="container-steps--icons">
               <h3>What does this park have?</h3>
-              <input
-                type="checkbox"
-                checked={checkedDetails.includes(ParkDetail.swing)}
-                onChange={() => handleOnChange(ParkDetail.swing)}
-              ></input>
-              {ParkDetail.swing}
-              <input
-                type="checkbox"
-                checked={checkedDetails.includes(ParkDetail.water)}
-                onChange={() => handleOnChange(ParkDetail.water)}
-              ></input>
-              {ParkDetail.water}
-              <input
-                type="checkbox"
-                checked={checkedDetails.includes(ParkDetail.shadow)}
-                onChange={() => handleOnChange(ParkDetail.shadow)}
-              ></input>
-              {ParkDetail.shadow}
-              <input
-                type="checkbox"
-                checked={checkedDetails.includes(ParkDetail.fence)}
-                onChange={() => handleOnChange(ParkDetail.fence)}
-              ></input>
-              {ParkDetail.fence}
-              <input
-                type="checkbox"
-                checked={checkedDetails.includes(ParkDetail.bar)}
-                onChange={() => handleOnChange(ParkDetail.bar)}
-              ></input>
-              {ParkDetail.bar}
-              <input
-                type="checkbox"
-                checked={checkedDetails.includes(ParkDetail.swimmingPool)}
-                onChange={() => handleOnChange(ParkDetail.swimmingPool)}
-              ></input>
-              {ParkDetail.swimmingPool}
-              <input
-                type="checkbox"
-                checked={checkedDetails.includes(ParkDetail.bench)}
-                onChange={() => handleOnChange(ParkDetail.bench)}
-              ></input>
-              {ParkDetail.bench}
-              <input
-                type="checkbox"
-                checked={checkedDetails.includes(ParkDetail.picnic)}
-                onChange={() => handleOnChange(ParkDetail.picnic)}
-              ></input>
-              {ParkDetail.picnic}
-              <input
-                type="checkbox"
-                checked={checkedDetails.includes(ParkDetail.pingPong)}
-                onChange={() => handleOnChange(ParkDetail.pingPong)}
-              ></input>
-              {ParkDetail.pingPong}
-              <input
-                type="checkbox"
-                checked={checkedDetails.includes(ParkDetail.basket)}
-                onChange={() => handleOnChange(ParkDetail.basket)}
-              ></input>
-              {ParkDetail.basket}
-              <input
-                type="checkbox"
-                checked={checkedDetails.includes(ParkDetail.bike)}
-                onChange={() => handleOnChange(ParkDetail.bike)}
-              ></input>
-              {ParkDetail.bike}
+              <div className="container-icons">
+                <label>
+                  <div className="items">
+                    <GiKidSlide />
+                    {ParkDetail.swing}
+                  </div>
+                  <input
+                    type="checkbox"
+                    checked={checkedDetails.includes(ParkDetail.swing)}
+                    onChange={() => handleOnChange(ParkDetail.swing)}
+                  ></input>
+                </label>
+                <label>
+                  <div className="items">
+                    <GiWateringCan />
+                    {ParkDetail.water}
+                  </div>
+                  <input
+                    type="checkbox"
+                    checked={checkedDetails.includes(ParkDetail.water)}
+                    onChange={() => handleOnChange(ParkDetail.water)}
+                  ></input>
+                </label>
+                <label>
+                  <div className="items">
+                    <BsTreeFill />
+                    {ParkDetail.shadow}
+                  </div>
+                  <input
+                    type="checkbox"
+                    checked={checkedDetails.includes(ParkDetail.shadow)}
+                    onChange={() => handleOnChange(ParkDetail.shadow)}
+                  ></input>
+                </label>
+                <label>
+                  <div className="items">
+                    <GiWoodenFence />
+                    {ParkDetail.fence}
+                  </div>
+                  <input
+                    type="checkbox"
+                    checked={checkedDetails.includes(ParkDetail.fence)}
+                    onChange={() => handleOnChange(ParkDetail.fence)}
+                  ></input>
+                </label>
+                <label>
+                  <div className="items">
+                    <BiBeer />
+                    {ParkDetail.bar}
+                  </div>
+                  <input
+                    type="checkbox"
+                    checked={checkedDetails.includes(ParkDetail.bar)}
+                    onChange={() => handleOnChange(ParkDetail.bar)}
+                  ></input>
+                </label>
+                <label>
+                  <div className="items">
+                    <MdPool />
+                    {ParkDetail.swimmingPool}
+                  </div>
+                  <input
+                    type="checkbox"
+                    checked={checkedDetails.includes(ParkDetail.swimmingPool)}
+                    onChange={() => handleOnChange(ParkDetail.swimmingPool)}
+                  ></input>
+                </label>
+                <label>
+                  <div className="items">
+                    <GiParkBench />
+                    {ParkDetail.bench}
+                  </div>
+                  <input
+                    type="checkbox"
+                    checked={checkedDetails.includes(ParkDetail.bench)}
+                    onChange={() => handleOnChange(ParkDetail.bench)}
+                  ></input>
+                </label>
+                <label>
+                  <div className="items">
+                    <GiTable />
+                    {ParkDetail.picnic}
+                  </div>
+                  <input
+                    type="checkbox"
+                    checked={checkedDetails.includes(ParkDetail.picnic)}
+                    onChange={() => handleOnChange(ParkDetail.picnic)}
+                  ></input>
+                </label>
+                <label>
+                  <div className="items">
+                    <RiPingPongFill />
+                    {ParkDetail.pingPong}
+                  </div>
+                  <input
+                    type="checkbox"
+                    checked={checkedDetails.includes(ParkDetail.pingPong)}
+                    onChange={() => handleOnChange(ParkDetail.pingPong)}
+                  ></input>
+                </label>
+                <label>
+                  <div className="items">
+                    <GiBasketballBasket />
+                    {ParkDetail.basket}
+                  </div>
+                  <input
+                    type="checkbox"
+                    checked={checkedDetails.includes(ParkDetail.basket)}
+                    onChange={() => handleOnChange(ParkDetail.basket)}
+                  ></input>
+                </label>
+                <label>
+                  <div className="items">
+                    <RiBikeLine />
+                    {ParkDetail.bike}
+                  </div>
+                  <input
+                    type="checkbox"
+                    checked={checkedDetails.includes(ParkDetail.bike)}
+                    onChange={() => handleOnChange(ParkDetail.bike)}
+                  ></input>
+                </label>
+              </div>
             </div>
           )}
 
