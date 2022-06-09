@@ -61,7 +61,11 @@ const Park = ({ name, description, photos, details, address }: IPark) => {
     <ParkStyles>
       <section>
         <div className="card">
-          <img className="card-image" src={photos[0]} alt="beautiful forest" />
+          <img
+            className="card-image"
+            src={`${process.env.REACT_APP_API_URL}/${photos[0]}`}
+            alt="beautiful forest"
+          />
           <div className="card-body">
             <h3 className="card-title">{name}</h3>
             <span>
