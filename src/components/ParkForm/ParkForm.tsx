@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useAppDispatch } from "../../redux/hooks/hooks";
 import { createParkThunk } from "../../redux/thunks/parkThunk/parkThunk";
-import { IAddress, IPark, ParkDetail } from "../../redux/types/parkInterfaces";
+import { IAddress, ParkDetail } from "../../redux/types/parkInterfaces";
 import Map from "../Map/Map";
 
 const ParkForm = () => {
@@ -24,6 +24,8 @@ const ParkForm = () => {
   const [images, setImages] = useState<FileList>();
 
   const [step, setStep] = useState(0);
+
+  const [checkedDetails, setCheckedDetails] = useState<any>([]);
 
   const dispatch = useAppDispatch();
 
@@ -48,11 +50,20 @@ const ParkForm = () => {
         {
           ...park,
           address,
+          details: checkedDetails,
           location: { type: "Point", coordinates: parkLocation },
         },
         images
       )
     );
+  };
+
+  const handleOnChange = (detail: string) => {
+    if (checkedDetails.includes(detail)) {
+      setCheckedDetails(checkedDetails.filter((det: any) => det !== detail));
+    } else {
+      setCheckedDetails([...checkedDetails, detail]);
+    }
   };
 
   return (
@@ -86,21 +97,72 @@ const ParkForm = () => {
       {step === 2 && (
         <>
           <h3>What does this park have?</h3>
-          <select name="details" multiple>
-            <option value={ParkDetail.swing}>{ParkDetail.swing}</option>
-            <option value={ParkDetail.water}>{ParkDetail.water}</option>
-            <option value={ParkDetail.shadow}>{ParkDetail.shadow}</option>
-            <option value={ParkDetail.fence}>{ParkDetail.fence}</option>
-            <option value={ParkDetail.bar}>{ParkDetail.bar}</option>
-            <option value={ParkDetail.swimmingPool}>
-              {ParkDetail.swimmingPool}
-            </option>
-            <option value={ParkDetail.bench}>{ParkDetail.bench}</option>
-            <option value={ParkDetail.picnic}>{ParkDetail.picnic}</option>
-            <option value={ParkDetail.pingPong}>{ParkDetail.pingPong}</option>
-            <option value={ParkDetail.basket}>{ParkDetail.basket}</option>
-            <option value={ParkDetail.bike}>{ParkDetail.bike}</option>
-          </select>
+          <input
+            type="checkbox"
+            checked={checkedDetails.includes(ParkDetail.swing)}
+            onChange={() => handleOnChange(ParkDetail.swing)}
+          ></input>
+          {ParkDetail.swing}
+          <input
+            type="checkbox"
+            checked={checkedDetails.includes(ParkDetail.water)}
+            onChange={() => handleOnChange(ParkDetail.water)}
+          ></input>
+          {ParkDetail.water}
+          <input
+            type="checkbox"
+            checked={checkedDetails.includes(ParkDetail.shadow)}
+            onChange={() => handleOnChange(ParkDetail.shadow)}
+          ></input>
+          {ParkDetail.shadow}
+          <input
+            type="checkbox"
+            checked={checkedDetails.includes(ParkDetail.fence)}
+            onChange={() => handleOnChange(ParkDetail.fence)}
+          ></input>
+          {ParkDetail.fence}
+          <input
+            type="checkbox"
+            checked={checkedDetails.includes(ParkDetail.bar)}
+            onChange={() => handleOnChange(ParkDetail.bar)}
+          ></input>
+          {ParkDetail.bar}
+          <input
+            type="checkbox"
+            checked={checkedDetails.includes(ParkDetail.swimmingPool)}
+            onChange={() => handleOnChange(ParkDetail.swimmingPool)}
+          ></input>
+          {ParkDetail.swimmingPool}
+          <input
+            type="checkbox"
+            checked={checkedDetails.includes(ParkDetail.bench)}
+            onChange={() => handleOnChange(ParkDetail.bench)}
+          ></input>
+          {ParkDetail.bench}
+          <input
+            type="checkbox"
+            checked={checkedDetails.includes(ParkDetail.picnic)}
+            onChange={() => handleOnChange(ParkDetail.picnic)}
+          ></input>
+          {ParkDetail.picnic}
+          <input
+            type="checkbox"
+            checked={checkedDetails.includes(ParkDetail.pingPong)}
+            onChange={() => handleOnChange(ParkDetail.pingPong)}
+          ></input>
+          {ParkDetail.pingPong}
+          <input
+            type="checkbox"
+            checked={checkedDetails.includes(ParkDetail.basket)}
+            onChange={() => handleOnChange(ParkDetail.basket)}
+          ></input>
+          {ParkDetail.basket}
+          <input
+            type="checkbox"
+            checked={checkedDetails.includes(ParkDetail.bike)}
+            onChange={() => handleOnChange(ParkDetail.bike)}
+          ></input>
+          {ParkDetail.bike}
         </>
       )}
 

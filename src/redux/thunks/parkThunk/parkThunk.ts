@@ -73,9 +73,12 @@ export const createParkThunk =
         "location.coordinates[1]",
         park.location.coordinates[1].toString()
       );
-      parkRequest.append("details", JSON.stringify(park.details));
       parkRequest.append("address.city", park.address?.city ?? "");
       parkRequest.append("address.address", park.address?.address ?? "");
+
+      park.details.forEach((detail, index) => {
+        parkRequest.append(`details[${index}]`, detail);
+      });
 
       const { status, data } = await axios.post(`${url}/`, parkRequest, config);
       if (status === 201) {
