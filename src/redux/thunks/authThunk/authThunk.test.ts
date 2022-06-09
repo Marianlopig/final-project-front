@@ -30,3 +30,24 @@ describe("Given a loginThunk function", () => {
     });
   });
 });
+
+describe("Given a RegisterThunk function", () => {
+  describe("When it is called", () => {
+    test("It should dispatch the register thunk with the user data", async () => {
+      const dispatch = jest.fn();
+
+      const userData = {
+        username: "marian",
+        password: "password",
+        name: "marian",
+        email: "test",
+        city: "Barcelona",
+      };
+
+      const thunk = loginThunk(userData);
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalled();
+    });
+  });
+});
