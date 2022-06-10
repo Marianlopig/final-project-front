@@ -1,5 +1,5 @@
 import { NavBarStyles } from "./NavBarStyles";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RiMenuFill } from "react-icons/ri";
 import { useState } from "react";
 import { logoutActionCreator } from "../../redux/features/authSlice/authSlice";
