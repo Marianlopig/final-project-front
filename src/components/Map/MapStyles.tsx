@@ -5,7 +5,7 @@ export const MapStyles = styled.div`
   justify-content: center;
   .map {
     width: 100%;
-    height: 610px;
+    height: 450px;
     margin-bottom: 10px;
     max-width: 900px;
     display: flex;
