@@ -20,6 +20,7 @@ export interface IPark {
   name: string;
   description: string;
   photos: string[];
+  photosBackup?: string[];
   location: ILocation;
   details: string[];
   owner: string;

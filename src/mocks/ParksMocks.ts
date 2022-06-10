@@ -5,6 +5,7 @@ export const mockPark: IPark = {
   name: "parque bonito",
   description: "un parque muy bonito",
   photos: ["photo1.png, photo2.png"],
+  photosBackup: ["photo1back.png, photo2back.png"],
   location: {
     type: "Point",
     coordinates: [4567, 5764],
