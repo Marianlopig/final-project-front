@@ -12,7 +12,6 @@ import "react-toastify/dist/ReactToastify.css";
 const IndexStyles = styled.div`
   * {
     font-family: "roboto";
-    overflow-x: hidden;
   }
   html,
   body {
