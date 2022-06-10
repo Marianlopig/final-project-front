@@ -2,8 +2,7 @@ import styled from "styled-components";
 
 export const ParkStyles = styled.div`
   background-color: white;
-  font-family: "Quicksand", sans-serif;
-  padding: 32px;
+  font-family: "Roboto", sans-serif;
 
   section {
     display: flex;
@@ -19,6 +18,7 @@ export const ParkStyles = styled.div`
       box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.5);
       border-radius: 8px;
       transition: 0.4s;
+      height: 620px;
       :hover {
         .card-image {
           transform: translateX(0px);
@@ -30,11 +30,11 @@ export const ParkStyles = styled.div`
         width: 100%;
         height: 256px;
         border-radius: 8px;
-        position: relative;
         transform: translateX(-32px);
         box-shadow: 16px 4px 24px 0 rgba(0, 0, 0, 0.2);
         transition: 0.4s;
         object-fit: cover;
+        z-index: -1000;
       }
 
       .card-body {
