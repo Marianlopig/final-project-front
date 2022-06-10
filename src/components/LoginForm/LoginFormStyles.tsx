@@ -5,7 +5,7 @@ export const LoginFormStyles = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 50px;
+  padding: 50px 10px 10px 10px;
 
   .container {
     background-color: #0cc8d0;
@@ -13,28 +13,33 @@ export const LoginFormStyles = styled.div`
     border-radius: 12px;
     border: 0;
     box-sizing: border-box;
+
     h2 {
       color: white;
       text-align: center;
       font-size: 30px;
     }
+
     form {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       justify-content: center;
       row-gap: 20px;
+
       .link {
         font-weight: bolder;
         width: 100%;
         display: flex;
         justify-content: center;
         margin: 0 0 20px 0;
+
         a {
           text-decoration: none;
           color: #7b8a8a;
         }
       }
+
       label {
         display: none;
       }
@@ -60,6 +65,7 @@ export const LoginFormStyles = styled.div`
           font-weight: bolder;
         }
       }
+
       .submitContainer {
         display: flex;
         width: 100%;

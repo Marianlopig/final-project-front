@@ -20,8 +20,6 @@ export const ParkStyles = styled.div`
       border-radius: 8px;
       transition: 0.4s;
       :hover {
-        box-shadow: none;
-
         .card-image {
           transform: translateX(0px);
           box-shadow: none;
