@@ -17,7 +17,6 @@ import { BsTreeFill } from "react-icons/bs";
 import { BiBeer } from "react-icons/bi";
 import { MdPool } from "react-icons/md";
 import { RiBikeLine, RiPingPongFill } from "react-icons/ri";
-import { toast } from "react-toastify";
 
 const ParkForm = () => {
   const [parkLocation, setParkLocation] = useState<[number, number]>([
