@@ -1,10 +1,15 @@
 import { NavBarStyles } from "./NavBarStyles";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { RiMenuFill } from "react-icons/ri";
 import { useState } from "react";
+import { logoutActionCreator } from "../../redux/features/authSlice/authSlice";
+import { useAppDispatch } from "../../redux/hooks/hooks";
 
 const NavBar = () => {
   const [isNavExpanded, setIsNavExpanded] = useState<boolean>(false);
+  const token = localStorage.getItem("token");
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   return (
     <NavBarStyles>
@@ -45,12 +50,19 @@ const NavBar = () => {
             >
               <Link to="/">My Account</Link>
             </li>
+
             <li
               onClick={() => {
-                setIsNavExpanded(!isNavExpanded);
+                if (token) {
+                  setIsNavExpanded(!isNavExpanded);
+                  dispatch(logoutActionCreator());
+                } else {
+                  setIsNavExpanded(!isNavExpanded);
+                  navigate("/login");
+                }
               }}
             >
-              <Link to="/login">Login</Link>
+              {token ? "LogOut" : "LogIn"}
             </li>
           </ul>
         </div>
