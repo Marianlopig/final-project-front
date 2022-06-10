@@ -1,21 +1,34 @@
 import { ParkStyles } from "./ParkStyles";
 import { ImHeart } from "react-icons/im";
-import { BsInfo } from "react-icons/bs";
-import { GiKidSlide } from "react-icons/gi";
-import { GiWateringCan } from "react-icons/gi";
-import { BsTreeFill } from "react-icons/bs";
-import { GiWoodenFence } from "react-icons/gi";
+import { BsInfo, BsTreeFill } from "react-icons/bs";
+import {
+  GiKidSlide,
+  GiBasketballBasket,
+  GiWateringCan,
+  GiWoodenFence,
+  GiParkBench,
+  GiTable,
+} from "react-icons/gi";
 import { BiBeer } from "react-icons/bi";
 import { MdPool } from "react-icons/md";
-import { GiParkBench } from "react-icons/gi";
-import { GiTable } from "react-icons/gi";
-import { RiPingPongFill } from "react-icons/ri";
-import { GiBasketballBasket } from "react-icons/gi";
-import { RiBikeLine } from "react-icons/ri";
+import { RiPingPongFill, RiBikeLine } from "react-icons/ri";
 import { IPark } from "../../redux/types/parkInterfaces";
 import { ParkDetail } from "../../redux/types/parkInterfaces";
+import { useState } from "react";
 
-const Park = ({ name, description, photos, details, address }: IPark) => {
+const Park = ({
+  name,
+  description,
+  photos,
+  photosBackup,
+  details,
+  address,
+}: IPark) => {
+  const [firstError, setFirstError] = useState<boolean>(true);
+  const [imageUrl, setImageUrl] = useState<string>(
+    `${process.env.REACT_APP_API_URL}/${photos[0]}`
+  );
+
   const getIcon = (detail: string) => {
     let component;
     switch (detail) {
@@ -57,14 +70,29 @@ const Park = ({ name, description, photos, details, address }: IPark) => {
     return component;
   };
 
+  const onImageError = (event: any) => {
+    if (firstError) {
+      setFirstError(false);
+      if (photosBackup && photosBackup[0]) {
+        setImageUrl(photosBackup[0]);
+      } else {
+        setImageUrl("images/columpiaDa.png");
+      }
+    } else {
+      setImageUrl("images/columpiaDa.png");
+    }
+  };
+
   return (
     <ParkStyles>
       <section>
         <div className="card">
           <img
             className="card-image"
-            src={`${process.env.REACT_APP_API_URL}/${photos[0]}`}
+            //src="images/columpiaDa.png"
+            src={imageUrl}
             alt="beautiful forest"
+            onError={onImageError}
           />
           <div className="card-body">
             <h3 className="card-title">{name}</h3>
