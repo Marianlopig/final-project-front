@@ -1,40 +1,46 @@
 import styled from "styled-components";
 
 export const NavBarStyles = styled.div`
-  background-color: #0f4b4d80;
-  box-shadow: 0 2px 2px 2px rgba(9, 9, 9, 0.23);
   .navigation {
-    display: flex;
-    justify-content: center;
+    height: 60px;
     width: 100%;
-    height: 100px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
     position: relative;
+    padding: 0.5rem 0rem;
+    background-color: #fff;
+    color: black;
+    box-shadow: 0 2px 2px 2px rgba(9, 9, 9, 0.23);
 
     .navigation-menu {
       display: flex;
-      justify-content: flex-start;
       font-size: 25px;
-      align-items: flex-end;
       column-gap: 40px;
       width: 70%;
       padding-left: 50px;
-      li {
-        display: flex;
-        justify-content: space-between;
-        list-style-type: none;
-        font-weight: bold;
+      width: 100%;
 
-        a {
-          text-decoration: none;
-          color: #545454;
-          display: block;
-          width: 100%;
-          :hover {
-            color: #a6a6a6;
+      ul {
+        display: flex;
+        padding: 0;
+
+        li {
+          list-style-type: none;
+          margin: 0 1rem;
+
+          a {
+            text-decoration: none;
+            display: block;
+            width: 100%;
+
+            :hover {
+              color: #a6a6a6;
+            }
           }
-        }
-        img {
-          width: 250px;
+          img {
+            width: 250px;
+          }
         }
       }
     }
@@ -66,13 +72,16 @@ export const NavBarStyles = styled.div`
     }
 
     .logo {
-      margin-left: auto;
       display: flex;
       align-items: center;
       justify-content: center;
       padding-right: 20px;
-      img {
-        height: 100px;
+      .logolink {
+        display: flex;
+        img {
+          height: 80px;
+          display: flex;
+        }
       }
     }
 
@@ -80,11 +89,43 @@ export const NavBarStyles = styled.div`
       .hamburger {
         display: block;
       }
+
       .navigation-menu {
         display: none;
       }
+      .navigation-menu.expanded {
+        display: block;
+        margin-top: 15px;
+        z-index: 10;
+        color: black;
+      }
       .logo img {
         height: 70px;
+      }
+      ul {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        height: calc(100vh - 77px);
+        background-color: white;
+
+        li {
+          text-align: center;
+          margin: 0;
+
+          :hover {
+            background-color: #eee;
+          }
+
+          a {
+            color: black;
+            width: 100%;
+            padding: 1.5rem 0;
+          }
+        }
       }
     }
   }
