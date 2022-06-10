@@ -1,5 +1,6 @@
 import { NavBarStyles } from "./NavBarStyles";
 import { Link } from "react-router-dom";
+import { RiMenuFill } from "react-icons/ri";
 
 const NavBar = () => {
   return (
@@ -22,9 +23,9 @@ const NavBar = () => {
         <div className="logo">
           <img src="/images/columpiaDa.png" alt="columpia logo"></img>
         </div>
-        {/* <div className="hamburger">
-          <BurgerMenu />
-        </div> */}
+        <div className="hamburger">
+          <RiMenuFill className="hamburguer--icon" />
+        </div>
       </nav>
     </NavBarStyles>
   );
