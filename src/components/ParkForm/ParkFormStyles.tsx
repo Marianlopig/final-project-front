@@ -81,7 +81,7 @@ export const ParkFormStyles = styled.div`
       align-items: center;
       width: 100%;
       flex-direction: column;
-      height: 700px;
+      height: 600px;
       margin-top: -100px;
 
       [type="file"] {
@@ -96,10 +96,14 @@ export const ParkFormStyles = styled.div`
         justify-content: center;
         align-items: center;
         svg {
-          display: flex;
+          position: absolute;
           height: 200px;
           width: 200px;
           opacity: 40%;
+          z-index: 9999;
+        }
+        .selected-image {
+          width: 100%;
         }
       }
     }

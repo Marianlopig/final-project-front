@@ -10,6 +10,9 @@ const NavBar = () => {
   const token = localStorage.getItem("token");
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const deleteToken = () => {
+    localStorage.removeItem("token");
+  };
 
   return (
     <NavBarStyles>
@@ -50,12 +53,12 @@ const NavBar = () => {
             >
               <Link to="/">My Account</Link>
             </li>
-
             <li
               onClick={() => {
                 if (token) {
                   setIsNavExpanded(!isNavExpanded);
                   dispatch(logoutActionCreator());
+                  deleteToken();
                 } else {
                   setIsNavExpanded(!isNavExpanded);
                   navigate("/login");
@@ -63,6 +66,19 @@ const NavBar = () => {
               }}
             >
               {token ? "LogOut" : "LogIn"}
+            </li>
+            <li
+              onClick={() => {
+                if (token) {
+                  setIsNavExpanded(!isNavExpanded);
+                  navigate("/newpark");
+                } else {
+                  setIsNavExpanded(!isNavExpanded);
+                  navigate("/newpark");
+                }
+              }}
+            >
+              {token ? "Create a Park" : "Register"}
             </li>
           </ul>
         </div>

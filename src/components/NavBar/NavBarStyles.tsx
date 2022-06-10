@@ -22,20 +22,19 @@ export const NavBarStyles = styled.div`
       padding-left: 50px;
       width: 100%;
       font-weight: bold;
-      background-color: ;
-
+      gap: 20px;
       ul {
         display: flex;
         padding: 0;
 
         li {
+          display: block;
+          width: 100%;
           list-style-type: none;
           margin: 0 1rem;
-
+          padding: 30px 0px 20px 0px;
           a {
             text-decoration: none;
-            display: block;
-            width: 100%;
 
             :hover {
               color: #a6a6a6;
