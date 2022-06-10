@@ -7,11 +7,12 @@ export const NavBarStyles = styled.div`
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
-    position: relative;
+    position: fixed;
     padding: 0.5rem 0rem;
     background-color: #fff;
     color: black;
     box-shadow: 0 2px 2px 2px rgba(9, 9, 9, 0.23);
+    z-index: 99999;
 
     .navigation-menu {
       display: flex;
@@ -20,6 +21,8 @@ export const NavBarStyles = styled.div`
       width: 70%;
       padding-left: 50px;
       width: 100%;
+      font-weight: bold;
+      background-color: ;
 
       ul {
         display: flex;
@@ -104,13 +107,14 @@ export const NavBarStyles = styled.div`
       }
       ul {
         position: absolute;
-        top: 60px;
+        top: 40px;
         left: 0;
         display: none;
         flex-direction: column;
-        width: 100%;
+        width: 70%;
         height: calc(100vh - 77px);
         background-color: white;
+        z-index: 99999;
 
         li {
           text-align: center;
