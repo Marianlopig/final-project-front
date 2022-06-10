@@ -12,8 +12,8 @@ const Footer = () => {
             <p>
               Columpia is a website built to make everyones live easier, making
               faster and easier one family day plan. You coul search for the
-              best playground in your city or the closest to you. Hope you enjoy
-              it as the children are going to enjoy in the playground.
+              best playground in your city or the closest to you. We hope you
+              enjoy it as much as the children will enjoy in the playgrounds.
             </p>
           </div>
           <div className="ft-main-item">

@@ -17,6 +17,7 @@ import { BsTreeFill } from "react-icons/bs";
 import { BiBeer } from "react-icons/bi";
 import { MdPool } from "react-icons/md";
 import { RiBikeLine, RiPingPongFill } from "react-icons/ri";
+import { toast } from "react-toastify";
 
 const ParkForm = () => {
   const [parkLocation, setParkLocation] = useState<[number, number]>([
@@ -102,6 +103,13 @@ const ParkForm = () => {
             <div className="container-steps--photos">
               <h3>Upload pictures</h3>
               <label className="input-container" htmlFor="file">
+                {images && images[0] && (
+                  <img
+                    src={URL.createObjectURL(images[0])}
+                    alt="park"
+                    className="selected-image"
+                  />
+                )}
                 <AiOutlineCamera />
                 <input
                   multiple
