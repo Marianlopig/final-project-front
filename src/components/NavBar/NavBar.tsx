@@ -1,6 +1,5 @@
 import { NavBarStyles } from "./NavBarStyles";
 import { Link } from "react-router-dom";
-import BurgerMenu from "../BurguerMenu/BurgerMenu";
 
 const NavBar = () => {
   return (
@@ -23,9 +22,9 @@ const NavBar = () => {
         <div className="logo">
           <img src="/images/columpiaDa.png" alt="columpia logo"></img>
         </div>
-        <div className="hamburger">
+        {/* <div className="hamburger">
           <BurgerMenu />
-        </div>
+        </div> */}
       </nav>
     </NavBarStyles>
   );
