@@ -1,6 +1,5 @@
 import { NavBarStyles } from "./NavBarStyles";
 import { Link } from "react-router-dom";
-import BurgerMenu from "../BurguerMenu/BurgerMenu";
 
 const NavBar = () => {
   return (
