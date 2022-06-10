@@ -5,17 +5,18 @@ import { IAddress, ParkDetail } from "../../redux/types/parkInterfaces";
 import Map from "../Map/Map";
 import { ParkFormStyles } from "./ParkFormStyles";
 import { AiOutlineCamera } from "react-icons/ai";
-import { GiKidSlide } from "react-icons/gi";
-import { GiWateringCan } from "react-icons/gi";
+import {
+  GiWateringCan,
+  GiKidSlide,
+  GiParkBench,
+  GiTable,
+  GiBasketballBasket,
+  GiWoodenFence,
+} from "react-icons/gi";
 import { BsTreeFill } from "react-icons/bs";
-import { GiWoodenFence } from "react-icons/gi";
 import { BiBeer } from "react-icons/bi";
 import { MdPool } from "react-icons/md";
-import { GiParkBench } from "react-icons/gi";
-import { GiTable } from "react-icons/gi";
-import { RiPingPongFill } from "react-icons/ri";
-import { GiBasketballBasket } from "react-icons/gi";
-import { RiBikeLine } from "react-icons/ri";
+import { RiBikeLine, RiPingPongFill } from "react-icons/ri";
 
 const ParkForm = () => {
   const [parkLocation, setParkLocation] = useState<[number, number]>([

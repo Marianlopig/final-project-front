@@ -12,8 +12,7 @@ import {
 import { BiBeer } from "react-icons/bi";
 import { MdPool } from "react-icons/md";
 import { RiPingPongFill, RiBikeLine } from "react-icons/ri";
-import { IPark } from "../../redux/types/parkInterfaces";
-import { ParkDetail } from "../../redux/types/parkInterfaces";
+import { IPark, ParkDetail } from "../../redux/types/parkInterfaces";
 import { useState } from "react";
 
 const Park = ({

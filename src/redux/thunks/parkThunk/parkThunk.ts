@@ -16,10 +16,9 @@ const url: string = `${process.env.REACT_APP_API_URL}/parks`;
 
 const getAuth = () => {
   const token = localStorage.getItem("token");
-  const authorization = {
+  return {
     headers: { Authorization: `Bearer ${token}` },
   };
-  return authorization;
 };
 
 export const loadParksThunk = () => async (dispatch: Dispatch) => {
