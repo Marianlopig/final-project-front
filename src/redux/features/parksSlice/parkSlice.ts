@@ -18,46 +18,30 @@ const parkSlice = createSlice({
       currentState: IParkState,
       action: PayloadAction<IParkState>
     ) => ({ ...currentState, ...action.payload }),
-    filterOwner: (currentState: IParkState, action: PayloadAction<string>) => {
-      const newState = { ...currentState };
-
-      if (action.payload) {
-        newState.filters.owner = action.payload;
-      } else {
-        delete newState.filters.city;
-      }
-
-      return newState;
-    },
-    filterCity: (currentState: IParkState, action: PayloadAction<string>) => {
-      const newState = { ...currentState };
-
-      if (action.payload) {
-        newState.filters.city = action.payload;
-      } else {
-        delete newState.filters.city;
-      }
-
-      return newState;
-    },
+    filterOwner: (currentState: IParkState, action: PayloadAction<string>) => ({
+      ...currentState,
+      filters: { ...currentState.filters, owner: action.payload },
+    }),
+    filterCity: (currentState: IParkState, action: PayloadAction<string>) => ({
+      ...currentState,
+      filters: { ...currentState.filters, city: action.payload },
+    }),
     filterFav: (
       currentState: IParkState,
       action: PayloadAction<string | undefined>
-    ) => {
-      const newState = { ...currentState };
-
-      if (action.payload) {
-        newState.filters.ids = action.payload;
-      } else {
-        delete newState.filters.city;
-      }
-
-      return newState;
-    },
+    ) => ({
+      ...currentState,
+      filters: { ...currentState.filters, ids: action.payload },
+    }),
   },
 });
 
-export const { loadParks: loadParksActionCreator } = parkSlice.actions;
+export const {
+  loadParks: loadParksActionCreator,
+  filterOwner: filterOwnerActionCreator,
+  filterCity: filterCityActionCreator,
+  filterFav: filterFavActionCreator,
+} = parkSlice.actions;
 
 export const parksListSelector = (state: RootState) => state.parks.results;
 
