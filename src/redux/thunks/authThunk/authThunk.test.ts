@@ -2,7 +2,11 @@ import "../../../mocks/server";
 import { loginActionCreator } from "../../features/authSlice/authSlice";
 import { loginThunk } from "./authThunk";
 
-jest.mock("jwt-decode", () => () => ({ username: "marian", name: "marian" }));
+jest.mock("jwt-decode", () => () => ({
+  username: "marian",
+  name: "marian",
+  userId: "1",
+}));
 
 describe("Given a loginThunk function", () => {
   describe("When it is called", () => {
