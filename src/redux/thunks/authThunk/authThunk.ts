@@ -23,9 +23,11 @@ export const loginThunk =
 
       if (status === 200) {
         toast.success("LogIn successful!");
-        const { name, username }: LoginResponse = jwt_decode(data.token);
+        const { name, username, userId }: LoginResponse = jwt_decode(
+          data.token
+        );
         localStorage.setItem("token", data.token);
-        dispatch(loginActionCreator({ name, username }));
+        dispatch(loginActionCreator({ name, username, userId }));
       }
     } catch (error: any) {
       toast.error("Wrong username or password, try again");

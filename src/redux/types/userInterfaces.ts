@@ -11,6 +11,7 @@ export interface IUser {
 export interface LoginResponse {
   name: string;
   username: string;
+  userId: string;
 }
 
 export interface LoginData {

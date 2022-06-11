@@ -3,8 +3,9 @@ import { parksListSelector } from "../../redux/features/parksSlice/parkSlice";
 import { useAppSelector } from "../../redux/hooks/hooks";
 
 import styled from "styled-components";
+import Filters from "../../components/Filters/Filters";
 
-const LoginFormStyles = styled.div`
+const ListParkStyles = styled.div`
   overflow-x: hidden;
   display: flex;
   align-items: center;
@@ -24,10 +25,11 @@ const ListParkPage = () => {
   const parks = useAppSelector(parksListSelector);
 
   return (
-    <LoginFormStyles>
+    <ListParkStyles>
       <h1>Best playGrounds in your city</h1>
       <ParkList results={parks} />
-    </LoginFormStyles>
+      <Filters />
+    </ListParkStyles>
   );
 };
 
