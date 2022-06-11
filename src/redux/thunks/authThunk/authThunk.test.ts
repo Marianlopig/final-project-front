@@ -12,6 +12,7 @@ describe("Given a loginThunk function", () => {
       const expectedData = {
         username: "marian",
         name: "marian",
+        userId: "1",
       };
       const userData = {
         username: "marian",

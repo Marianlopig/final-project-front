@@ -9,7 +9,7 @@ import {
   loadingActionCreator,
   notLoadingActionCreator,
 } from "../../features/uiSlice/uiSlice";
-import { IPark } from "../../types/parkInterfaces";
+import { IFilters, IPark } from "../../types/parkInterfaces";
 import { toast } from "react-toastify";
 
 const url: string = `${process.env.REACT_APP_API_URL}/parks`;
@@ -21,18 +21,32 @@ const getAuth = () => {
   };
 };
 
-export const loadParksThunk = () => async (dispatch: Dispatch) => {
-  try {
-    const { data, status } = await axios.get(`${url}/list`);
-    dispatch(loadingActionCreator());
+export const loadParksThunk =
+  (filter?: IFilters) => async (dispatch: Dispatch) => {
+    try {
+      let query = "";
+      if (filter) {
+        if (filter.owner) {
+          query += "&owner=" + filter.owner;
+        }
+        if (filter.city) {
+          query += "&city=" + filter.city;
+        }
+        if (filter.ids) {
+          query += "&ids=" + filter.ids;
+        }
+      }
 
-    if (status === 200) {
-      dispatch(loadParksActionCreator(data));
+      const { data, status } = await axios.get(`${url}/list?${query}`);
+      dispatch(loadingActionCreator());
+
+      if (status === 200) {
+        dispatch(loadParksActionCreator(data));
+      }
+    } finally {
+      dispatch(notLoadingActionCreator());
     }
-  } finally {
-    dispatch(notLoadingActionCreator());
-  }
-};
+  };
 
 export const deleteParkThunk = (id: string) => async (dispatch: Dispatch) => {
   const { status } = await axios.delete(`${url}/${id}`, getAuth());
