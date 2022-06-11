@@ -55,12 +55,11 @@ const NavBar = () => {
             </li>
             <li
               onClick={() => {
+                setIsNavExpanded(!isNavExpanded);
                 if (token) {
-                  setIsNavExpanded(!isNavExpanded);
                   dispatch(logoutActionCreator());
                   deleteToken();
                 } else {
-                  setIsNavExpanded(!isNavExpanded);
                   navigate("/login");
                 }
               }}
@@ -69,12 +68,11 @@ const NavBar = () => {
             </li>
             <li
               onClick={() => {
+                setIsNavExpanded(!isNavExpanded);
                 if (token) {
-                  setIsNavExpanded(!isNavExpanded);
                   navigate("/newpark");
                 } else {
-                  setIsNavExpanded(!isNavExpanded);
-                  navigate("/newpark");
+                  navigate("/new-user");
                 }
               }}
             >
