@@ -69,14 +69,13 @@ const NavBar = () => {
             <li
               onClick={() => {
                 setIsNavExpanded(!isNavExpanded);
-                if (token) {
-                  navigate("/newpark");
-                } else {
-                  navigate("/new-user");
-                }
               }}
             >
-              {token ? "Create a Park" : "Register"}
+              {token ? (
+                <Link to="/newpark">Create Park</Link>
+              ) : (
+                <Link to="/new-user">Register</Link>
+              )}
             </li>
           </ul>
         </div>

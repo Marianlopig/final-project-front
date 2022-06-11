@@ -109,15 +109,16 @@ const Park = ({
                 );
               })}
             </div>
-            <p className="card-content">{description}</p>
           </div>
 
           <div className="button-container">
             <button className="button button--info">
-              <BsInfo />
+              <BsInfo className="mobile-button" />
+              <span className="desktop-button">Details</span>
             </button>
             <button className="button button--favourite">
-              <ImHeart />
+              <ImHeart className="mobile-button" />
+              <span className="desktop-button">Save</span>
             </button>
           </div>
         </div>

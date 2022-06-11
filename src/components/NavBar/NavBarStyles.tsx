@@ -10,35 +10,34 @@ export const NavBarStyles = styled.div`
     position: fixed;
     padding: 0.5rem 0rem;
     background-color: #fff;
-    color: black;
+    color: #545656;
     box-shadow: 0 2px 2px 2px rgba(9, 9, 9, 0.23);
     z-index: 99999;
+    white-space: nowrap;
 
     .navigation-menu {
-      display: flex;
-      font-size: 25px;
-      column-gap: 40px;
-      width: 70%;
-      padding-left: 50px;
+      font-size: 20px;
       width: 100%;
       font-weight: bold;
-      gap: 20px;
+      display: inset-block;
+      margin-right: 50px;
       ul {
         display: flex;
         padding: 0;
+        float: left;
 
         li {
-          display: block;
+          display: flex;
           width: 100%;
           list-style-type: none;
           margin: 0 1rem;
-          padding: 30px 0px 20px 0px;
+          cursor: pointer;
+          :hover {
+            color: #a6a6a6;
+          }
           a {
             text-decoration: none;
-
-            :hover {
-              color: #a6a6a6;
-            }
+            color: inherit;
           }
           img {
             width: 250px;
@@ -97,16 +96,15 @@ export const NavBarStyles = styled.div`
       }
       .navigation-menu.expanded {
         display: block;
-        margin-top: 15px;
         z-index: 10;
-        color: black;
+        color: #545656;
       }
       .logo img {
         height: 70px;
       }
       ul {
         position: absolute;
-        top: 40px;
+        top: 55px;
         left: 0;
         display: none;
         flex-direction: column;
@@ -118,15 +116,14 @@ export const NavBarStyles = styled.div`
         li {
           text-align: center;
           margin: 0;
+          color: #545656;
+          width: 100%;
+          padding: 1.5rem 0;
+          justify-content: center;
 
           :hover {
             background-color: #eee;
-          }
-
-          a {
-            color: black;
-            width: 100%;
-            padding: 1.5rem 0;
+            color: #9a9b9b;
           }
         }
       }
