@@ -18,7 +18,7 @@ export const ParkStyles = styled.div`
       box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.5);
       border-radius: 8px;
       transition: 0.4s;
-      height: 650px;
+      height: 550px;
       :hover {
         .card-image {
           transform: translateX(0px);
@@ -46,6 +46,8 @@ export const ParkStyles = styled.div`
           color: #00c2cb;
           display: flex;
           justify-content: center;
+          font-size: 25px;
+          white-space: nowrap;
         }
         p {
           overflow: hidden;
@@ -67,7 +69,6 @@ export const ParkStyles = styled.div`
         margin: 12px 0;
         transition: 0.4s;
         font-family: "DM Serif Display", serif;
-        font-weight: 600;
         letter-spacing: 2px;
       }
 
@@ -108,14 +109,17 @@ export const ParkStyles = styled.div`
         justify-content: space-between;
 
         .button {
-          width: 140px;
-          height: 60px;
+          width: 120px;
+          height: 40px;
           border-radius: 12%;
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
           border: none;
+          color: white;
+          font-size: 20px;
+          font-weight: bold;
           &--info {
             background-color: #00c2cb;
           }
@@ -126,11 +130,19 @@ export const ParkStyles = styled.div`
             fill: #fff;
             width: 38px;
             height: 38px;
+            display: none;
           }
+
           @media screen and (max-width: 768px) {
             width: 70px;
             height: 70px;
             border-radius: 50%;
+            .desktop-button {
+              display: none;
+            }
+            .mobile-button {
+              display: flex;
+            }
           }
         }
       }
