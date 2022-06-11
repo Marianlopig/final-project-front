@@ -11,6 +11,7 @@ describe("Given a parkSlice with an loadParkActionCreator", () => {
         next: undefined,
         previous: undefined,
         total: 0,
+        filters: {},
         results: [],
       };
 

@@ -36,5 +36,6 @@ export const mockParksPage: IParkState = {
   next: undefined,
   previous: undefined,
   total: 0,
+  filters: {},
   results: [mockPark],
 };
