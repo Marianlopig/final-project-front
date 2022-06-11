@@ -5,9 +5,8 @@ import { IParkState } from "../../types/parkInterfaces";
 const initialState: IParkState = {
   page: 0,
   pageSize: 10,
-  next: undefined,
-  previous: undefined,
   total: 0,
+  filters: {},
   results: [],
 };
 
@@ -18,7 +17,43 @@ const parkSlice = createSlice({
     loadParks: (
       currentState: IParkState,
       action: PayloadAction<IParkState>
-    ) => ({ ...action.payload }),
+    ) => ({ ...currentState, ...action.payload }),
+    filterOwner: (currentState: IParkState, action: PayloadAction<string>) => {
+      const newState = { ...currentState };
+
+      if (action.payload) {
+        newState.filters.owner = action.payload;
+      } else {
+        delete newState.filters.city;
+      }
+
+      return newState;
+    },
+    filterCity: (currentState: IParkState, action: PayloadAction<string>) => {
+      const newState = { ...currentState };
+
+      if (action.payload) {
+        newState.filters.city = action.payload;
+      } else {
+        delete newState.filters.city;
+      }
+
+      return newState;
+    },
+    filterFav: (
+      currentState: IParkState,
+      action: PayloadAction<string | undefined>
+    ) => {
+      const newState = { ...currentState };
+
+      if (action.payload) {
+        newState.filters.ids = action.payload;
+      } else {
+        delete newState.filters.city;
+      }
+
+      return newState;
+    },
   },
 });
 

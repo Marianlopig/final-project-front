@@ -1,10 +1,17 @@
 export interface IParkState {
   page: number;
   pageSize: number;
-  next: string | undefined;
-  previous: string | undefined;
+  next?: string;
+  previous?: string;
   total: number;
+  filters: IFilters;
   results: IPark[];
+}
+
+export interface IFilters {
+  owner?: string;
+  ids?: string;
+  city?: string;
 }
 export interface ILocation {
   type: string;
