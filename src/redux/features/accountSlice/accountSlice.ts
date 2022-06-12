@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../store/store";
-import { IPark } from "../../types/parkInterfaces";
 import { Account } from "../../types/userInterfaces";
 
 const initialState: Account = {
