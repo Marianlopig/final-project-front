@@ -17,11 +17,6 @@ const NavBar = () => {
   return (
     <NavBarStyles>
       <nav className="navigation">
-        <div className="logo">
-          <Link className="logolink" to="/">
-            <img src="/images/columpiaDa.png" alt="columpia logo"></img>
-          </Link>
-        </div>
         <div
           className="hamburger"
           onClick={() => {
@@ -56,6 +51,17 @@ const NavBar = () => {
             <li
               onClick={() => {
                 setIsNavExpanded(!isNavExpanded);
+              }}
+            >
+              {token ? (
+                <Link to="/newpark">Create Park</Link>
+              ) : (
+                <Link to="/new-user">Register</Link>
+              )}
+            </li>
+            <li
+              onClick={() => {
+                setIsNavExpanded(!isNavExpanded);
                 if (token) {
                   dispatch(logoutActionCreator());
                   deleteToken();
@@ -66,18 +72,12 @@ const NavBar = () => {
             >
               {token ? "LogOut" : "LogIn"}
             </li>
-            <li
-              onClick={() => {
-                setIsNavExpanded(!isNavExpanded);
-              }}
-            >
-              {token ? (
-                <Link to="/newpark">Create Park</Link>
-              ) : (
-                <Link to="/new-user">Register</Link>
-              )}
-            </li>
           </ul>
+        </div>
+        <div className="logo">
+          <Link className="logolink" to="/">
+            <img src="/images/columpiaDa.png" alt="columpia logo"></img>
+          </Link>
         </div>
       </nav>
     </NavBarStyles>

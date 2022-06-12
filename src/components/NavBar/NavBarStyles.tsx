@@ -5,9 +5,8 @@ export const NavBarStyles = styled.div`
     height: 60px;
     width: 100%;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     align-items: center;
-    position: fixed;
     padding: 0.5rem 0rem;
     background-color: #fff;
     color: #545656;
@@ -58,13 +57,12 @@ export const NavBarStyles = styled.div`
       background-color: #656565;
       cursor: pointer;
       transition: background-color 0.2s ease-in-out;
-      position: absolute;
-      top: 50%;
-      left: 25px;
-      transform: translateY(-50%);
       display: none;
+      justify-content: space-between;
+
       .hamburguer--icon {
         font-size: 40px;
+        color: #e6e4e4;
       }
 
       :hover {
@@ -87,20 +85,30 @@ export const NavBarStyles = styled.div`
     }
 
     @media screen and (max-width: 768px) {
+      .navigation {
+        display: flex;
+        justify-content: space-between;
+        padding-left: 20px;
+      }
       .hamburger {
-        display: block;
+        display: flex;
+        margin-left: 10px;
       }
 
       .navigation-menu {
         display: none;
       }
       .navigation-menu.expanded {
-        display: block;
+        display: flex;
         z-index: 10;
         color: #545656;
       }
-      .logo img {
-        height: 70px;
+      .logo {
+        display: flex;
+        margin-left: auto;
+        img {
+          height: 70px;
+        }
       }
       ul {
         position: absolute;

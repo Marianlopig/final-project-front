@@ -15,9 +15,9 @@ const ListParkStyles = styled.div`
     display: flex;
     color: #0cc8d0;
     padding: 0px 20px 0px 20px;
-    margin-top: 100px;
     align-items: center;
     justify-content: center;
+    font-size: 25px;
   }
 `;
 
@@ -26,9 +26,9 @@ const ListParkPage = () => {
 
   return (
     <ListParkStyles>
-      <h1>Best playGrounds in your city</h1>
-      <ParkList results={parks} />
       <Filters />
+      <h1>Find the best PlayGrounds</h1>
+      <ParkList results={parks} />
     </ListParkStyles>
   );
 };
