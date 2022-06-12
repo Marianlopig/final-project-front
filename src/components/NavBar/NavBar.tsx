@@ -4,6 +4,7 @@ import { RiMenuFill } from "react-icons/ri";
 import { useState } from "react";
 import { logoutActionCreator } from "../../redux/features/authSlice/authSlice";
 import { useAppDispatch } from "../../redux/hooks/hooks";
+import { logoutAccountActionCreator } from "../../redux/features/accountSlice/accountSlice";
 
 const NavBar = () => {
   const [isNavExpanded, setIsNavExpanded] = useState<boolean>(false);
@@ -64,6 +65,7 @@ const NavBar = () => {
                 setIsNavExpanded(!isNavExpanded);
                 if (token) {
                   dispatch(logoutActionCreator());
+                  dispatch(logoutAccountActionCreator());
                   deleteToken();
                 } else {
                   navigate("/login");
