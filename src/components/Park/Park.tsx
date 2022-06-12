@@ -13,9 +13,16 @@ import { BiBeer } from "react-icons/bi";
 import { MdPool } from "react-icons/md";
 import { RiPingPongFill, RiBikeLine } from "react-icons/ri";
 import { IPark, ParkDetail } from "../../redux/types/parkInterfaces";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
+import { accountSelector } from "../../redux/features/accountSlice/accountSlice";
+import {
+  addFavouriteThunk,
+  deleteFavouriteThunk,
+} from "../../redux/thunks/accountThunk/accountThunk";
 
 const Park = ({
+  id,
   name,
   description,
   photos,
@@ -27,6 +34,16 @@ const Park = ({
   const [imageUrl, setImageUrl] = useState<string>(
     `${process.env.REACT_APP_API_URL}/${photos[0]}`
   );
+
+  const [isFavourite, setIsFavourite] = useState<boolean>(false);
+
+  const { favParks } = useAppSelector(accountSelector);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    setIsFavourite(favParks.includes(id!));
+  }, [favParks, id]);
 
   const getIcon = (detail: string) => {
     let component;
@@ -116,10 +133,25 @@ const Park = ({
               <BsInfo className="mobile-button" />
               <span className="desktop-button">Details</span>
             </button>
-            <button className="button button--favourite">
-              <ImHeart className="mobile-button" />
-              <span className="desktop-button">Save</span>
-            </button>
+
+            {!isFavourite && (
+              <button
+                className="button button--favourite"
+                onClick={() => dispatch(addFavouriteThunk(id!))}
+              >
+                <ImHeart className="mobile-button" />
+                <span className="desktop-button">Save</span>
+              </button>
+            )}
+            {isFavourite && (
+              <button
+                className="button button--favourite"
+                onClick={() => dispatch(deleteFavouriteThunk(id!))}
+              >
+                <ImHeart className="mobile-button" />
+                <span className="desktop-button">Delete</span>
+              </button>
+            )}
           </div>
         </div>
       </section>
