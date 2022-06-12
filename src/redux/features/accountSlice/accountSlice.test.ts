@@ -1,67 +1,67 @@
-import { mockPark } from "../../../mocks/ParksMocks";
 import accountReducer, {
-  addParkActionCreator,
-  deleteParkActionCreator,
+  addFavouriteActionCreator,
+  deleteFavouriteActionCreator,
+  loadAccountActionCreator,
 } from "./accountSlice";
 
 describe("Given a account slice", () => {
-  describe("When we execute the reducer deletePark", () => {
+  describe("When we execute the reducer deleteFavourite", () => {
     test("Then it should return the new state without the deleted park", () => {
       const initialState = {
         name: "Marian",
         username: "marian",
         email: "test@test.com",
         city: "Barcelona",
-        favParks: [],
-        ownParks: [
-          {
-            id: "2",
-            name: "parque bonito",
-            description: "un parque muy bonito",
-            photos: ["photo1.png", "photo2.png"],
-            location: {
-              type: "Point",
-              coordinates: [4567, 5764],
-            },
-            details: ["aga", "bar"],
-            owner: "1",
-          },
-          {
-            id: "3",
-            name: "parque feo",
-            description: "un parque muy feo",
-            photos: ["photo1.png, photo2.png"],
-            location: {
-              type: "Point",
-              coordinates: [4567, 5764],
-            },
-            details: ["aga", "bar"],
-            owner: "1",
-          },
-        ],
+        favParks: ["1"],
       };
 
-      const action = deleteParkActionCreator("3");
+      const action = deleteFavouriteActionCreator("1");
       const newState = accountReducer(initialState, action);
 
-      expect(newState.ownParks.length).toEqual(1);
+      expect(newState.favParks.length).toEqual(0);
     });
   });
-  describe("When we execute the reducer addPark", () => {
-    test("Then it should return the new state with the new park", () => {
+  describe("When we execute the reducer addFavouritePark", () => {
+    test("Then it should return the new state with the new park in fav", () => {
       const initialState = {
         name: "Marian",
         username: "marian",
         email: "test@test.com",
         city: "Barcelona",
-        favParks: [],
-        ownParks: [],
+        favParks: ["1"],
       };
 
-      const action = addParkActionCreator(mockPark);
+      const idFavouritePark = "2";
+
+      const action = addFavouriteActionCreator(idFavouritePark);
       const newState = accountReducer(initialState, action);
 
-      expect(newState.ownParks.length).toEqual(1);
+      expect(newState.favParks.length).toEqual(2);
+    });
+  });
+
+  describe("When we execute the reducer loadAccount", () => {
+    test("Then it should return the new state account", () => {
+      const initialState = {
+        name: "",
+        username: "",
+        email: "",
+        city: "",
+        favParks: [],
+      };
+
+      const payload = {
+        name: "Marian",
+        username: "marian",
+        email: "test@test.com",
+        city: "Barcelona",
+        favParks: ["1"],
+      };
+
+      const action = loadAccountActionCreator(payload);
+      const newState = accountReducer(initialState, action);
+
+      expect(newState).toBe(payload);
     });
   });
 });
