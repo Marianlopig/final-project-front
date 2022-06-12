@@ -111,7 +111,7 @@ export const ParkStyles = styled.div`
         .button {
           width: 120px;
           height: 40px;
-          border-radius: 12%;
+          border-radius: 12px;
           display: flex;
           flex-direction: column;
           justify-content: center;

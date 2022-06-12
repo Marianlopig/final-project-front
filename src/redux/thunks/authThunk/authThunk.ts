@@ -13,13 +13,17 @@ import {
   notLoadingActionCreator,
 } from "../../features/uiSlice/uiSlice";
 import { toast } from "react-toastify";
+import { loadAccountActionCreator } from "../../features/accountSlice/accountSlice";
 
 export const loginThunk =
   (userData: LoginData) => async (dispatch: Dispatch) => {
     dispatch(loadingActionCreator());
-    const url: string = `${process.env.REACT_APP_API_URL}/users/login`;
+    const url: string = `${process.env.REACT_APP_API_URL}/users`;
     try {
-      const { data, status }: DataAxiosLogin = await axios.post(url, userData);
+      const { data, status }: DataAxiosLogin = await axios.post(
+        `${url}/login`,
+        userData
+      );
 
       if (status === 200) {
         toast.success("LogIn successful!");
@@ -28,6 +32,15 @@ export const loginThunk =
         );
         localStorage.setItem("token", data.token);
         dispatch(loginActionCreator({ name, username, userId }));
+        const { data: dataAccount, status: statusAccount } = await axios.get(
+          `${url}/account`,
+          {
+            headers: { Authorization: `Bearer ${data.token}` },
+          }
+        );
+        if (statusAccount === 200) {
+          dispatch(loadAccountActionCreator(dataAccount));
+        }
       }
     } catch (error: any) {
       toast.error("Wrong username or password, try again");

@@ -31,6 +31,7 @@ const accountSlice = createSlice({
         (id) => action.payload !== id
       ),
     }),
+    logoutAccount: () => initialState,
   },
 });
 
@@ -38,6 +39,7 @@ export const {
   loadAccount: loadAccountActionCreator,
   addFavourite: addFavouriteActionCreator,
   deleteFavourite: deleteFavouriteActionCreator,
+  logoutAccount: logoutAccountActionCreator,
 } = accountSlice.actions;
 
 export const accountSelector = (state: RootState) => state.account;

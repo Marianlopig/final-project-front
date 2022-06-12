@@ -34,8 +34,8 @@ export const loadParksThunk =
         }
       }
 
-      const { data, status } = await axios.get(`${url}/list?${query}`);
       dispatch(loadingActionCreator());
+      const { data, status } = await axios.get(`${url}/list?${query}`);
 
       if (status === 200) {
         dispatch(loadParksActionCreator(data));
