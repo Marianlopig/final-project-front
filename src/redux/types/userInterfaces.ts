@@ -37,6 +37,5 @@ export interface Account {
   username: string;
   email: string;
   city: string;
-  favParks: IPark[];
-  ownParks: IPark[];
+  favParks: string[];
 }

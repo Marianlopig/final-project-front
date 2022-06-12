@@ -1,9 +1,6 @@
 import { mockPark, mockParksPage } from "../../../mocks/ParksMocks";
 import "../../../mocks/server";
-import {
-  addParkActionCreator,
-  deleteParkActionCreator,
-} from "../../features/accountSlice/accountSlice";
+import {} from "../../features/accountSlice/accountSlice";
 import { loadParksActionCreator } from "../../features/parksSlice/parkSlice";
 import {
   loadingActionCreator,
@@ -31,9 +28,9 @@ describe("Given a deletePark function", () => {
       const dispatch = jest.fn();
       const thunk = deleteParkThunk("8");
       await thunk(dispatch);
-      const action = deleteParkActionCreator("8");
 
-      expect(dispatch).toHaveBeenCalledWith(action);
+      expect(dispatch).toHaveBeenCalledWith(loadingActionCreator());
+      expect(dispatch).toHaveBeenCalledWith(notLoadingActionCreator());
     });
   });
 });
@@ -44,10 +41,8 @@ describe("Given a createPark function", () => {
       const dispatch = jest.fn();
       const thunk = createParkThunk(mockPark);
       await thunk(dispatch);
-      const action = addParkActionCreator(mockPark);
 
       expect(dispatch).toHaveBeenCalledWith(loadingActionCreator());
-      expect(dispatch).toHaveBeenCalledWith(action);
       expect(dispatch).toHaveBeenCalledWith(notLoadingActionCreator());
     });
   });

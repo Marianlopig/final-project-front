@@ -9,31 +9,36 @@ const initialState: Account = {
   email: "",
   city: "",
   favParks: [],
-  ownParks: [],
 };
 
 const accountSlice = createSlice({
   name: "account",
   initialState,
   reducers: {
-    // loadData:
-    addPark: (currentState: Account, action: PayloadAction<IPark>) => ({
+    loadAccount: (currentState: Account, action: PayloadAction<Account>) =>
+      action.payload,
+
+    addFavourite: (currentState: Account, action: PayloadAction<string>) => ({
       ...currentState,
-      ownParks: [...currentState.ownParks, action.payload],
+      favParks: [...currentState.favParks, action.payload],
     }),
 
-    deletePark: (currentState: Account, action: PayloadAction<string>) => ({
+    deleteFavourite: (
+      currentState: Account,
+      action: PayloadAction<string>
+    ) => ({
       ...currentState,
-      ownParks: currentState.ownParks.filter(
-        (park) => park.id !== action.payload
+      favParks: [...currentState.favParks].filter(
+        (id) => action.payload !== id
       ),
     }),
   },
 });
 
 export const {
-  deletePark: deleteParkActionCreator,
-  addPark: addParkActionCreator,
+  loadAccount: loadAccountActionCreator,
+  addFavourite: addFavouriteActionCreator,
+  deleteFavourite: deleteFavouriteActionCreator,
 } = accountSlice.actions;
 
 export const accountSelector = (state: RootState) => state.account;

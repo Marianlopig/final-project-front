@@ -1,9 +1,6 @@
 import { Dispatch } from "@reduxjs/toolkit";
 import axios from "axios";
-import {
-  addParkActionCreator,
-  deleteParkActionCreator,
-} from "../../features/accountSlice/accountSlice";
+import {} from "../../features/accountSlice/accountSlice";
 import { loadParksActionCreator } from "../../features/parksSlice/parkSlice";
 import {
   loadingActionCreator,
@@ -49,10 +46,9 @@ export const loadParksThunk =
   };
 
 export const deleteParkThunk = (id: string) => async (dispatch: Dispatch) => {
-  const { status } = await axios.delete(`${url}/${id}`, getAuth());
-  if (status === 200) {
-    dispatch(deleteParkActionCreator(id));
-  }
+  dispatch(loadingActionCreator());
+  await axios.delete(`${url}/${id}`, getAuth());
+  dispatch(notLoadingActionCreator());
 };
 
 export const createParkThunk =
@@ -93,10 +89,9 @@ export const createParkThunk =
         parkRequest.append(`details[${index}]`, detail);
       });
 
-      const { status, data } = await axios.post(`${url}/`, parkRequest, config);
+      const { status } = await axios.post(`${url}/`, parkRequest, config);
       if (status === 201) {
         toast.success("Park created! Thanks!");
-        dispatch(addParkActionCreator(data));
       } else {
         toast.error(`Error creating the park`);
       }
