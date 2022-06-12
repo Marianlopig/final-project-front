@@ -4,7 +4,6 @@ import { toast } from "react-toastify";
 import {
   addFavouriteActionCreator,
   deleteFavouriteActionCreator,
-  loadAccountActionCreator,
 } from "../../features/accountSlice/accountSlice";
 import {
   loadingActionCreator,
