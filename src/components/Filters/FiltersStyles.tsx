@@ -96,7 +96,6 @@ export const FiltersStyles = styled.div`
   }
   @media screen and (max-width: 768px) {
     flex-direction: column;
-    padding-top: 15px;
 
     .main-container {
       display: none;
@@ -104,13 +103,13 @@ export const FiltersStyles = styled.div`
 
     .container-filter {
       display: flex;
-      margin-top: -15px;
     }
 
     .main-container.expanded {
       display: block;
       .input-container {
         padding-bottom: 20px;
+        padding-top: 20px;
       }
       .button-container {
         gap: 10px;
