@@ -13,14 +13,13 @@ import { BiBeer } from "react-icons/bi";
 import { MdPool } from "react-icons/md";
 import { RiPingPongFill, RiBikeLine } from "react-icons/ri";
 import { IPark, ParkDetail } from "../../redux/types/parkInterfaces";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import { accountSelector } from "../../redux/features/accountSlice/accountSlice";
 import {
   addFavouriteThunk,
   deleteFavouriteThunk,
 } from "../../redux/thunks/accountThunk/accountThunk";
-import { createProxyProxy } from "immer/dist/internal";
 
 const Park = ({
   id,
