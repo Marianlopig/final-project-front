@@ -9,7 +9,7 @@ import styled from "styled-components";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const IndexStyles = styled.div`
+export const IndexStyles = styled.div`
   * {
     font-family: "Roboto";
   }
