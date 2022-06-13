@@ -1,18 +1,7 @@
 import { ParkStyles } from "./ParkStyles";
 import { ImHeart } from "react-icons/im";
-import { BsInfo, BsTreeFill } from "react-icons/bs";
-import {
-  GiKidSlide,
-  GiBasketballBasket,
-  GiWateringCan,
-  GiWoodenFence,
-  GiParkBench,
-  GiTable,
-} from "react-icons/gi";
-import { BiBeer } from "react-icons/bi";
-import { MdPool } from "react-icons/md";
-import { RiPingPongFill, RiBikeLine } from "react-icons/ri";
-import { IPark, ParkDetail } from "../../redux/types/parkInterfaces";
+import { BsInfo } from "react-icons/bs";
+import { IPark } from "../../redux/types/parkInterfaces";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import { accountSelector } from "../../redux/features/accountSlice/accountSlice";
@@ -21,6 +10,7 @@ import {
   deleteFavouriteThunk,
 } from "../../redux/thunks/accountThunk/accountThunk";
 import { useNavigate } from "react-router-dom";
+import DetailsIcons from "../DetailsIcons/DetailsIcons";
 
 const Park = ({
   id,
@@ -46,47 +36,6 @@ const Park = ({
   useEffect(() => {
     setIsFavourite(favParks.includes(id!));
   }, [favParks, id]);
-
-  const getIcon = (detail: string) => {
-    let component;
-    switch (detail) {
-      case ParkDetail.swing:
-        component = <GiKidSlide />;
-        break;
-      case ParkDetail.water:
-        component = <GiWateringCan />;
-        break;
-      case ParkDetail.shadow:
-        component = <BsTreeFill />;
-        break;
-      case ParkDetail.fence:
-        component = <GiWoodenFence />;
-        break;
-      case ParkDetail.bar:
-        component = <BiBeer />;
-        break;
-      case ParkDetail.swimmingPool:
-        component = <MdPool />;
-        break;
-      case ParkDetail.bench:
-        component = <GiParkBench />;
-        break;
-      case ParkDetail.picnic:
-        component = <GiTable />;
-        break;
-      case ParkDetail.pingPong:
-        component = <RiPingPongFill />;
-        break;
-      case ParkDetail.basket:
-        component = <GiBasketballBasket />;
-        break;
-      case ParkDetail.bike:
-        component = <RiBikeLine />;
-        break;
-    }
-
-    return component;
-  };
 
   const onImageError = (event: any) => {
     if (firstError) {
@@ -119,15 +68,7 @@ const Park = ({
             </span>
             <h4>Details: </h4>
 
-            <div className="details-container">
-              {details.map((detail) => {
-                return (
-                  <div className="details-container--icons">
-                    {getIcon(detail)}
-                  </div>
-                );
-              })}
-            </div>
+            <DetailsIcons details={details} />
           </div>
 
           <div className="button-container">
