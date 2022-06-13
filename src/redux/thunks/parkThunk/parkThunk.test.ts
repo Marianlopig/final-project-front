@@ -20,7 +20,11 @@ describe("Given a loadParks function", () => {
       const dispatch = jest.fn();
       const parkColectionData = mockParksPage;
       const loadColectionAction = loadParksActionCreator(parkColectionData);
-      const thunk = loadParksThunk();
+      const thunk = loadParksThunk({
+        city: "Barcelona",
+        ids: "123",
+        owner: "123",
+      });
       await thunk(dispatch);
 
       expect(dispatch).toHaveBeenCalledWith(loadColectionAction);
