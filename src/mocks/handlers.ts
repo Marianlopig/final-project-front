@@ -34,4 +34,10 @@ export const usersHandlers = [
   rest.post(`${process.env.REACT_APP_API_URL}/parks/`, (req, res, ctx) => {
     return res(ctx.status(201), ctx.json(mockPark));
   }),
+  rest.get(
+    `${process.env.REACT_APP_API_URL}/parks/629f8aec8c2b3037ff6aeb4d`,
+    (req, res, ctx) => {
+      return res(ctx.status(200), ctx.json(mockPark));
+    }
+  ),
 ];
