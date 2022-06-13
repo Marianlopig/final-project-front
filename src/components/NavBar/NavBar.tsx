@@ -22,11 +22,7 @@ const NavBar = () => {
   return (
     <NavBarStyles>
       <nav className="navigation">
-        <div
-          className="hamburger"
-          onClick={navExpandedToggle}
-          test-id="hamburgerClickableDiv"
-        >
+        <div className="hamburger" onClick={navExpandedToggle}>
           <RiMenuFill className="hamburguer--icon" />
         </div>
         <div className={`navigation-menu${isNavExpanded ? " expanded" : ""}`}>
