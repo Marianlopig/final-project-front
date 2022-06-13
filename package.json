@@ -68,7 +68,7 @@
       "!src/index.tsx",
       "!src/reportWebVitals.ts",
       "!src/components/LoginForm/__snapshots__/*",
-      "!src/mocks/*"
+      "!src/mocks/handlers.ts"
     ],
     "transformIgnorePatterns": [
       "/!node_modules\\/react-leaflet/"
