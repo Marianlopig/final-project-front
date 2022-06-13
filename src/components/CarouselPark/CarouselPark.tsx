@@ -3,7 +3,7 @@ import { Carousel } from "react-carousel-minimal";
 
 const CarouselPark = ({ photosBackup }: any) => {
   const data = photosBackup.map((photo: any) => ({
-    image: `${process.env.REACT_APP_API_URL}/${photo}`,
+    image: `${photo}`,
     caption: "",
   }));
 
@@ -23,31 +23,33 @@ const CarouselPark = ({ photosBackup }: any) => {
             padding: "0 20px",
           }}
         >
-          <Carousel
-            data={data}
-            time={2000}
-            width="850px"
-            height="500px"
-            captionStyle={captionStyle}
-            radius="10px"
-            slideNumber={true}
-            slideNumberStyle={slideNumberStyle}
-            captionPosition="bottom"
-            automatic={true}
-            dots={true}
-            pauseIconColor="white"
-            pauseIconSize="40px"
-            slideBackgroundColor="darkgrey"
-            slideImageFit="cover"
-            thumbnails={true}
-            thumbnailWidth="100px"
-            style={{
-              textAlign: "center",
-              maxWidth: "850px",
-              maxHeight: "500px",
-              margin: "40px auto",
-            }}
-          />
+          {data && data[0] && (
+            <Carousel
+              data={data}
+              time={2000}
+              width="850px"
+              height="500px"
+              captionStyle={captionStyle}
+              radius="10px"
+              slideNumber={true}
+              slideNumberStyle={slideNumberStyle}
+              captionPosition="bottom"
+              automatic={true}
+              dots={true}
+              pauseIconColor="white"
+              pauseIconSize="40px"
+              slideBackgroundColor="darkgrey"
+              slideImageFit="cover"
+              thumbnails={false}
+              thumbnailWidth="100px"
+              style={{
+                textAlign: "center",
+                maxWidth: "850px",
+                maxHeight: "500px",
+                margin: "40px auto",
+              }}
+            />
+          )}
         </div>
       </div>
     </div>

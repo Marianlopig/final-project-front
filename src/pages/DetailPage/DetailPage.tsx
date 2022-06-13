@@ -12,7 +12,7 @@ const DetailPage = () => {
 
   useEffect(() => {
     dispatch(getParkDetailThunk(id as string));
-  });
+  }, [dispatch, id]);
 
   return <DetailPark park={park} />;
 };
