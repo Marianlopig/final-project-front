@@ -1,12 +1,18 @@
 import { mockPark, mockParksPage } from "../../../mocks/ParksMocks";
 import "../../../mocks/server";
 import {} from "../../features/accountSlice/accountSlice";
+import { loadParkDetailsActionCreator } from "../../features/parkSlice/parkSlice";
 import { loadParksActionCreator } from "../../features/parksSlice/parksSlice";
 import {
   loadingActionCreator,
   notLoadingActionCreator,
 } from "../../features/uiSlice/uiSlice";
-import { createParkThunk, deleteParkThunk, loadParksThunk } from "./parkThunk";
+import {
+  createParkThunk,
+  deleteParkThunk,
+  getParkDetailThunk,
+  loadParksThunk,
+} from "./parkThunk";
 
 describe("Given a loadParks function", () => {
   describe("When it is called", () => {
@@ -44,6 +50,20 @@ describe("Given a createPark function", () => {
 
       expect(dispatch).toHaveBeenCalledWith(loadingActionCreator());
       expect(dispatch).toHaveBeenCalledWith(notLoadingActionCreator());
+    });
+  });
+});
+
+describe("Given a getParkDetailThunk function", () => {
+  describe("When it is called", () => {
+    test("It should dispatch loadParkDetailsActionCreator with the park details", async () => {
+      const dispatch = jest.fn();
+      const parkData = mockPark;
+      const loadParkData = loadParkDetailsActionCreator(parkData);
+      const thunk = getParkDetailThunk("629f8aec8c2b3037ff6aeb4d");
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalledWith(loadParkData);
     });
   });
 });

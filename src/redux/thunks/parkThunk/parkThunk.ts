@@ -105,7 +105,6 @@ export const getParkDetailThunk =
   (id: string) => async (dispatch: Dispatch) => {
     try {
       dispatch(loadingActionCreator());
-
       const { data, status } = await axios.get(`${url}/${id}`);
       if (status === 200) {
         dispatch(loadParkDetailsActionCreator(data));
