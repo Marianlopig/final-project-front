@@ -61,8 +61,7 @@
     "@types/leaflet": "^1.7.10",
     "babel-jest": "^28.1.0",
     "husky": "^7.0.4",
-    "msw": "^0.39.2",
-    "@types/react-gallery-carousel": "^0.2.2"
+    "msw": "^0.39.2"
   },
   "jest": {
     "collectCoverageFrom": [

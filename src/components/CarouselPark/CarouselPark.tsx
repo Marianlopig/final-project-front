@@ -1,31 +1,11 @@
-import Carousel from "react-gallery-carousel";
-import { IPark } from "../../redux/types/parkInterfaces";
+// @ts-ignore
+import { Carousel } from "react-carousel-minimal";
 
-interface ICarousel {
-  image: string;
-  caption: string;
-}
-
-const CarouselPark = ({
-  id,
-  name,
-  description,
-  photos,
-  photosBackup,
-  location,
-  details,
-  owner,
-  address,
-}: IPark) => {
-  const data = (photosBackup: string[]): ICarousel[] | undefined => {
-    if (photosBackup) {
-      const pictures = photosBackup.map((photo) => ({
-        image: `${process.env.REACT_APP_API_URL}/${photo}`,
-        caption: "",
-      }));
-      return pictures;
-    }
-  };
+const CarouselPark = ({ photosBackup }: any) => {
+  const data = photosBackup.map((photo: any) => ({
+    image: `${process.env.REACT_APP_API_URL}/${photo}`,
+    caption: "",
+  }));
 
   const captionStyle = {
     fontSize: "2em",
@@ -44,7 +24,7 @@ const CarouselPark = ({
           }}
         >
           <Carousel
-            data={data(park)}
+            data={data}
             time={2000}
             width="850px"
             height="500px"
@@ -73,5 +53,4 @@ const CarouselPark = ({
     </div>
   );
 };
-
 export default CarouselPark;
