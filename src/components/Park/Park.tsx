@@ -20,6 +20,7 @@ import {
   addFavouriteThunk,
   deleteFavouriteThunk,
 } from "../../redux/thunks/accountThunk/accountThunk";
+import { useNavigate } from "react-router-dom";
 
 const Park = ({
   id,
@@ -40,6 +41,7 @@ const Park = ({
   const { favParks } = useAppSelector(accountSelector);
 
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsFavourite(favParks.includes(id!));
@@ -129,7 +131,10 @@ const Park = ({
           </div>
 
           <div className="button-container">
-            <button className="button button--info">
+            <button
+              className="button button--info"
+              onClick={() => navigate(`/park/${id}`)}
+            >
               <BsInfo className="mobile-button" />
               <span className="desktop-button">Details</span>
             </button>

@@ -8,7 +8,7 @@ import {
 } from "react-leaflet";
 
 export interface IMap {
-  onLocationSelected(loc: [number, number]): void;
+  onLocationSelected?(loc: [number, number]): void;
   location: [number, number];
 }
 
@@ -16,8 +16,10 @@ const Map = ({ onLocationSelected, location }: IMap) => {
   function LocationMarker() {
     const map = useMapEvents({
       click(e) {
-        onLocationSelected([e.latlng.lat, e.latlng.lng]);
-        map.flyTo(e.latlng, map.getZoom());
+        if (onLocationSelected) {
+          onLocationSelected([e.latlng.lat, e.latlng.lng]);
+          map.flyTo(e.latlng, map.getZoom());
+        }
       },
     });
 

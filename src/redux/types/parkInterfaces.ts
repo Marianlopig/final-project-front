@@ -23,7 +23,7 @@ export interface IParkList {
 }
 
 export interface IPark {
-  id?: string;
+  id: string;
   name: string;
   description: string;
   photos: string[];
