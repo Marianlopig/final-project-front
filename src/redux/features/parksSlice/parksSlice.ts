@@ -10,7 +10,7 @@ const initialState: IParkState = {
   results: [],
 };
 
-const parkSlice = createSlice({
+const parksSlice = createSlice({
   name: "parks",
   initialState,
   reducers: {
@@ -36,13 +36,16 @@ const parkSlice = createSlice({
   },
 });
 
+//  loadPark: (
+//       currentState.results: IPark[], action:PayloadAction<Ipark>)
+
 export const {
   loadParks: loadParksActionCreator,
   filterOwner: filterOwnerActionCreator,
   filterCity: filterCityActionCreator,
   filterFav: filterFavActionCreator,
-} = parkSlice.actions;
+} = parksSlice.actions;
 
 export const parksListSelector = (state: RootState) => state.parks.results;
 
-export default parkSlice.reducer;
+export default parksSlice.reducer;

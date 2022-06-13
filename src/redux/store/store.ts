@@ -1,15 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
-import parkReducer from "../features/parksSlice/parkSlice";
 import uiReducer from "../features/uiSlice/uiSlice";
 import authReducer from "../features/authSlice/authSlice";
 import accountReducer from "../features/accountSlice/accountSlice";
+import parksReducer from "../features/parksSlice/parksSlice";
+import parkReducer from "../features/parkSlice/parkSlice";
 
 const store = configureStore({
   reducer: {
     auth: authReducer,
     ui: uiReducer,
-    parks: parkReducer,
+    parks: parksReducer,
     account: accountReducer,
+    park: parkReducer,
   },
 });
 

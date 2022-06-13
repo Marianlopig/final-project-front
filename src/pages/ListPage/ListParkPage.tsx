@@ -1,5 +1,5 @@
 import ParkList from "../../components/ParkList/ParkList";
-import { parksListSelector } from "../../redux/features/parksSlice/parkSlice";
+import { parksListSelector } from "../../redux/features/parksSlice/parksSlice";
 import { useAppSelector } from "../../redux/hooks/hooks";
 
 import styled from "styled-components";

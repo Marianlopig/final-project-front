@@ -1,7 +1,7 @@
 import { mockPark, mockParksPage } from "../../../mocks/ParksMocks";
 import "../../../mocks/server";
 import {} from "../../features/accountSlice/accountSlice";
-import { loadParksActionCreator } from "../../features/parksSlice/parkSlice";
+import { loadParksActionCreator } from "../../features/parksSlice/parksSlice";
 import {
   loadingActionCreator,
   notLoadingActionCreator,
