@@ -15,7 +15,7 @@ describe("Given a ParkForm component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <ParkForm />
+            <ParkForm edit={false} />
           </Provider>
         </BrowserRouter>
       );
@@ -84,7 +84,7 @@ describe("Given a ParkForm component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <ParkForm />
+            <ParkForm edit={false} />
           </Provider>
         </BrowserRouter>
       );
@@ -138,7 +138,7 @@ describe("Given a ParkForm component", () => {
       render(
         <BrowserRouter>
           <Provider store={store}>
-            <ParkForm />
+            <ParkForm edit={false} />
           </Provider>
         </BrowserRouter>
       );

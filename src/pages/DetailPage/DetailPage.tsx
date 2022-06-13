@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import DetailPark from "../../components/DetailPark/DetailPark";
-import EditParkForm from "../../components/EditParkForm/EditParkForm";
 import { parkSelector } from "../../redux/features/parkSlice/parkSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import { getParkDetailThunk } from "../../redux/thunks/parkThunk/parkThunk";

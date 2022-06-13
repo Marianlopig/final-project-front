@@ -1,7 +1,7 @@
 import ParkForm from "../../components/ParkForm/ParkForm";
 
 const CreateParkPage = () => {
-  return <ParkForm></ParkForm>;
+  return <ParkForm edit={false}></ParkForm>;
 };
 
 export default CreateParkPage;
