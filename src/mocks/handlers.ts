@@ -40,4 +40,16 @@ export const usersHandlers = [
       return res(ctx.status(200), ctx.json(mockPark));
     }
   ),
+  rest.put(
+    `${process.env.REACT_APP_API_URL}/users/addfavourite`,
+    (req, res, ctx) => {
+      return res(ctx.status(200), ctx.json({}));
+    }
+  ),
+  rest.put(
+    `${process.env.REACT_APP_API_URL}/users/deletefavourite`,
+    (req, res, ctx) => {
+      return res(ctx.status(200), ctx.json({}));
+    }
+  ),
 ];
