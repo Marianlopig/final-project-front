@@ -15,45 +15,32 @@ const NavBar = () => {
     localStorage.removeItem("token");
   };
 
+  const navExpandedToggle = () => {
+    setIsNavExpanded(!isNavExpanded);
+  };
+
   return (
     <NavBarStyles>
       <nav className="navigation">
         <div
           className="hamburger"
-          onClick={() => {
-            setIsNavExpanded(!isNavExpanded);
-          }}
+          onClick={navExpandedToggle}
+          test-id="hamburgerClickableDiv"
         >
           <RiMenuFill className="hamburguer--icon" />
         </div>
         <div className={`navigation-menu${isNavExpanded ? " expanded" : ""}`}>
           <ul>
-            <li
-              onClick={() => {
-                setIsNavExpanded(!isNavExpanded);
-              }}
-            >
+            <li onClick={navExpandedToggle}>
               <Link to="/">List</Link>
             </li>
-            <li
-              onClick={() => {
-                setIsNavExpanded(!isNavExpanded);
-              }}
-            >
+            <li onClick={navExpandedToggle}>
               <Link to="/">Map</Link>
             </li>
-            <li
-              onClick={() => {
-                setIsNavExpanded(!isNavExpanded);
-              }}
-            >
+            <li onClick={navExpandedToggle}>
               <Link to="/">My Account</Link>
             </li>
-            <li
-              onClick={() => {
-                setIsNavExpanded(!isNavExpanded);
-              }}
-            >
+            <li onClick={navExpandedToggle}>
               {token ? (
                 <Link to="/newpark">Create Park</Link>
               ) : (
@@ -62,7 +49,7 @@ const NavBar = () => {
             </li>
             <li
               onClick={() => {
-                setIsNavExpanded(!isNavExpanded);
+                navExpandedToggle();
                 if (token) {
                   dispatch(logoutActionCreator());
                   dispatch(logoutAccountActionCreator());
