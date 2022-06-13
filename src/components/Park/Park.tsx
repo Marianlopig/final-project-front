@@ -12,15 +12,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import DetailsIcons from "../DetailsIcons/DetailsIcons";
 
-const Park = ({
-  id,
-  name,
-  description,
-  photos,
-  photosBackup,
-  details,
-  address,
-}: IPark) => {
+const Park = ({ id, name, photos, photosBackup, details, address }: IPark) => {
   const [firstError, setFirstError] = useState<boolean>(true);
   const [imageUrl, setImageUrl] = useState<string>(
     `${process.env.REACT_APP_API_URL}/${photos[0]}`
