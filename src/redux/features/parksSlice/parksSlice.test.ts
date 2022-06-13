@@ -4,7 +4,7 @@ import parkReducer, {
   filterFavActionCreator,
   filterOwnerActionCreator,
   loadParksActionCreator,
-} from "./parkSlice";
+} from "./parksSlice";
 
 describe("Given a parkSlice with an loadParkActionCreator", () => {
   describe("When we call the api", () => {

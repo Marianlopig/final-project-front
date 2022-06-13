@@ -1,13 +1,14 @@
 import { Dispatch } from "@reduxjs/toolkit";
 import axios from "axios";
 import {} from "../../features/accountSlice/accountSlice";
-import { loadParksActionCreator } from "../../features/parksSlice/parkSlice";
+import { loadParksActionCreator } from "../../features/parksSlice/parksSlice";
 import {
   loadingActionCreator,
   notLoadingActionCreator,
 } from "../../features/uiSlice/uiSlice";
 import { IFilters, IPark } from "../../types/parkInterfaces";
 import { toast } from "react-toastify";
+import { loadParkDetailsActionCreator } from "../../features/parkSlice/parkSlice";
 
 const url: string = `${process.env.REACT_APP_API_URL}/parks`;
 
@@ -95,6 +96,23 @@ export const createParkThunk =
       } else {
         toast.error(`Error creating the park`);
       }
+    } finally {
+      dispatch(notLoadingActionCreator());
+    }
+  };
+
+export const getParkDetailThunk =
+  (id: string) => async (dispatch: Dispatch) => {
+    try {
+      dispatch(loadingActionCreator());
+
+      const { data, status } = await axios.get(`${url}/${id}`);
+      if (status === 200) {
+        dispatch(loadParkDetailsActionCreator(data));
+      }
+    } catch (error: any) {
+      toast.error("There was a problem with the details, try again");
+      return error.message;
     } finally {
       dispatch(notLoadingActionCreator());
     }
