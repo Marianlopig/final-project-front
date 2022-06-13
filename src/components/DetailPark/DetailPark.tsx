@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { IPark } from "../../redux/types/parkInterfaces";
 import CarouselPark from "../CarouselPark/CarouselPark";
 import DetailsIcons from "../DetailsIcons/DetailsIcons";
@@ -9,7 +10,7 @@ interface Props {
 
 const DetailPark = ({ park }: Props) => {
   const {
-    // id,
+    id,
     name,
     description,
     // photos,
@@ -20,10 +21,17 @@ const DetailPark = ({ park }: Props) => {
     address,
   } = park;
 
-  console.log(details);
+  const navigate = useNavigate();
 
   return (
     <>
+      <button
+        onClick={() => {
+          navigate(`/park/${id}/edit`);
+        }}
+      >
+        Edit
+      </button>
       <CarouselPark photosBackup={photosBackup} />
       <h1>{name}</h1>
       <p>{description}</p>

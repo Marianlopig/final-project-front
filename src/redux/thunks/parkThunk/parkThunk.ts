@@ -101,6 +101,59 @@ export const createParkThunk =
     }
   };
 
+export const editParkThunk =
+  (park: IPark, images?: FileList) => async (dispatch: Dispatch) => {
+    try {
+      dispatch(loadingActionCreator());
+
+      const token = localStorage.getItem("token");
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
+        },
+      };
+
+      const parkRequest = new FormData();
+      if (images) {
+        for (let i = 0; i < images.length; i++) {
+          parkRequest.append("image", images[i]);
+        }
+      }
+
+      parkRequest.append("name", park.name);
+      parkRequest.append("description", park.description);
+      parkRequest.append("location.type", park.location.type);
+      parkRequest.append(
+        "location.coordinates[0]",
+        park.location.coordinates[0].toString()
+      );
+      parkRequest.append(
+        "location.coordinates[1]",
+        park.location.coordinates[1].toString()
+      );
+      parkRequest.append("address.city", park.address?.city ?? "");
+      parkRequest.append("address.address", park.address?.address ?? "");
+
+      park.details.forEach((detail, index) => {
+        parkRequest.append(`details[${index}]`, detail);
+      });
+
+      const { status } = await axios.put(
+        `${url}/${park.id}`,
+        parkRequest,
+        config
+      );
+      if (status === 200) {
+        toast.success("Park Updated! Thanks!");
+      } else {
+        toast.error(`Error updating the park`);
+      }
+    } finally {
+      dispatch(notLoadingActionCreator());
+    }
+  };
+
 export const getParkDetailThunk =
   (id: string) => async (dispatch: Dispatch) => {
     try {
