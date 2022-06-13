@@ -65,9 +65,10 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "!src/index.ts",
+      "!src/index.tsx",
       "!src/reportWebVitals.ts",
-      "!src/components/LoginForm/__snapshots__/*"
+      "!src/components/LoginForm/__snapshots__/*",
+      "!src/mocks/*"
     ],
     "transformIgnorePatterns": [
       "/!node_modules\\/react-leaflet/"
