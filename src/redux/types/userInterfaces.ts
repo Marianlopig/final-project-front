@@ -1,5 +1,3 @@
-import { IPark } from "./parkInterfaces";
-
 export interface IUser {
   name: string;
   username: string;
