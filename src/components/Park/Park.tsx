@@ -1,5 +1,5 @@
 import { ParkStyles } from "./ParkStyles";
-import { ImHeart } from "react-icons/im";
+import { BsStarFill } from "react-icons/bs";
 import { BsInfo } from "react-icons/bs";
 import { IPark } from "../../redux/types/parkInterfaces";
 import { useEffect, useState } from "react";
@@ -48,7 +48,6 @@ const Park = ({ id, name, photos, photosBackup, details, address }: IPark) => {
         <div className="card">
           <img
             className="card-image"
-            //src="images/columpiaDa.png"
             src={imageUrl}
             alt="beautiful forest"
             onError={onImageError}
@@ -77,7 +76,7 @@ const Park = ({ id, name, photos, photosBackup, details, address }: IPark) => {
                 className="button button--favourite"
                 onClick={() => dispatch(addFavouriteThunk(id!))}
               >
-                <ImHeart className="mobile-button" />
+                <BsStarFill className="mobile-button" />
                 <span className="desktop-button">Save</span>
               </button>
             )}
@@ -86,8 +85,8 @@ const Park = ({ id, name, photos, photosBackup, details, address }: IPark) => {
                 className="button button--favourite"
                 onClick={() => dispatch(deleteFavouriteThunk(id!))}
               >
-                <ImHeart className="mobile-button" />
-                <span className="desktop-button">Delete</span>
+                <BsStarFill className="mobile-button delete" />
+                <span className="desktop-button unsave">Saved</span>
               </button>
             )}
           </div>
