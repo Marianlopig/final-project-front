@@ -1,7 +1,10 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useAppDispatch } from "../../redux/hooks/hooks";
-import { createParkThunk } from "../../redux/thunks/parkThunk/parkThunk";
-import { IAddress, ParkDetail } from "../../redux/types/parkInterfaces";
+import {
+  createParkThunk,
+  editParkThunk,
+} from "../../redux/thunks/parkThunk/parkThunk";
+import { IAddress, IPark, ParkDetail } from "../../redux/types/parkInterfaces";
 import Map from "../Map/Map";
 import { ParkFormStyles } from "./ParkFormStyles";
 import { AiOutlineCamera } from "react-icons/ai";
@@ -18,38 +21,56 @@ import { BiBeer } from "react-icons/bi";
 import { MdPool } from "react-icons/md";
 import { RiBikeLine, RiPingPongFill } from "react-icons/ri";
 
-const ParkForm = () => {
+export interface ParkFormProps {
+  park?: IPark;
+  edit: boolean;
+}
+
+const ParkForm = ({ park: currentPark, edit }: ParkFormProps) => {
   const [parkLocation, setParkLocation] = useState<[number, number]>([
     41.388014160598885, 2.185983541021393,
   ]);
 
-  const [park, setPark] = useState({
-    id: "",
-    name: "",
-    description: "",
-    photos: [],
-    location: { type: "Point", coordinates: [] },
-    details: [],
-    owner: "",
-  });
+  const [park, setPark] = useState(
+    currentPark ?? {
+      id: "",
+      name: "",
+      description: "",
+      photos: [],
+      photosBackup: [],
+      location: { type: "Point", coordinates: [] },
+      details: [],
+      owner: "",
+      address: {},
+    }
+  );
 
-  const [address, setAddress] = useState<IAddress>({ city: "", address: "" });
+  const [address, setAddress] = useState<IAddress>(
+    currentPark?.address ?? { city: "", address: "" }
+  );
 
   const [images, setImages] = useState<FileList>();
 
   const [step, setStep] = useState(0);
 
-  const [checkedDetails, setCheckedDetails] = useState<any>([]);
+  const [checkedDetails, setCheckedDetails] = useState<any>(
+    currentPark?.details ?? []
+  );
 
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    if (navigator?.geolocation) {
+    if (edit && currentPark) {
+      setParkLocation([
+        currentPark.location.coordinates[0],
+        currentPark.location.coordinates[1],
+      ]);
+    } else if (navigator?.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         setParkLocation([position.coords.latitude, position.coords.longitude]);
       });
     }
-  }, []);
+  }, [edit, currentPark]);
 
   const changeData = (event: ChangeEvent<HTMLInputElement>) => {
     setPark({ ...park, [event.target.id]: event.target.value });
@@ -61,17 +82,31 @@ const ParkForm = () => {
 
   const submitPark = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    await dispatch(
-      createParkThunk(
-        {
-          ...park,
-          address,
-          details: checkedDetails,
-          location: { type: "Point", coordinates: parkLocation },
-        },
-        images
-      )
-    );
+    if (edit) {
+      await dispatch(
+        editParkThunk(
+          {
+            ...park,
+            address,
+            details: checkedDetails,
+            location: { type: "Point", coordinates: parkLocation },
+          },
+          images
+        )
+      );
+    } else {
+      await dispatch(
+        createParkThunk(
+          {
+            ...park,
+            address,
+            details: checkedDetails,
+            location: { type: "Point", coordinates: parkLocation },
+          },
+          images
+        )
+      );
+    }
   };
 
   const parkDetailChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -109,6 +144,17 @@ const ParkForm = () => {
                     className="selected-image"
                   />
                 )}
+
+                {!(images && images[0]) &&
+                  currentPark &&
+                  currentPark.photosBackup &&
+                  currentPark.photosBackup[0] && (
+                    <img
+                      src={currentPark.photosBackup[0]}
+                      alt="park"
+                      className="selected-image"
+                    />
+                  )}
                 <AiOutlineCamera />
                 <input
                   multiple
@@ -320,9 +366,15 @@ const ParkForm = () => {
               </button>
             )}
           </div>
-          {step >= 3 && (
+          {step >= 3 && !edit && (
             <button className="button-create" type="submit">
               Create
+            </button>
+          )}
+
+          {step >= 3 && edit && (
+            <button className="button-create" type="submit">
+              edit
             </button>
           )}
         </form>
