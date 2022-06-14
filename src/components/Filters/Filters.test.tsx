@@ -10,6 +10,7 @@ jest.mock("../../redux/hooks/hooks", () => ({
   useAppSelector: () => ({
     userId: "1",
     favParks: ["1", "2"],
+    loggedIn: true,
   }),
 }));
 
@@ -20,7 +21,6 @@ jest.mock("../../redux/thunks/parkThunk/parkThunk", () => ({
 describe("Given a Filters component", () => {
   describe("When it is instanted", () => {
     test("Then it should render the filter options", () => {
-      localStorage.setItem("token", "123");
       render(
         <BrowserRouter>
           <Provider store={store}>

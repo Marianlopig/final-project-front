@@ -11,12 +11,11 @@ const Filters = () => {
   const dispatch = useAppDispatch();
 
   const { userId } = useAppSelector(authSelector);
-  const { favParks } = useAppSelector(accountSelector);
+  const { favParks, loggedIn } = useAppSelector(accountSelector);
 
   const [city, setCity] = useState("");
   const [isFilterExpanded, setFilterExpanded] = useState<boolean>(false);
 
-  const token = localStorage.getItem("token");
   const MyFilters = () => (
     <div className="button-container">
       <button
@@ -41,7 +40,7 @@ const Filters = () => {
   return (
     <FiltersStyles>
       <div className={`main-container${isFilterExpanded ? " expanded" : ""}`}>
-        {token && <MyFilters />}
+        {loggedIn && <MyFilters />}
 
         <div className="input-container">
           <label htmlFor="bycity"> Filter by City:</label>

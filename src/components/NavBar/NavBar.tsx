@@ -3,14 +3,17 @@ import { Link, useNavigate } from "react-router-dom";
 import { RiMenuFill } from "react-icons/ri";
 import { useState } from "react";
 import { logoutActionCreator } from "../../redux/features/authSlice/authSlice";
-import { useAppDispatch } from "../../redux/hooks/hooks";
-import { logoutAccountActionCreator } from "../../redux/features/accountSlice/accountSlice";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
+import {
+  accountSelector,
+  logoutAccountActionCreator,
+} from "../../redux/features/accountSlice/accountSlice";
 
 const NavBar = () => {
   const [isNavExpanded, setIsNavExpanded] = useState<boolean>(false);
-  const token = localStorage.getItem("token");
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const { loggedIn } = useAppSelector(accountSelector);
   const deleteToken = () => {
     localStorage.removeItem("token");
   };
@@ -34,7 +37,7 @@ const NavBar = () => {
               <Link to="/map">Map</Link>
             </li>
             <li onClick={navExpandedToggle}>
-              {token ? (
+              {loggedIn ? (
                 <Link to="/newpark">Create Park</Link>
               ) : (
                 <Link to="/new-user">Register</Link>
@@ -43,7 +46,7 @@ const NavBar = () => {
             <li
               onClick={() => {
                 navExpandedToggle();
-                if (token) {
+                if (loggedIn) {
                   dispatch(logoutActionCreator());
                   dispatch(logoutAccountActionCreator());
                   deleteToken();
@@ -52,7 +55,7 @@ const NavBar = () => {
                 }
               }}
             >
-              {token ? "LogOut" : "LogIn"}
+              {loggedIn ? "LogOut" : "LogIn"}
             </li>
           </ul>
         </div>
