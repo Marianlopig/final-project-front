@@ -52,4 +52,11 @@ export const usersHandlers = [
       return res(ctx.status(200), ctx.json({}));
     }
   ),
+
+  rest.put(
+    `${process.env.REACT_APP_API_URL}/parks/629f8aec8c2b3037ff6aeb4d`,
+    (req, res, ctx) => {
+      return res(ctx.status(200), ctx.json(mockPark));
+    }
+  ),
 ];
