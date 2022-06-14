@@ -20,6 +20,7 @@ import { BsTreeFill } from "react-icons/bs";
 import { BiBeer } from "react-icons/bi";
 import { MdPool } from "react-icons/md";
 import { RiBikeLine, RiPingPongFill } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
 
 export interface ParkFormProps {
   park?: IPark;
@@ -58,6 +59,7 @@ const ParkForm = ({ park: currentPark, edit }: ParkFormProps) => {
   );
 
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (edit && currentPark) {
@@ -94,6 +96,9 @@ const ParkForm = ({ park: currentPark, edit }: ParkFormProps) => {
           images
         )
       );
+      console.log(park.id);
+
+      navigate(`/park/${park.id}`);
     } else {
       await dispatch(
         createParkThunk(
@@ -106,6 +111,8 @@ const ParkForm = ({ park: currentPark, edit }: ParkFormProps) => {
           images
         )
       );
+      console.log(park.id);
+      navigate(`/parks`);
     }
   };
 
@@ -346,6 +353,17 @@ const ParkForm = ({ park: currentPark, edit }: ParkFormProps) => {
               ></input>
             </div>
           )}
+          {step >= 3 && !edit && (
+            <button className="button-create" type="submit">
+              Create
+            </button>
+          )}
+
+          {step >= 3 && edit && (
+            <button className="button-create" type="submit">
+              Edit
+            </button>
+          )}
           <div className="buttons">
             {step >= 1 && (
               <button
@@ -366,17 +384,6 @@ const ParkForm = ({ park: currentPark, edit }: ParkFormProps) => {
               </button>
             )}
           </div>
-          {step >= 3 && !edit && (
-            <button className="button-create" type="submit">
-              Create
-            </button>
-          )}
-
-          {step >= 3 && edit && (
-            <button className="button-create" type="submit">
-              edit
-            </button>
-          )}
         </form>
       </div>
     </ParkFormStyles>
