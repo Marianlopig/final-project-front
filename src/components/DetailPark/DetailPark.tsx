@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "../../redux/hooks/hooks";
 import { IPark } from "../../redux/types/parkInterfaces";
 import CarouselPark from "../CarouselPark/CarouselPark";
 import DetailsIcons from "../DetailsIcons/DetailsIcons";
 import Map from "../Map/Map";
 import { DetailParkStyles } from "./DetailParkStyles";
+import { accountSelector } from "../../redux/features/accountSlice/accountSlice";
 
 interface Props {
   park: IPark;
@@ -23,6 +25,7 @@ const DetailPark = ({ park }: Props) => {
   } = park;
 
   const navigate = useNavigate();
+  const { loggedIn } = useAppSelector(accountSelector);
 
   return (
     <DetailParkStyles>
@@ -32,13 +35,15 @@ const DetailPark = ({ park }: Props) => {
         <p className="description">{description}</p>
         <div className="body-container">
           <DetailsIcons details={details} />
-          <button
-            onClick={() => {
-              navigate(`/park/${id}/edit`);
-            }}
-          >
-            Edit
-          </button>
+          {loggedIn && (
+            <button
+              onClick={() => {
+                navigate(`/park/${id}/edit`);
+              }}
+            >
+              Edit
+            </button>
+          )}
         </div>
         <p>
           {address?.city}, {address?.address}

@@ -36,4 +36,5 @@ export interface Account {
   email: string;
   city: string;
   favParks: string[];
+  loggedIn?: boolean;
 }

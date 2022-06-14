@@ -8,14 +8,17 @@ const initialState: Account = {
   email: "",
   city: "",
   favParks: [],
+  loggedIn: false,
 };
 
 const accountSlice = createSlice({
   name: "account",
   initialState,
   reducers: {
-    loadAccount: (currentState: Account, action: PayloadAction<Account>) =>
-      action.payload,
+    loadAccount: (currentState: Account, action: PayloadAction<Account>) => ({
+      ...action.payload,
+      loggedIn: true,
+    }),
 
     addFavourite: (currentState: Account, action: PayloadAction<string>) => ({
       ...currentState,
