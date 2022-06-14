@@ -13,6 +13,7 @@ describe("Given a account slice", () => {
         email: "test@test.com",
         city: "Barcelona",
         favParks: ["1"],
+        loggedIn: true,
       };
 
       const action = deleteFavouriteActionCreator("1");
@@ -29,6 +30,7 @@ describe("Given a account slice", () => {
         email: "test@test.com",
         city: "Barcelona",
         favParks: ["1"],
+        loggedIn: true,
       };
 
       const idFavouritePark = "2";
@@ -48,6 +50,7 @@ describe("Given a account slice", () => {
         email: "",
         city: "",
         favParks: [],
+        loggedIn: false,
       };
 
       const payload = {
@@ -56,12 +59,13 @@ describe("Given a account slice", () => {
         email: "test@test.com",
         city: "Barcelona",
         favParks: ["1"],
+        loggedIn: true,
       };
 
       const action = loadAccountActionCreator(payload);
       const newState = accountReducer(initialState, action);
 
-      expect(newState).toBe(payload);
+      expect(newState).toEqual(payload);
     });
   });
 });
