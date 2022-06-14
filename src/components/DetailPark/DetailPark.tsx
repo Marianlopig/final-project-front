@@ -27,7 +27,7 @@ const DetailPark = ({ park }: Props) => {
   return (
     <DetailParkStyles>
       <div className="main-container">
-        <h1>Detalles {name}</h1>
+        <h1>{name}</h1>
         <CarouselPark photosBackup={photosBackup} />
         <p className="description">{description}</p>
         <div className="body-container">
