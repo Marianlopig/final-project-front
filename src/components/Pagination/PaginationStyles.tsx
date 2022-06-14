@@ -1,8 +1,11 @@
 import styled from "styled-components";
 
 export const PaginationStyles = styled.div`
+  display: flex;
+  width: 100%;
+  background-color: #c9e265;
+
   .pager {
-    background-color: #b2df28;
     height: 80px;
     width: 100%;
     display: flex;
@@ -19,6 +22,7 @@ export const PaginationStyles = styled.div`
     }
 
     svg {
+      color: #00c2cb;
       width: 70px;
       height: 70px;
     }
