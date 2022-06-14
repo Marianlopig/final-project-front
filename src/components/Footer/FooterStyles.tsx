@@ -4,7 +4,6 @@ export const FooterStyles = styled.div`
   box-sizing: border-box;
   font-family: "Lato", sans-serif;
   margin: 0;
-  padding: 50px 0 0 0;
   ul {
     list-style: none;
     padding-left: 0;

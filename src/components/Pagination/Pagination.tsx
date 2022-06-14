@@ -14,16 +14,24 @@ const Pagination = () => {
         <div
           className="icon-container"
           onClick={() =>
+            parkState.previous &&
             dispatch(loadParksThunk(undefined, parkState.previous))
           }
         >
           <BsCaretLeftFill title="previous-page" />
         </div>
-        <span>21-30</span>
+        <span>
+          {parkState.page * parkState.pageSize + 1}-
+          {parkState.page * parkState.pageSize + parkState.results.length}/
+          {parkState.total}
+        </span>
 
         <div
           className="icon-container"
-          onClick={() => dispatch(loadParksThunk(undefined, parkState.next))}
+          onClick={() =>
+            parkState.next &&
+            dispatch(loadParksThunk(undefined, parkState.next))
+          }
         >
           <BsCaretRightFill title="next-page" />
         </div>

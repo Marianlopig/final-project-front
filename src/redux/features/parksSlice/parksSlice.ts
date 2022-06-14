@@ -17,7 +17,7 @@ const parksSlice = createSlice({
     loadParks: (
       currentState: IParkState,
       action: PayloadAction<IParkState>
-    ) => ({ ...currentState, ...action.payload }),
+    ) => ({ ...action.payload }),
     filterOwner: (currentState: IParkState, action: PayloadAction<string>) => ({
       ...currentState,
       filters: { ...currentState.filters, owner: action.payload },
