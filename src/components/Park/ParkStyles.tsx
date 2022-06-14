@@ -82,6 +82,11 @@ export const ParkStyles = styled.div`
         display: flex;
         justify-content: space-between;
 
+        .unsave {
+          opacity: 50%;
+          color: #00c2cb;
+        }
+
         .button {
           width: 120px;
           height: 40px;
@@ -116,6 +121,9 @@ export const ParkStyles = styled.div`
             }
             .mobile-button {
               display: flex;
+            }
+            .delete {
+              fill: #00c2cb;
             }
           }
         }
