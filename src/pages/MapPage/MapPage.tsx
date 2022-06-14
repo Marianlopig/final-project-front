@@ -19,9 +19,11 @@ export const MapPageStyles = styled.div`
 const MapPage = () => {
   const parks = useAppSelector(parkPageSelector);
   const dispatch = useAppDispatch();
+  const url =
+    "https://marian-lopez-back-final-project-202204.onrender.com/parks/list?page=0&pageSize=50";
 
   useEffect(() => {
-    dispatch(loadParksThunk());
+    dispatch(loadParksThunk(undefined, url));
   }, [dispatch]);
 
   return (
