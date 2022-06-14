@@ -129,10 +129,10 @@ const ParkForm = ({ park: currentPark, edit }: ParkFormProps) => {
     <ParkFormStyles>
       <div className="main-container">
         <form onSubmit={submitPark}>
-          <h2>Create a new park</h2>
+          <h2>{!edit ? "Create a new park" : "Edit your park"}</h2>
           {step === 0 && (
             <div className="container-steps">
-              <h3>Select park location</h3>
+              <h3>{!edit ? "Select park location" : "Edit park Location"}</h3>
               <Map
                 onLocationSelected={(loc) => setParkLocation(loc)}
                 location={parkLocation}
@@ -142,7 +142,11 @@ const ParkForm = ({ park: currentPark, edit }: ParkFormProps) => {
 
           {step === 1 && (
             <div className="container-steps--photos">
-              <h3>Upload pictures</h3>
+              <h3>
+                {!edit
+                  ? "Upload pictures"
+                  : "Change your pictures or add new ones"}
+              </h3>
               <label className="input-container" htmlFor="file">
                 {images && images[0] && (
                   <img
@@ -178,7 +182,11 @@ const ParkForm = ({ park: currentPark, edit }: ParkFormProps) => {
 
           {step === 2 && (
             <div className="container-steps--icons">
-              <h3>What does this park have?</h3>
+              <h3>
+                {!edit
+                  ? "What does this park have?"
+                  : "Change details from the park"}
+              </h3>
               <div className="container-icons">
                 <label>
                   <div className="items">
@@ -318,7 +326,9 @@ const ParkForm = ({ park: currentPark, edit }: ParkFormProps) => {
 
           {step === 3 && (
             <div className="container-name">
-              <h3>Let others find it!</h3>
+              <h3>
+                {!edit ? "Let others find it!" : "Edit your park details"}
+              </h3>
               <label htmlFor="name">Name</label>
               <input
                 type="text"
@@ -341,7 +351,7 @@ const ParkForm = ({ park: currentPark, edit }: ParkFormProps) => {
                 id="city"
                 onChange={changeAddressData}
                 value={address.city}
-                placeholder="Ciudad"
+                placeholder="City"
               ></input>
               <label htmlFor="city">Address</label>
               <input
