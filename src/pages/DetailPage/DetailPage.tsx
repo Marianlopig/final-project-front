@@ -5,6 +5,18 @@ import { parkSelector } from "../../redux/features/parkSlice/parkSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import { getParkDetailThunk } from "../../redux/thunks/parkThunk/parkThunk";
 
+import styled from "styled-components";
+
+export const DetailParkPageStyles = styled.div`
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+`;
+
 const DetailPage = () => {
   const dispatch = useAppDispatch();
   const { id } = useParams<string>();
@@ -14,7 +26,11 @@ const DetailPage = () => {
     dispatch(getParkDetailThunk(id as string));
   }, [dispatch, id]);
 
-  return <DetailPark park={park} />;
+  return (
+    <DetailParkPageStyles>
+      <DetailPark park={park} />
+    </DetailParkPageStyles>
+  );
 };
 
 export default DetailPage;
