@@ -8,6 +8,7 @@ import DetailPage from "./pages/DetailPage/DetailPage";
 import EditPage from "./pages/EditPage/EditPage";
 import ListParkPage from "./pages/ListPage/ListParkPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import { uiShowSpinnerSelector } from "./redux/features/uiSlice/uiSlice";
 import { useAppSelector } from "./redux/hooks/hooks";
 
@@ -26,6 +27,7 @@ const App = () => {
         <Route path="/newpark" element={<CreateParkPage />} />
         <Route path="/park/:id" element={<DetailPage />} />
         <Route path="/park/:id/edit" element={<EditPage />} />
+        <Route path="/*" element={<NotFoundPage />} />
       </Routes>
 
       <Footer />
