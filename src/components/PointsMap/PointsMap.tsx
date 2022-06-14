@@ -1,4 +1,5 @@
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import { Link } from "react-router-dom";
 import { IPark, IParkState } from "../../redux/types/parkInterfaces";
 import { PointsMapStyles } from "./PointsMapStyles";
 
@@ -12,7 +13,9 @@ const PointsMap = ({ results: parks }: IParkState) => {
             lng: park.location.coordinates[1],
           }}
         >
-          <Popup>{park.name}</Popup>
+          <Popup>
+            <Link to={`/park/${park.id}`}>{park.name}</Link>
+          </Popup>
         </Marker>
       ))}
       ;
