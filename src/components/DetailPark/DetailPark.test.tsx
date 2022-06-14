@@ -7,7 +7,7 @@ import DetailPark from "./DetailPark";
 
 describe("Given a DetailPark component", () => {
   describe("When it is instanted", () => {
-    test("Then it should render the park details", () => {
+    test("Then it should render the park with details", () => {
       const park = mockPark;
 
       render(
