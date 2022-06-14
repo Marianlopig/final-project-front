@@ -47,5 +47,6 @@ export const {
 } = parksSlice.actions;
 
 export const parksListSelector = (state: RootState) => state.parks.results;
+export const parkPageSelector = (state: RootState) => state.parks;
 
 export default parksSlice.reducer;

@@ -31,10 +31,7 @@ const NavBar = () => {
               <Link to="/">List</Link>
             </li>
             <li onClick={navExpandedToggle}>
-              <Link to="/">Map</Link>
-            </li>
-            <li onClick={navExpandedToggle}>
-              <Link to="/">My Account</Link>
+              <Link to="/map">Map</Link>
             </li>
             <li onClick={navExpandedToggle}>
               {token ? (

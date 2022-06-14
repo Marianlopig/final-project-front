@@ -1,9 +1,11 @@
 import ParkList from "../../components/ParkList/ParkList";
 import { parksListSelector } from "../../redux/features/parksSlice/parksSlice";
-import { useAppSelector } from "../../redux/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 
 import styled from "styled-components";
 import Filters from "../../components/Filters/Filters";
+import { useEffect } from "react";
+import { loadParksThunk } from "../../redux/thunks/parkThunk/parkThunk";
 
 const ListParkStyles = styled.div`
   overflow-x: hidden;
@@ -23,6 +25,12 @@ const ListParkStyles = styled.div`
 
 const ListParkPage = () => {
   const parks = useAppSelector(parksListSelector);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(loadParksThunk());
+  }, [dispatch]);
 
   return (
     <ListParkStyles>
