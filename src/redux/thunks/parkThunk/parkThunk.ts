@@ -20,7 +20,7 @@ const getAuth = () => {
 };
 
 export const loadParksThunk =
-  (filter?: IFilters) => async (dispatch: Dispatch) => {
+  (filter?: IFilters, urlPath?: string) => async (dispatch: Dispatch) => {
     try {
       let query = "";
       if (filter) {
@@ -36,7 +36,9 @@ export const loadParksThunk =
       }
 
       dispatch(loadingActionCreator());
-      const { data, status } = await axios.get(`${url}/list?${query}`);
+      const { data, status } = await axios.get(
+        urlPath ?? `${url}/list?${query}`
+      );
 
       if (status === 200) {
         dispatch(loadParksActionCreator(data));

@@ -6,6 +6,7 @@ import styled from "styled-components";
 import Filters from "../../components/Filters/Filters";
 import { useEffect } from "react";
 import { loadParksThunk } from "../../redux/thunks/parkThunk/parkThunk";
+import Pagination from "../../components/Pagination/Pagination";
 
 const ListParkStyles = styled.div`
   overflow-x: hidden;
@@ -37,6 +38,7 @@ const ListParkPage = () => {
       <Filters />
       <h1>Find the best PlayGrounds</h1>
       <ParkList results={parks} />
+      <Pagination />
     </ListParkStyles>
   );
 };
