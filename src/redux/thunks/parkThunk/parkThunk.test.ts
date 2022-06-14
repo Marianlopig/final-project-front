@@ -10,6 +10,7 @@ import {
 import {
   createParkThunk,
   deleteParkThunk,
+  editParkThunk,
   getParkDetailThunk,
   loadParksThunk,
 } from "./parkThunk";
@@ -68,6 +69,20 @@ describe("Given a getParkDetailThunk function", () => {
       await thunk(dispatch);
 
       expect(dispatch).toHaveBeenCalledWith(loadParkData);
+    });
+  });
+});
+
+describe("Given a editParkThunk function", () => {
+  describe("When it is called", () => {
+    test("Then it should dispatch the editParkThunk with the edited park", async () => {
+      const dispatch = jest.fn();
+      const parkData = mockPark;
+
+      const thunk = editParkThunk(parkData);
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalled();
     });
   });
 });
