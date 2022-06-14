@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import {
   addFavouriteActionCreator,
   deleteFavouriteActionCreator,
+  loadAccountActionCreator,
 } from "../../features/accountSlice/accountSlice";
 import {
   loadingActionCreator,
@@ -67,3 +68,13 @@ export const deleteFavouriteThunk =
       dispatch(notLoadingActionCreator());
     }
   };
+
+export const loadAccountThunk = () => async (dispatch: Dispatch) => {
+  const { data: dataAccount, status: statusAccount } = await axios.get(
+    `${url}/account`,
+    getAuth()
+  );
+  if (statusAccount === 200) {
+    dispatch(loadAccountActionCreator(dataAccount));
+  }
+};

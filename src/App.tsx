@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
@@ -11,10 +12,17 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import MapPage from "./pages/MapPage/MapPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 import { uiShowSpinnerSelector } from "./redux/features/uiSlice/uiSlice";
-import { useAppSelector } from "./redux/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "./redux/hooks/hooks";
+import { loadAccountThunk } from "./redux/thunks/accountThunk/accountThunk";
 
 const App = () => {
   const showSpinner = useAppSelector(uiShowSpinnerSelector);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) dispatch(loadAccountThunk());
+  }, [dispatch]);
 
   return (
     <div>
