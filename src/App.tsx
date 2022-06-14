@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
+import AntiRestrictedPages from "./components/AntiRestrictedPages/AntiRestrictedPages";
 import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
 import RegisterForm from "./components/RegisterForm/RegisterForm";
+import RestrictedPages from "./components/RestrictedPages/RestrictedPages";
 import Spinner from "./components/Spinner/Spinner";
 import CreateParkPage from "./pages/CreateParkPage/CreateParkPage";
 import DetailPage from "./pages/DetailPage/DetailPage";
@@ -30,12 +32,42 @@ const App = () => {
       <Spinner show={showSpinner} />
       <Routes>
         <Route path="/" element={<Navigate to="/parks" />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/new-user" element={<RegisterForm />} />
+        <Route
+          path="/login"
+          element={
+            <AntiRestrictedPages>
+              <LoginPage />
+            </AntiRestrictedPages>
+          }
+        />
+        <Route
+          path="/new-user"
+          element={
+            <AntiRestrictedPages>
+              <RegisterForm />
+            </AntiRestrictedPages>
+          }
+        />
         <Route path="/parks" element={<ListParkPage />} />
-        <Route path="/newpark" element={<CreateParkPage />} />
+
+        <Route
+          path="/newpark"
+          element={
+            <RestrictedPages>
+              <CreateParkPage />
+            </RestrictedPages>
+          }
+        />
+
         <Route path="/park/:id" element={<DetailPage />} />
-        <Route path="/park/:id/edit" element={<EditPage />} />
+        <Route
+          path="/park/:id/edit"
+          element={
+            <RestrictedPages>
+              <EditPage />
+            </RestrictedPages>
+          }
+        />
         <Route path="/*" element={<NotFoundPage />} />
         <Route path="/map" element={<MapPage />} />
       </Routes>
