@@ -21,7 +21,6 @@ export const ParkStyles = styled.div`
       height: 550px;
       :hover {
         .card-image {
-          transform: translateX(0px);
           box-shadow: none;
         }
       }
@@ -30,7 +29,6 @@ export const ParkStyles = styled.div`
         width: 100%;
         height: 256px;
         border-radius: 8px;
-        transform: translateX(-32px);
         box-shadow: 16px 4px 24px 0 rgba(0, 0, 0, 0.2);
         transition: 0.4s;
         object-fit: cover;
@@ -99,6 +97,8 @@ export const ParkStyles = styled.div`
           color: white;
           font-size: 20px;
           font-weight: bold;
+          cursor: pointer;
+
           &--info {
             background-color: #00c2cb;
           }
@@ -127,6 +127,13 @@ export const ParkStyles = styled.div`
             }
           }
         }
+      }
+      .deletepark {
+        cursor: pointer;
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 20px;
+        color: #784545;
       }
     }
   }
