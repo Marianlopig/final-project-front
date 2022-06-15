@@ -64,6 +64,17 @@ const Park = ({
             alt="beautiful forest"
             onError={onImageError}
           />
+          {owner === userId && (
+            <div
+              className="deletepark"
+              onClick={async () => {
+                await dispatch(deleteParkThunk(id));
+                dispatch(loadParksThunk());
+              }}
+            >
+              Delete Park
+            </div>
+          )}
           <div className="card-body">
             <h3 className="card-title">{name}</h3>
             <span>
@@ -102,17 +113,6 @@ const Park = ({
               </button>
             )}
           </div>
-          {owner === userId && (
-            <div
-              className="deletepark"
-              onClick={async () => {
-                await dispatch(deleteParkThunk(id));
-                dispatch(loadParksThunk());
-              }}
-            >
-              Delete Park
-            </div>
-          )}
         </div>
       </section>
     </ParkStyles>
