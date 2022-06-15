@@ -6,13 +6,14 @@ import { loadParksThunk } from "../../redux/thunks/parkThunk/parkThunk";
 import styled from "styled-components";
 
 export const MapPageStyles = styled.div`
+  overflow-x: hidden;
+
   h1 {
     color: #0cc8d0;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    padding-left: 20px;
+    padding-left: 10px;
   }
 `;
 
