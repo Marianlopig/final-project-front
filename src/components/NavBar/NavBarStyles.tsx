@@ -100,7 +100,7 @@ export const NavBarStyles = styled.div`
       }
       .navigation-menu.expanded {
         display: flex;
-        z-index: 10;
+        z-index: 9900;
         color: #545656;
       }
       .logo {
