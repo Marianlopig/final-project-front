@@ -18,7 +18,7 @@ export const ParkStyles = styled.div`
       box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.5);
       border-radius: 8px;
       transition: 0.4s;
-      height: 550px;
+      height: 600px;
       :hover {
         .card-image {
           box-shadow: none;
@@ -36,16 +36,18 @@ export const ParkStyles = styled.div`
       }
 
       .card-body {
-        padding: 8px;
+        padding: 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
+
         h3 {
           color: #00c2cb;
-          display: flex;
-          justify-content: center;
           font-size: 25px;
+          text-overflow: ellipsis;
+          overflow: hidden;
           white-space: nowrap;
+          padding-top: 20px;
         }
         p {
           overflow: hidden;
@@ -76,7 +78,7 @@ export const ParkStyles = styled.div`
       }
 
       .button-container {
-        padding-top: 40px;
+        padding-top: 10px;
         display: flex;
         justify-content: space-between;
 
@@ -130,8 +132,7 @@ export const ParkStyles = styled.div`
       }
       .deletepark {
         cursor: pointer;
-        display: flex;
-        justify-content: flex-end;
+        position: absolute;
         padding-top: 20px;
         color: #784545;
       }
