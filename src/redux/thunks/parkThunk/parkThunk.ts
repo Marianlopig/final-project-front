@@ -59,45 +59,62 @@ export const deleteParkThunk = (id: string) => async (dispatch: Dispatch) => {
   dispatch(notLoadingActionCreator());
 };
 
+const appendImages = (request: FormData, images?: FileList) => {
+  if (images) {
+    for (let i = 0; i < images.length; i++) {
+      request.append("image", images[i]);
+    }
+  }
+};
+
+const getFormDataFromPark = (park: IPark, images?: FileList): FormData => {
+  const parkRequest = new FormData();
+  appendImages(parkRequest, images);
+
+  parkRequest.append("name", park.name);
+  parkRequest.append("description", park.description);
+  parkRequest.append("location.type", park.location.type);
+  parkRequest.append(
+    "location.coordinates[0]",
+    park.location.coordinates[0].toString()
+  );
+  parkRequest.append(
+    "location.coordinates[1]",
+    park.location.coordinates[1].toString()
+  );
+  parkRequest.append("address.city", park.address?.city ?? "");
+  parkRequest.append("address.address", park.address?.address ?? "");
+
+  park.details.forEach((detail, index) => {
+    parkRequest.append(`details[${index}]`, detail);
+  });
+
+  return parkRequest;
+};
+
+const getConfigCreateUpdate = () => {
+  const token = localStorage.getItem("token");
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "multipart/form-data",
+    },
+  };
+  return config;
+};
+
 export const createParkThunk =
   (park: IPark, images?: FileList) => async (dispatch: Dispatch) => {
     try {
       dispatch(loadingActionCreator());
 
-      const token = localStorage.getItem("token");
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
-        },
-      };
+      const parkRequest = getFormDataFromPark(park, images);
 
-      const parkRequest = new FormData();
-      if (images) {
-        for (let i = 0; i < images.length; i++) {
-          parkRequest.append("image", images[i]);
-        }
-      }
-
-      parkRequest.append("name", park.name);
-      parkRequest.append("description", park.description);
-      parkRequest.append("location.type", park.location.type);
-      parkRequest.append(
-        "location.coordinates[0]",
-        park.location.coordinates[0].toString()
+      const { status } = await axios.post(
+        `${url}/`,
+        parkRequest,
+        getConfigCreateUpdate()
       );
-      parkRequest.append(
-        "location.coordinates[1]",
-        park.location.coordinates[1].toString()
-      );
-      parkRequest.append("address.city", park.address?.city ?? "");
-      parkRequest.append("address.address", park.address?.address ?? "");
-
-      park.details.forEach((detail, index) => {
-        parkRequest.append(`details[${index}]`, detail);
-      });
-
-      const { status } = await axios.post(`${url}/`, parkRequest, config);
       if (status === 201) {
         toast.success("Park created! Thanks!");
       } else {
@@ -113,49 +130,17 @@ export const editParkThunk =
     try {
       dispatch(loadingActionCreator());
 
-      const token = localStorage.getItem("token");
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
-        },
-      };
+      const parkRequest = getFormDataFromPark(park, images);
 
-      const parkRequest = new FormData();
-      if (images) {
-        for (let i = 0; i < images.length; i++) {
-          parkRequest.append("image", images[i]);
-        }
-      }
-
-      parkRequest.append("name", park.name);
-      parkRequest.append("description", park.description);
-      parkRequest.append("location.type", park.location.type);
-      parkRequest.append(
-        "location.coordinates[0]",
-        park.location.coordinates[0].toString()
-      );
-      parkRequest.append(
-        "location.coordinates[1]",
-        park.location.coordinates[1].toString()
-      );
-      parkRequest.append("address.city", park.address?.city ?? "");
-      parkRequest.append("address.address", park.address?.address ?? "");
-
-      park.details.forEach((detail, index) => {
-        parkRequest.append(`details[${index}]`, detail);
-      });
-
-      const { status } = await axios.put(
+      await axios.put(
         `${url}/${park.id}`,
         parkRequest,
-        config
+        getConfigCreateUpdate()
       );
-      if (status === 200) {
-        toast.success("Park Updated! Thanks!");
-      } else {
-        toast.error(`Error updating the park`);
-      }
+
+      toast.success("Park Updated! Thanks!");
+    } catch (e) {
+      toast.error(`Error updating the park`);
     } finally {
       dispatch(notLoadingActionCreator());
     }
