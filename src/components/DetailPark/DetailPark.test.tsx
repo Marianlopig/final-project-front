@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { mockPark } from "../../mocks/ParksMocks";
@@ -20,6 +20,8 @@ describe("Given a DetailPark component", () => {
 
       const name = screen.getByText(park.name);
       const description = screen.getByText(park.description);
+      const buttons = screen.getAllByRole("button");
+      buttons.forEach((button) => fireEvent.click(button));
 
       expect(name).toBeInTheDocument();
       expect(description).toBeInTheDocument();

@@ -46,6 +46,8 @@ describe("Given a Filters component", () => {
       );
 
       expect(mockDispatch).toBeCalled();
+      const buttons = screen.getAllByRole("button");
+      buttons.forEach((button) => fireEvent.click(button));
 
       fireEvent(
         buttonOwn,

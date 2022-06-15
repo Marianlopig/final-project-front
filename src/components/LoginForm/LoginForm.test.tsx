@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import LoginForm from "./LoginForm";
 import store from "../../redux/store/store";
@@ -57,6 +57,8 @@ describe("Given a Login form component", () => {
       const userField = screen.getByPlaceholderText("Username");
       const passwordField = screen.getByPlaceholderText("Password");
       const button = screen.getByRole("button");
+      const buttons = screen.getAllByRole("button");
+      buttons.forEach((button) => fireEvent.click(button));
 
       userEvent.type(userField, "Marian");
       userEvent.type(passwordField, "password");

@@ -28,6 +28,9 @@ describe("Given a pagination component", () => {
         })
       );
 
+      const buttons = screen.getAllByRole("button");
+      buttons.forEach((button) => fireEvent.click(button));
+
       expect(mockDispatch).toHaveBeenCalled();
     });
   });
