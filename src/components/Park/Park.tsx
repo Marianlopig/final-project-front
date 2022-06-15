@@ -1,6 +1,5 @@
 import { ParkStyles } from "./ParkStyles";
-import { BsStarFill } from "react-icons/bs";
-import { BsInfo } from "react-icons/bs";
+import { BsStarFill, BsInfo } from "react-icons/bs";
 import { IPark } from "../../redux/types/parkInterfaces";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
