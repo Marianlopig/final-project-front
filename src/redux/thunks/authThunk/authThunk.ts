@@ -54,7 +54,7 @@ export const registerThunk =
   (userData: IUser) => async (dispatch: Dispatch) => {
     try {
       dispatch(loadingActionCreator());
-      await axios.post(
+      const { status } = await axios.post(
         `${process.env.REACT_APP_API_URL}/users/register`,
         userData,
         {
