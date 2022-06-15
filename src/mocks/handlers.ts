@@ -10,6 +10,22 @@ export const usersHandlers = [
       })
     );
   }),
+  rest.get(
+    `${process.env.REACT_APP_API_URL}/users/account`,
+    (req, res, ctx) => {
+      return res(
+        ctx.status(200),
+        ctx.json({
+          id: "1234",
+          name: "Test user",
+          username: "testuser",
+          email: "testemail",
+          city: "barcelona",
+          favParks: [],
+        })
+      );
+    }
+  ),
 
   rest.post(
     `${process.env.REACT_APP_API_URL}/users/register`,
