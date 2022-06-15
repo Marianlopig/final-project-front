@@ -1,5 +1,8 @@
+import { rest } from "msw";
+import { toast } from "react-toastify";
 import { mockPark, mockParksPage } from "../../../mocks/ParksMocks";
 import "../../../mocks/server";
+import server from "../../../mocks/server";
 import {} from "../../features/accountSlice/accountSlice";
 import { loadParkDetailsActionCreator } from "../../features/parkSlice/parkSlice";
 import { loadParksActionCreator } from "../../features/parksSlice/parksSlice";
@@ -14,6 +17,8 @@ import {
   getParkDetailThunk,
   loadParksThunk,
 } from "./parkThunk";
+
+jest.mock("react-toastify");
 
 describe("Given a loadParks function", () => {
   describe("When it is called", () => {
@@ -31,6 +36,18 @@ describe("Given a loadParks function", () => {
       expect(dispatch).toHaveBeenCalledWith(loadColectionAction);
     });
   });
+
+  describe("When it is called with an empty filter", () => {
+    test("It should dispatch loadParksActionCreator with the list of all parks not filtered", async () => {
+      const dispatch = jest.fn();
+      const parkColectionData = mockParksPage;
+      const loadColectionAction = loadParksActionCreator(parkColectionData);
+      const thunk = loadParksThunk({});
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalledWith(loadColectionAction);
+    });
+  });
 });
 
 describe("Given a deletePark function", () => {
@@ -42,6 +59,26 @@ describe("Given a deletePark function", () => {
 
       expect(dispatch).toHaveBeenCalledWith(loadingActionCreator());
       expect(dispatch).toHaveBeenCalledWith(notLoadingActionCreator());
+    });
+  });
+
+  describe("When it is called with invalid data", () => {
+    test("It should call the toast.error", async () => {
+      const dispatch = jest.fn();
+      toast.error = jest.fn();
+
+      server.use(
+        rest.delete(
+          `${process.env.REACT_APP_API_URL}/parks/4`,
+          (req, res, ctx) => {
+            return res(ctx.status(201), ctx.json({}));
+          }
+        )
+      );
+
+      await deleteParkThunk("4")(dispatch);
+
+      expect(toast.error).toHaveBeenCalled();
     });
   });
 });
