@@ -25,6 +25,8 @@ describe("Given a HeaderComponent Component", () => {
 
       const loginButton = screen.getByText("LogIn");
       expect(loginButton).toBeInTheDocument();
+      const buttons = screen.getAllByRole("listitem");
+      buttons.forEach((button) => fireEvent.click(button));
 
       fireEvent(
         loginButton,
