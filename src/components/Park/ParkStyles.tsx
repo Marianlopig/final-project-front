@@ -44,9 +44,10 @@ export const ParkStyles = styled.div`
         h3 {
           color: #00c2cb;
           font-size: 25px;
+          max-width: 300px;
           text-overflow: ellipsis;
-          overflow: hidden;
           white-space: nowrap;
+          overflow: hidden;
           padding-top: 20px;
         }
         p {
