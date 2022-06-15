@@ -35,7 +35,7 @@ describe("Given a Park component", () => {
           </Provider>
         </BrowserRouter>
       );
-      const picture = screen.getByRole("img");
+      const picture = screen.getByRole("img") as HTMLImageElement;
       expect(picture).toBeInTheDocument();
 
       fireEvent.error(picture);
