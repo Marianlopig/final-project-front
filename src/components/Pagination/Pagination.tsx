@@ -11,7 +11,8 @@ const Pagination = () => {
   return (
     <PaginationStyles>
       <div className="pager">
-        <div
+        <button
+          title="page-previous"
           className="icon-container"
           onClick={() =>
             parkState.previous &&
@@ -19,22 +20,23 @@ const Pagination = () => {
           }
         >
           <BsCaretLeftFill title="previous-page" />
-        </div>
+        </button>
         <span>
           {parkState.page * parkState.pageSize + 1}-
           {parkState.page * parkState.pageSize + parkState.results.length}/
           {parkState.total}
         </span>
 
-        <div
+        <button
+          title="next-page"
           className="icon-container"
           onClick={() =>
             parkState.next &&
             dispatch(loadParksThunk(undefined, parkState.next))
           }
         >
-          <BsCaretRightFill title="next-page" />
-        </div>
+          <BsCaretRightFill />
+        </button>
       </div>
     </PaginationStyles>
   );
