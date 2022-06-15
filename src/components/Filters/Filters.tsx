@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { accountSelector } from "../../redux/features/accountSlice/accountSlice";
-import { authSelector } from "../../redux/features/authSlice/authSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import { loadParksThunk } from "../../redux/thunks/parkThunk/parkThunk";
 import { FiltersStyles } from "./FiltersStyles";
@@ -10,8 +9,7 @@ import { MdClose } from "react-icons/md";
 const Filters = () => {
   const dispatch = useAppDispatch();
 
-  const { userId } = useAppSelector(authSelector);
-  const { favParks, loggedIn } = useAppSelector(accountSelector);
+  const { id: userId, favParks, loggedIn } = useAppSelector(accountSelector);
 
   const [city, setCity] = useState("");
   const [isFilterExpanded, setFilterExpanded] = useState<boolean>(false);
