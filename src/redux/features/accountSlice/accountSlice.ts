@@ -3,6 +3,7 @@ import { RootState } from "../../store/store";
 import { Account } from "../../types/userInterfaces";
 
 const initialState: Account = {
+  id: "",
   name: "",
   username: "",
   email: "",

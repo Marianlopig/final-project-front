@@ -11,8 +11,20 @@ import {
 } from "../../redux/thunks/accountThunk/accountThunk";
 import { useNavigate } from "react-router-dom";
 import DetailsIcons from "../DetailsIcons/DetailsIcons";
+import {
+  deleteParkThunk,
+  loadParksThunk,
+} from "../../redux/thunks/parkThunk/parkThunk";
 
-const Park = ({ id, name, photos, photosBackup, details, address }: IPark) => {
+const Park = ({
+  id,
+  name,
+  photos,
+  photosBackup,
+  details,
+  address,
+  owner,
+}: IPark) => {
   const [firstError, setFirstError] = useState<boolean>(true);
   const [imageUrl, setImageUrl] = useState<string>(
     `${process.env.REACT_APP_API_URL}/${photos[0]}`
@@ -20,7 +32,7 @@ const Park = ({ id, name, photos, photosBackup, details, address }: IPark) => {
 
   const [isFavourite, setIsFavourite] = useState<boolean>(false);
 
-  const { favParks } = useAppSelector(accountSelector);
+  const { favParks, id: userId } = useAppSelector(accountSelector);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -90,6 +102,15 @@ const Park = ({ id, name, photos, photosBackup, details, address }: IPark) => {
               </button>
             )}
           </div>
+          {owner === userId && (
+            <div
+              onClick={() => {
+                dispatch(deleteParkThunk(id));
+              }}
+            >
+              Delete Park
+            </div>
+          )}
         </div>
       </section>
     </ParkStyles>
