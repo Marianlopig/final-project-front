@@ -1,6 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import { mockParksPage } from "../../mocks/ParksMocks";
-import { loadParksThunk } from "../../redux/thunks/parkThunk/parkThunk";
 import Pagination from "./Pagination";
 
 const mockDispatch = jest.fn();
