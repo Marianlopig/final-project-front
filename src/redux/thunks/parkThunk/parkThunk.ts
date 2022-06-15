@@ -50,7 +50,12 @@ export const loadParksThunk =
 
 export const deleteParkThunk = (id: string) => async (dispatch: Dispatch) => {
   dispatch(loadingActionCreator());
-  await axios.delete(`${url}/${id}`, getAuth());
+  const { status } = await axios.delete(`${url}/${id}`, getAuth());
+  if (status === 200) {
+    toast.success("Park deleted!");
+  } else {
+    toast.error(`Error deleting the park`);
+  }
   dispatch(notLoadingActionCreator());
 };
 

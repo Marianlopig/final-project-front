@@ -8,6 +8,7 @@ describe("Given a account slice", () => {
   describe("When we execute the reducer deleteFavourite", () => {
     test("Then it should return the new state without the deleted park", () => {
       const initialState = {
+        id: "1",
         name: "Marian",
         username: "marian",
         email: "test@test.com",
@@ -25,6 +26,7 @@ describe("Given a account slice", () => {
   describe("When we execute the reducer addFavouritePark", () => {
     test("Then it should return the new state with the new park in fav", () => {
       const initialState = {
+        id: "1",
         name: "Marian",
         username: "marian",
         email: "test@test.com",
@@ -45,6 +47,7 @@ describe("Given a account slice", () => {
   describe("When we execute the reducer loadAccount", () => {
     test("Then it should return the new state account", () => {
       const initialState = {
+        id: "",
         name: "",
         username: "",
         email: "",
@@ -54,6 +57,7 @@ describe("Given a account slice", () => {
       };
 
       const payload = {
+        id: "1",
         name: "Marian",
         username: "marian",
         email: "test@test.com",
