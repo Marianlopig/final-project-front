@@ -11,7 +11,10 @@ import {
 } from "../../redux/thunks/accountThunk/accountThunk";
 import { useNavigate } from "react-router-dom";
 import DetailsIcons from "../DetailsIcons/DetailsIcons";
-import { deleteParkThunk } from "../../redux/thunks/parkThunk/parkThunk";
+import {
+  deleteParkThunk,
+  loadParksThunk,
+} from "../../redux/thunks/parkThunk/parkThunk";
 
 const Park = ({
   id,
@@ -101,8 +104,9 @@ const Park = ({
           </div>
           {owner === userId && (
             <div
-              onClick={() => {
-                dispatch(deleteParkThunk(id));
+              onClick={async () => {
+                await dispatch(deleteParkThunk(id));
+                dispatch(loadParksThunk());
               }}
             >
               Delete Park
