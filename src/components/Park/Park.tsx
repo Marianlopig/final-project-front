@@ -104,6 +104,7 @@ const Park = ({
           </div>
           {owner === userId && (
             <div
+              className="deletepark"
               onClick={async () => {
                 await dispatch(deleteParkThunk(id));
                 dispatch(loadParksThunk());

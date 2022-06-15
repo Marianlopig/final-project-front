@@ -99,6 +99,8 @@ export const ParkStyles = styled.div`
           color: white;
           font-size: 20px;
           font-weight: bold;
+          cursor: pointer;
+
           &--info {
             background-color: #00c2cb;
           }
@@ -127,6 +129,13 @@ export const ParkStyles = styled.div`
             }
           }
         }
+      }
+      .deletepark {
+        cursor: pointer;
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 20px;
+        color: #784545;
       }
     }
   }
