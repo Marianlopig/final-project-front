@@ -94,6 +94,26 @@ describe("Given a createPark function", () => {
       expect(dispatch).toHaveBeenCalledWith(notLoadingActionCreator());
     });
   });
+
+  describe("When it is called with invalid data", () => {
+    test("It should call the toast.error", async () => {
+      const dispatch = jest.fn();
+      toast.error = jest.fn();
+
+      server.use(
+        rest.post(
+          `${process.env.REACT_APP_API_URL}/parks/`,
+          (req, res, ctx) => {
+            return res(ctx.status(208), ctx.json({}));
+          }
+        )
+      );
+
+      await createParkThunk(mockPark)(dispatch);
+
+      expect(toast.error).toHaveBeenCalled();
+    });
+  });
 });
 
 describe("Given a getParkDetailThunk function", () => {
@@ -106,6 +126,26 @@ describe("Given a getParkDetailThunk function", () => {
       await thunk(dispatch);
 
       expect(dispatch).toHaveBeenCalledWith(loadParkData);
+    });
+  });
+
+  describe("When it is called with invalid data", () => {
+    test("It should call the toast.error", async () => {
+      const dispatch = jest.fn();
+      toast.error = jest.fn();
+
+      server.use(
+        rest.put(
+          `${process.env.REACT_APP_API_URL}/parks/629f8aec8c2b3037ff6aeb4d`,
+          (req, res, ctx) => {
+            return res(ctx.status(400), ctx.json(mockPark));
+          }
+        )
+      );
+
+      await editParkThunk(mockPark)(dispatch);
+
+      expect(toast.error).toHaveBeenCalled();
     });
   });
 });
