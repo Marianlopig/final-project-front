@@ -2,8 +2,13 @@ import "../../../mocks/server";
 import {
   addFavouriteActionCreator,
   deleteFavouriteActionCreator,
+  loadAccountActionCreator,
 } from "../../features/accountSlice/accountSlice";
-import { addFavouriteThunk, deleteFavouriteThunk } from "./accountThunk";
+import {
+  addFavouriteThunk,
+  deleteFavouriteThunk,
+  loadAccountThunk,
+} from "./accountThunk";
 import { toast } from "react-toastify";
 import { server } from "../../../mocks/server";
 import { rest } from "msw";
@@ -65,7 +70,7 @@ describe("Given an deleteFavouriteThunk function", () => {
   });
 
   describe("When it has an error", () => {
-    test.only("Then it should throw a toast with an error 'Error deleting the park from favoruites'", async () => {
+    test("Then it should throw a toast with an error 'Error deleting the park from favoruites'", async () => {
       toast.error = jest.fn();
 
       server.use(
@@ -82,6 +87,30 @@ describe("Given an deleteFavouriteThunk function", () => {
       await deleteFavouriteThunk(idMockPark)(jest.fn());
 
       expect(toast.error).toHaveBeenCalled();
+    });
+  });
+});
+
+describe("Given an loadAccount function", () => {
+  describe("When it is called", () => {
+    test("Then it should dispatch loadAccountActionCreator with an account", async () => {
+      const dispatch = jest.fn();
+
+      const expectedData = {
+        id: "1234",
+        name: "Test user",
+        username: "testuser",
+        email: "testemail",
+        city: "barcelona",
+        favParks: [],
+      };
+
+      const expectedAction = loadAccountActionCreator(expectedData);
+
+      const thunk = loadAccountThunk();
+      await thunk(dispatch);
+
+      expect(dispatch).toHaveBeenCalledWith(expectedAction);
     });
   });
 });
