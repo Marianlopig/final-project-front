@@ -20,12 +20,12 @@ const DetailPark = ({ park }: Props) => {
     photosBackup,
     location,
     details,
-    // owner,
+    owner,
     address,
   } = park;
 
   const navigate = useNavigate();
-  const { loggedIn } = useAppSelector(accountSelector);
+  const { loggedIn, id: userId } = useAppSelector(accountSelector);
 
   return (
     <DetailParkStyles>
@@ -35,7 +35,7 @@ const DetailPark = ({ park }: Props) => {
         <p className="description">{description}</p>
         <div className="body-container">
           <DetailsIcons details={details} />
-          {loggedIn && (
+          {loggedIn && userId === owner && (
             <button
               onClick={() => {
                 navigate(`/park/${id}/edit`);

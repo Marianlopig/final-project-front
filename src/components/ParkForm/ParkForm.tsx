@@ -96,7 +96,6 @@ const ParkForm = ({ park: currentPark, edit }: ParkFormProps) => {
           images
         )
       );
-      console.log(park.id);
 
       navigate(`/park/${park.id}`);
     } else {
@@ -111,7 +110,6 @@ const ParkForm = ({ park: currentPark, edit }: ParkFormProps) => {
           images
         )
       );
-      console.log(park.id);
       navigate(`/parks`);
     }
   };
