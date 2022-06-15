@@ -17,6 +17,9 @@ describe("Given a Park component", () => {
       );
       const picture = screen.getByRole("img");
 
+      const buttons = screen.getAllByRole("button");
+      buttons.forEach((button) => fireEvent.click(button));
+
       expect(picture).toBeInTheDocument();
     });
   });
@@ -40,10 +43,12 @@ describe("Given a Park component", () => {
 
       fireEvent.error(picture);
 
-      expect(picture.src).toEqual("http://localhost/invalidBackup");
+      expect(picture.src).toEqual("http://localhost/park/invalidBackup");
 
       fireEvent.error(picture);
-      expect(picture.src).toEqual("http://localhost/images/columpiaDa.png");
+      expect(picture.src).toEqual(
+        "http://localhost/park/images/columpiaDa.png"
+      );
     });
   });
 });
