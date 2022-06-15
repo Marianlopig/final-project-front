@@ -11,8 +11,6 @@ const RestrictedPages = ({ children }: Props) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("RESTRICTEEEEEEED");
-
     if (!token) {
       navigate("/login");
     }

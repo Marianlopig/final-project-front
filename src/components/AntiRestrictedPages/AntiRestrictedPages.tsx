@@ -10,8 +10,6 @@ const AntiRestrictedPages = ({ children }: Props) => {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    console.log("NO RESTRICTEEEEEEED");
-
     if (token) {
       navigate("/parks");
     }
