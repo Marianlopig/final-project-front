@@ -94,13 +94,12 @@ const getFormDataFromPark = (park: IPark, images?: FileList): FormData => {
 
 const getConfigCreateUpdate = () => {
   const token = localStorage.getItem("token");
-  const config = {
+  return {
     headers: {
       Authorization: `Bearer ${token}`,
       "Content-Type": "multipart/form-data",
     },
   };
-  return config;
 };
 
 export const createParkThunk =
