@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const ParkStyles = styled.div`
   background-color: white;
-  font-family: "Roboto", sans-serif;
 
   section {
     display: flex;
