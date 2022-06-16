@@ -26,7 +26,7 @@ const Park = ({
 
   const [isFavourite, setIsFavourite] = useState<boolean>(false);
 
-  const { favParks, id: userId } = useAppSelector(accountSelector);
+  const { favParks } = useAppSelector(accountSelector);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
