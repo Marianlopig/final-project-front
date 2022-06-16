@@ -69,7 +69,7 @@ export const ParkStyles = styled.div`
         font-size: 32px;
         margin: 12px 0;
         transition: 0.4s;
-        font-family: "DM Serif Display", serif;
+        font-family: "Roboto";
         letter-spacing: 2px;
       }
 

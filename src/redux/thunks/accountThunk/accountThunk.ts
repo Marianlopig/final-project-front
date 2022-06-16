@@ -38,7 +38,9 @@ export const addFavouriteThunk =
         toast.error(`Error adding the park to favourites, try again!`);
       }
     } catch (e) {
-      toast.error(`Error adding the park to favourites, try again!`);
+      toast.error(
+        `You need to have an account and to be LoggedIn to save a park`
+      );
     } finally {
       dispatch(notLoadingActionCreator());
     }

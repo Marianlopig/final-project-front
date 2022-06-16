@@ -8,6 +8,7 @@ import {
   accountSelector,
   logoutAccountActionCreator,
 } from "../../redux/features/accountSlice/accountSlice";
+import { toast } from "react-toastify";
 
 const NavBar = () => {
   const [isNavExpanded, setIsNavExpanded] = useState<boolean>(false);
@@ -49,6 +50,8 @@ const NavBar = () => {
                 if (loggedIn) {
                   dispatch(logoutActionCreator());
                   dispatch(logoutAccountActionCreator());
+                  toast.success("LogOut successful!");
+
                   deleteToken();
                 } else {
                   navigate("/login");

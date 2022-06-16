@@ -334,6 +334,7 @@ const ParkForm = ({ park: currentPark, edit }: ParkFormProps) => {
                 onChange={changeData}
                 value={park.name}
                 placeholder="Park Name"
+                autoComplete="off"
               ></input>
               <label htmlFor="description">Description</label>
               <input
@@ -342,6 +343,7 @@ const ParkForm = ({ park: currentPark, edit }: ParkFormProps) => {
                 onChange={changeData}
                 value={park.description}
                 placeholder="Description"
+                autoComplete="off"
               ></input>
               <label htmlFor="city">City</label>
               <input
@@ -350,6 +352,7 @@ const ParkForm = ({ park: currentPark, edit }: ParkFormProps) => {
                 onChange={changeAddressData}
                 value={address.city}
                 placeholder="City"
+                autoComplete="off"
               ></input>
               <label htmlFor="city">Address</label>
               <input
@@ -358,6 +361,7 @@ const ParkForm = ({ park: currentPark, edit }: ParkFormProps) => {
                 onChange={changeAddressData}
                 value={address.address}
                 placeholder="Address"
+                autoComplete="off"
               ></input>
             </div>
           )}
