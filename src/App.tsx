@@ -3,7 +3,6 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import AntiRestrictedPages from "./components/AntiRestrictedPages/AntiRestrictedPages";
 import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
-import RegisterForm from "./components/RegisterForm/RegisterForm";
 import RestrictedPages from "./components/RestrictedPages/RestrictedPages";
 import Spinner from "./components/Spinner/Spinner";
 import CreateParkPage from "./pages/CreateParkPage/CreateParkPage";
