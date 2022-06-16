@@ -4,6 +4,11 @@ import ParkForm from "../../components/ParkForm/ParkForm";
 import { parkSelector } from "../../redux/features/parkSlice/parkSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks/hooks";
 import { getParkDetailThunk } from "../../redux/thunks/parkThunk/parkThunk";
+import styled from "styled-components";
+
+export const EditPageSytles = styled.div`
+  padding-bottom: 20px;
+`;
 
 const EditPage = () => {
   const dispatch = useAppDispatch();
@@ -14,7 +19,11 @@ const EditPage = () => {
     dispatch(getParkDetailThunk(id as string));
   }, [dispatch, id]);
 
-  return <ParkForm park={park} edit={true} />;
+  return (
+    <EditPageSytles>
+      <ParkForm park={park} edit={true} />
+    </EditPageSytles>
+  );
 };
 
 export default EditPage;

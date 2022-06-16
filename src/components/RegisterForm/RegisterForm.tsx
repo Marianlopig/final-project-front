@@ -40,7 +40,7 @@ const RegisterForm = () => {
     <RegisterFormStyles>
       <div className="container">
         <h2>Create a new account</h2>
-        <form noValidate onSubmit={handleSubmit}>
+        <form autoComplete="off" noValidate onSubmit={handleSubmit}>
           <label htmlFor="name">Name:</label>
           <input
             id="name"

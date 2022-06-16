@@ -13,6 +13,7 @@ import ListParkPage from "./pages/ListPage/ListParkPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import MapPage from "./pages/MapPage/MapPage";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import { uiShowSpinnerSelector } from "./redux/features/uiSlice/uiSlice";
 import { useAppDispatch, useAppSelector } from "./redux/hooks/hooks";
 import { loadAccountThunk } from "./redux/thunks/accountThunk/accountThunk";
@@ -44,7 +45,7 @@ const App = () => {
           path="/new-user"
           element={
             <AntiRestrictedPages>
-              <RegisterForm />
+              <RegisterPage />
             </AntiRestrictedPages>
           }
         />
